@@ -5,10 +5,7 @@
                 <!--Brand logo & name-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="{{ asset('assets\img\logo.png') }}" alt="Nifty Logo" class="brand-icon">
-                        <div class="brand-title">
-                            <span class="brand-text">Nifty</span>
-                        </div>
+                        <img src="{{ asset('assets\img\logo1.png') }}" alt="Dulcería Karamelo" height="55" width="180" >
                     </a>
                 </div>
                 <!--End brand logo & name-->
@@ -163,19 +160,16 @@
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                                 <ul class="head-list">
                                     <li>
-                                        <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> Profile</a>
+                                        <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i>Mí perfil</a>
                                     </li>
                                     <li>
-                                        <a href="#"><span class="badge badge-danger pull-right">9</span><i class="demo-pli-mail icon-lg icon-fw"></i> Messages</a>
+                                        <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Cambiar Foto</a>
                                     </li>
                                     <li>
-                                        <a href="#"><span class="label label-success pull-right">New</span><i class="demo-pli-gear icon-lg icon-fw"></i> Settings</a>
+                                        <a href="#"><i class="demo-pli-gear icon-lg icon-fw"></i> Cambiar contraseña</a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-login.html"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
+                                        <a href="pages-login.html"><i class="demo-pli-unlock icon-lg icon-fw"></i> Cerrar sesión</a>
                                     </li>
                                 </ul>
                             </div>

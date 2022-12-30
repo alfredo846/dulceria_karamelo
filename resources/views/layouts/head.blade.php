@@ -8,6 +8,7 @@
 
     <!--STYLESHEET-->
     <!--=================================================-->
+   <link rel="shortcut icon" href="{{ asset('assets/img/invoice-logo.png') }}" type="image/x-icon">
 
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>

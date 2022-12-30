@@ -7,26 +7,20 @@
 
     @section('content')
       <!--CONTENT CONTAINER-->
-            <!--===================================================-->
             <div id="content-container">
                 <div id="page-head">
-                    
                 <div class="pad-all text-center">
-                    <h3>Welcome back to the Dashboard.</h3>
-                    <p1>Scroll down to see quick links and overviews of your Server, To do list, Order status or get some Help using Nifty.<p>
+                    <h3>Bienvenido Alfredo Heraz Pérez</h3>
+                    <p1><p>
                          </p1></div>
                     </div>
 
-                
                 <!--Page content-->
-                <!--===================================================-->
                 <div id="page-content">
-                    
 					    <div class="row">
 					        <div class="col-lg-7">
 					
 					            <!--Network Line Chart-->
-					            <!--===================================================-->
 					            <div id="demo-panel-network" class="panel">
 					                <div class="panel-heading">
 					                    <div class="panel-control">
@@ -143,7 +137,6 @@
 					
 					
 					            </div>
-					            <!--===================================================-->
 					            <!--End network line chart-->
 					
 					        </div>
