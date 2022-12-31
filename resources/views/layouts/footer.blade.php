@@ -1,14 +1,11 @@
     <!-- FOOTER -->
-        <footer id="footer">
-            <div class="show-fixed pad-rgt pull-right">
-                You have <a href="#" class="text-main"><span class="badge badge-danger">3</span> pending action.</a>
-            </div>
+        <footer id="footer" style="position:fixed">
 
             <div class="hide-fixed pull-right pad-rgt">
-                14GB of <strong>512GB</strong> Free.
+                 <strong>&copy;Point Of Sale Terminal</strong> 
             </div>
 
-            <p class="pad-lft">&#0169; 2018 Your Company</p>
+            <p class="pad-lft">&#0169; 2023 Dulcería Karamelo</p>
 
         </footer>
     <!-- END FOOTER -->

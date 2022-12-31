@@ -28,18 +28,27 @@
     @section('content')
      <!--CONTENT CONTAINER-->
             <div id="content-container">
-                <div id="page-head">
-                    <div id="page-title">
-                        <h1 class="page-header text-overflow">Marcas</h1>
-                    </div>
-                </div>
-
+                <br>
+				     <div class="col-md-12">
+					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
+					     <div class="media-body">
+					         <p class="text-2x mar-no text-semibold">Márcas</p><p></p>
+					     </div>
+					 </div>
+		   </div>
+		   <br><br><br>
+		   
                 <!--Page content-->
                 <div id="page-content">
                     
 					<!-- Basic Data Tables -->
-					<!--===================================================-->
 					<div class="panel">
+
+						<div class="alert alert-info">
+					        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+					        <strong>Marca </strong> Agregada exitosamente
+					     </div>
+
 					   	 <div class="panel-heading">
 							<button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva marca</button>
 					    </div>
@@ -72,7 +81,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 									 <tr>
@@ -93,7 +102,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 									 <tr>
@@ -114,7 +123,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 									 <tr>
@@ -135,7 +144,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 									 <tr>
@@ -156,7 +165,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 									 <tr>
@@ -177,7 +186,7 @@
 					                     <td>
 											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
 											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+											<button class="btn btn-sm btn-purple btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 										</td>
 					                </tr>
 					               

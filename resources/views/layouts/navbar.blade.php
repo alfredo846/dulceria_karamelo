@@ -144,7 +144,7 @@
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="ic-user pull-right menu-title">
                                     <img class="img-circle img-sm" src="{{ asset('assets\img\profile-photos\1.png') }}" alt="Profile Picture">
-                                    Alfredo Heraz Pérez
+                                    <small>Alfredo Heraz Pérez</small>
                                     <i class="ion-arrow-down-b"></i>
                                 </span>
                             </a>
