@@ -5,14 +5,13 @@
                 <!--Brand logo & name-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="{{ asset('assets\img\logo1.png') }}" alt="Dulcería Karamelo" height="55" width="180" >
+                        <img src="{{ asset('assets\img\logo1.png') }}" alt="Dulcería Karamelo" height="57" width="230" >
                     </a>
                 </div>
                 <!--End brand logo & name-->
 
-
                 <!--Navbar Dropdown-->
-                <div class="navbar-content">
+                <div class="navbar-content">    
                     <ul class="nav navbar-top-links">
 
                         <!--Navigation toogle button-->
@@ -26,12 +25,12 @@
                     </ul>
                     <ul class="nav navbar-top-links">
 
-
                         <!--Mega dropdown-->
                         <li class="mega-dropdown">
                             <a href="#" class="mega-dropdown-toggle">
                                 <i class="demo-pli-layout-grid"></i>
                             </a>
+                            
                             <div class="dropdown-menu mega-dropdown-menu">
                                 <div class="row">
                                     <div class="col-sm-4 col-md-3">
@@ -143,19 +142,12 @@
                         <!--User dropdown-->
                         <li id="dropdown-user" class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-                                <span class="ic-user pull-right">
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                    <!--You can use an image instead of an icon.-->
-                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
-                                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                    <i class="demo-pli-male"></i>
+                                <span class="ic-user pull-right menu-title">
+                                    <img class="img-circle img-sm" src="{{ asset('assets\img\profile-photos\1.png') }}" alt="Profile Picture">
+                                    Alfredo Heraz Pérez
+                                    <i class="ion-arrow-down-b"></i>
                                 </span>
-                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                                <!--You can also display a user name in the navbar.-->
-                                <!--<div class="username hidden-xs">Aaron Chavez</div>-->
-                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                             </a>
-
 
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                                 <ul class="head-list">
