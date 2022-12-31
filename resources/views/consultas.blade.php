@@ -1,11 +1,12 @@
 @extends('layouts.app')
-  @section('title', 'Consultas')
+  @section('title', 'Catálogos')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\datatables\media\css\dataTables.bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets\plugins\datatables\extensions\Responsive\css\responsive.dataTables.min.css') }}" rel="stylesheet">
-    <!--Ion Icons [ OPTIONAL ]-->
+    
+	<!--Ion Icons [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\ionicons\css\ionicons.min.css') }}" rel="stylesheet">
 
 	<style>
@@ -17,7 +18,8 @@
     table tr{
         border: inset 0pt !important;
         font-size: 14px;
-        cursor:pointer:
+		color: #121f3e !important;
+        cursor:pointer;
     }
 
  	</style>
@@ -42,7 +44,7 @@
 							<button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva marca</button>
 					    </div>
 					    <div class="panel-body">
-					        <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					        <table id="marcas" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
 					                <tr>
 					                    <th>Nombre</th>
@@ -208,4 +210,33 @@
 
 	 <!--Icons [ SAMPLE ]-->
     <script src="{{ asset('assets\js\demo\icons.js') }}"></script>
+
+	  <script type="text/javascript">
+         $(document).ready(function() {
+             $('#demo-dt-basic').DataTable({
+            language:{
+                url:"{{ asset('assets/js/spanish.json') }}"
+            }
+        });
+            } );
+
+
+			$(document).ready(function() {
+   			 $('#marcas').DataTable( {
+    	    "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+			'search': 'Buscar:',
+			'paginate': {
+				'next': 'Siguiente',
+				'previous': 'Anterior'
+			}
+       		 }
+    		} );
+			} );
+     </script>
+
     @endsection
