@@ -221,7 +221,13 @@
     <script src="{{ asset('assets\js\demo\icons.js') }}"></script>
 
 	  <script type="text/javascript">
-         
+         $(document).ready(function() {
+             $('#demo-dt-basic').DataTable({
+            language:{
+                url:"{{ asset('assets/js/spanish.json') }}"
+            }
+        });
+            } );
 
 
 			$(document).ready(function() {

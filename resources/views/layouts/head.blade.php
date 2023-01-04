@@ -31,5 +31,35 @@
     <link href="{{ asset('assets\plugins\pace\pace.min.css') }}" rel="stylesheet">
     <script src="{{ asset('assets\plugins\pace\pace.min.js') }}"></script>
 
-        
+    <style>
+    #mainnav {
+    height: 100%;
+    background-image: url("../../assets/img/sidebar4.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+	 border-radius: 0;
+	 border: none;
+	 margin: 0;
+	 padding: 0;
+	 opacity: .9;
+     color: #1c3550!important;
+    }
+
+	#mainnav-menu>.active {
+    background-color: #e7e5e7 !important;
+	opacity: .9;
+     }
+
+    #mainnav-menu ul a:hover,.menu-popover .sub-menu ul a:hover{
+        color:#783449 !important}
+
+    #mainnav-menu>li>a:hover,#mainnav-menu>li>a:active{
+        color:#783449  !important}
+
+    #mainnav-menu .active:not(.active-sub)>a {
+    color: #783449;
+}
+     
+ 	</style> 
 </head>
