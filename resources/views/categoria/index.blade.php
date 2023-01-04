@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Marca')
+  @section('title', 'Categoría')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
@@ -33,7 +33,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold">Márcas</p><p></p>
+					         <p class="text-2x mar-no text-semibold">Categorías</p><p></p>
 					     </div>
 					 </div>
 		   </div>
@@ -51,7 +51,7 @@
 					     </div> -->
 
 					   	 <div class="panel-heading">
-							<button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva marca</button>
+							<button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoria</button>
 					    </div>
 					    <div class="panel-body">
 					        <table id="marcas" class="table table-striped table-bordered" cellspacing="0" width="100%">

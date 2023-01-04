@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,5 @@ use App\Http\Controllers\MarcaController;
 
 Route::view('/', 'bienvenido')->name('bienvenido');
 
-Route::resource('marca',MarcaController::class);
+Route::resource('marcas',MarcaController::class);
+Route::resource('categorias', CategoriaController::class);

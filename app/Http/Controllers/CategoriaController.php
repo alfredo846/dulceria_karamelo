@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Marca;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $datos = Marca::orderBy('nombre', 'desc')->get();
-        return view('marca.index')
+        $datos = Categoria::orderBy('nombre', 'desc')->get();
+        return view('categoria.index')
         ->with(['datos' => $datos]);
     }
 
@@ -43,10 +43,10 @@ class MarcaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function show(Categoria $categoria)
     {
         //
     }
@@ -54,10 +54,10 @@ class MarcaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Marca $marca)
+    public function edit(Categoria $categoria)
     {
         //
     }
@@ -66,10 +66,10 @@ class MarcaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marca $marca)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -77,10 +77,10 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Marca  $marca
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Marca $marca)
+    public function destroy(Categoria $categoria)
     {
         //
     }
