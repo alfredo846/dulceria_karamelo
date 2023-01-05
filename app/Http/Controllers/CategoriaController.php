@@ -16,7 +16,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::all()->where('deleted_at', '=', NULL);
         return view('categorias.index')
         ->with(['categorias' => $categorias]);
     }
@@ -89,6 +89,8 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->delete();
+
+        return redirect()->route('categorias.index')->with('message',"Registro eliminado exitosamente");
     }
 }
