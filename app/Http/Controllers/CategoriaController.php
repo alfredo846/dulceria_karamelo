@@ -26,7 +26,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -37,7 +37,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         Categoria::create($request->all());
+
+         return redirect()->route('categorias.index')
+        ->with('message', 'Registro creado exitosamente');
     }
 
     /**

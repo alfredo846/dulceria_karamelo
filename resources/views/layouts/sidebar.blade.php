@@ -27,8 +27,8 @@
 						
 						                <!--Submenu-->
 						                <ul class="collapse text-semibold">
-						                    <li><a href="{{ route('marcas.index') }}">Marcas</a></li>
 											<li><a href="{{ route('categorias.index') }}">Categorías</a></li>
+						                    <li><a href="{{ route('marcas.index') }}">Marcas</a></li>
 											<li><a href="layouts-offcanvas-slide-in-navigation.html">Temporada</a></li>											
 						                </ul>
 						            </li>

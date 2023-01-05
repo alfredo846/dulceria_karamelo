@@ -51,7 +51,7 @@
 					     </div> -->
 
 					   	 <div class="panel-heading">
-							<button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoria</button>
+							<a href="{{ route('categorias.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoría</button></a>
 					    </div>
 					    <div class="panel-body">
 					        <table id="marcas" class="table table-striped table-bordered" cellspacing="0" width="100%">
