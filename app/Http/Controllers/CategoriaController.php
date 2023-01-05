@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use App\Http\Requests\Categorias\CreateCategoriaRequest;
 
 class CategoriaController extends Controller
 {
@@ -35,7 +36,7 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoriaRequest $request)
     {
          Categoria::create($request->all());
 
