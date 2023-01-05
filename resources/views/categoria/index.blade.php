@@ -45,10 +45,9 @@
 					<!-- Basic Data Tables -->
 					<div class="panel">
 
-						<!-- <div class="alert alert-info">
-					        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
-					        <strong>Marca </strong> Agregada exitosamente
-					     </div> -->
+						<div class="content">
+							@include('layouts.partials.alerts')
+						</div>
 
 					   	 <div class="panel-heading">
 							<a href="{{ route('categorias.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoría</button></a>
@@ -135,7 +134,11 @@
 			} );
      </script>
 
-<script>
-	
-	</script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			setTimeout(function() {
+				$(".content").fadeOut(1500);
+			},3000);
+		});
+		</script>
     @endsection

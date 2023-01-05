@@ -41,7 +41,7 @@ class CategoriaController extends Controller
          Categoria::create($request->all());
 
          return redirect()->route('categorias.index')
-        ->with('message', 'Registro creado exitosamente');
+        ->with('message', 'Categoría creada exitosamente');
     }
 
     /**
