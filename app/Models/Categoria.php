@@ -10,9 +10,9 @@ class Categoria extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "categorias";
+    protected $table = 'categorias';
 
-    protected $primarykey = "categoria_id";
+    protected $primaryKey = 'categoria_id';
 
     protected $fillable = [
         'nombre',

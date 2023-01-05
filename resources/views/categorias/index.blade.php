@@ -63,15 +63,18 @@
 					            </thead>
 					            <tbody>
 
-                                    @foreach($datos as $dato)
+                                    @foreach($categorias as $categoria)
 					                <tr>
-					                    <td>{{ $dato->nombre }}</td>
+					                    <td>{{ $categoria->nombre }}</td>
 					                    <td>activo</td>
 					                    <td>	
-											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i></button>
-											<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											<button class="btn btn-sm btn-success btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
-											<button class="btn btn-sm btn-danger btn-icon"><i class="demo-psi-recycling icon-sm"></i></button>
+												<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i>
+												</button>
+												<a href="{{ route('categorias.edit',$categoria) }}">
+												<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
+												</a>
+												<button class="btn btn-sm btn-success btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
+												<button class="btn btn-sm btn-danger btn-icon"><i class="demo-psi-recycling icon-sm"></i></button>
 										</td>
 					                </tr>
                                     @endforeach

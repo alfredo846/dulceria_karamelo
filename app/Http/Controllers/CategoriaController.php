@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Requests\Categorias\CreateCategoriaRequest;
+use App\Http\Requests\Categorias\EditCategoriaRequest;
 
 class CategoriaController extends Controller
 {
@@ -15,9 +16,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $datos = Categoria::orderBy('nombre', 'desc')->get();
-        return view('categoria.index')
-        ->with(['datos' => $datos]);
+        $categorias = Categoria::all();
+        return view('categorias.index')
+        ->with(['categorias' => $categorias]);
     }
 
     /**
@@ -27,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        return view('categorias.create');
     }
 
     /**
@@ -63,7 +64,8 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+
+       return view('categorias.edit',compact('categoria'));
     }
 
     /**
@@ -73,9 +75,10 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(EditCategoriaRequest $request, Categoria $categoria)
     {
-        //
+         $categoria->update($request->all());
+        return redirect()->route('categorias.index')->with('message', 'Categoría actualizada exitosamente');
     }
 
     /**
