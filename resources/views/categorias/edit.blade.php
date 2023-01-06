@@ -76,7 +76,7 @@
                                             <div class="row">
                                                 <div class="col-sm-9 col-sm-offset-3">
                                                     <button class="btn btn-success" type="submit">Actualizar</button>
-                                                    <button class="btn btn-primary" type="reset">Riniciar</button>
+                                                    <button class="btn btn-primary" type="reset">Reiniciar</button>
                                                 </div>
                                                 </div>
                                             </div>

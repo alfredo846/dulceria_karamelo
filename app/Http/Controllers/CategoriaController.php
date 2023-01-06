@@ -91,6 +91,6 @@ class CategoriaController extends Controller
     {
         $categoria->delete();
 
-        return redirect()->route('categorias.index')->with('message',"Registro eliminado exitosamente");
+        return redirect()->route('categorias.index')->with('eliminar','ok');
     }
 }

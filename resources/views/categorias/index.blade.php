@@ -68,19 +68,18 @@
 					                    <td>{{ $categoria->nombre }}</td>
 					                    <td>activo</td>
 					                    <td>	
-											<button class="btn btn-sm btn-info btn-icon"><i class="ion-eye icon-lg"></i>
+											<button class="btn btn-sm btn-success btn-icon"><i class="ion-eye icon-lg"></i>
 											</button>
 											
 											<a href="{{ route('categorias.edit',$categoria) }}">
 												<button class="btn btn-sm btn-primary btn-icon"><i class="demo-psi-pen-5 icon-sm"></i></button>
 											</a>
 											
-											<button class="btn btn-sm btn-success btn-icon"><i class="ion-toggle-filled icon-lg"></i></button>
 											
-											<form action="{{ route('categorias.destroy', $categoria) }}" method="POST" style="display: inline-block" >
+											<form action="{{ route('categorias.destroy', $categoria) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
 												@csrf
 												@method('DELETE')
-											<button type="submit" class="btn btn-sm btn-danger btn-icon"><i class="demo-psi-recycling icon-sm"></i></button>
+												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon"><i class="demo-psi-recycling icon-sm"></i></button>
 											</form>
 									    </td>
 					                </tr>
@@ -115,6 +114,17 @@
 
 	 <!--Icons [ SAMPLE ]-->
     <script src="{{ asset('assets\js\demo\icons.js') }}"></script>
+    <script src="{{ asset('assets\js\sweetalert2@11.js') }}"></script>
+
+	@if(session('eliminar') == 'ok')
+	<script>
+		Swal.fire(
+		'¡Eliminado!',
+		'El registro se elimino exitosamente.',
+		'success'
+				)
+	</script>
+	@endif
 
 	  <script type="text/javascript">
          $(document).ready(function() {
@@ -150,5 +160,28 @@
 				$(".content").fadeOut(1500);
 			},3000);
 		});
+		</script>
+
+		<script>
+			$('.formulario-eliminar').submit(function(e){
+				e.preventDefault();
+
+			Swal.fire({
+			title: '¿Estás seguro?',
+			text: "¡Este registro se eliminará!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '¡Si, eliminar!',
+			cancelButtonText: 'Cancelar'
+			}).then((result) => {
+			if (result.isConfirmed) {
+				
+				this.submit();
+			}
+			})
+			});
+
 		</script>
     @endsection
