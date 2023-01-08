@@ -100,4 +100,19 @@ class CategoriaController extends Controller
 
         return redirect()->route('categorias.index')->with('eliminar','ok');
     }
+
+    public function activar($categoria_id)
+    {
+        $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->restore();
+
+        return redirect()->route('categorias.papelera')->with('activar','ok');
+    }
+
+    public function borrar($categoria_id)
+    {
+        $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->forcedelete();
+
+        return redirect()->route('categorias.papelera')->with('borrar','ok');
+    }
+
 }

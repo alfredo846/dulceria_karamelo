@@ -46,8 +46,7 @@
 					<div class="panel">
 
                           <div class="panel-footer text-right">
-                             <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario add-tooltip"
-                             data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
+                             <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
                           </div>
 						<div class="content">
 							@include('layouts.partials.alerts')
@@ -69,11 +68,17 @@
 					                    <td>{{ $categoria->nombre }}</td>
 					                    <td>Inactivo</td>
 					                    <td>
-											<form action="{{ route('categorias.destroy', $categoria) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
+
+										<form action="{{ route('categorias.activar', $categoria) }}" method="POST"  style="display: inline-block" class="formulario-activar" >
+											@csrf
+											@method('DELETE')
+												<button type="submit" class="btn btn-sm btn-primary btn-icon">Activar</button>
+											</form>
+
+											<form action="{{ route('categorias.borrar', $categoria) }}" method="POST" style="display: inline-block" class="formulario-borrar" >
 												@csrf
 												@method('DELETE')
-												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
-												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Eliminar"><i class="demo-psi-recycling icon-sm"></i></button>
+												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon">Borrar</button>
 											</form>
 
 									    </td>
@@ -121,6 +126,26 @@
 	</script>
 	@endif
 
+	@if(session('activar') == 'ok')
+	<script>
+		Swal.fire(
+		'¡Activado!',
+		'El registro se ha activado exitosamente.',
+		'success'
+				)
+	</script>
+	@endif
+
+	@if(session('borrar') == 'ok')
+	<script>
+		Swal.fire(
+		'¡Eliminado!',
+		'El registro se ha eliminado exitosamente.',
+		'success'
+				)
+	</script>
+	@endif
+
 	  <script type="text/javascript">
          $(document).ready(function() {
              $('#demo-dt-basic').DataTable({
@@ -158,12 +183,12 @@
 		</script>
 
 		<script>
-			$('.formulario-eliminar').submit(function(e){
+			$('.formulario-borrar').submit(function(e){
 				e.preventDefault();
 
 			Swal.fire({
 			title: '¿Estás seguro?',
-			text: "¡Este registro se eliminará!",
+			text: "¡Este registro se eliminará permanentemente!",
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -177,6 +202,28 @@
 			}
 			})
 			});
-
 		</script>
+
+		<script>
+			$('.formulario-activar').submit(function(e){
+				e.preventDefault();
+
+			Swal.fire({
+			title: '¿Estás seguro que deseas activar el registro?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '¡Si, activar!',
+			cancelButtonText: 'Cancelar'
+			}).then((result) => {
+			if (result.isConfirmed) {
+				
+				this.submit();
+			}
+			})
+			});
+		</script>
+
+		
     @endsection
