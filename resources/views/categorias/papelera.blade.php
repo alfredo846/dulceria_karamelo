@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Categoría')
+  @section('title', 'Categoría-papelera')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
@@ -33,7 +33,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold">Categorías</p><p></p>
+					         <p class="text-2x mar-no text-semibold">Papelera Categorías</p><p></p>
 					     </div>
 					 </div>
 		   </div>
@@ -45,18 +45,14 @@
 					<!-- Basic Data Tables -->
 					<div class="panel">
 
+                          <div class="panel-footer text-right">
+                             <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario add-tooltip"
+                             data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
+                          </div>
 						<div class="content">
 							@include('layouts.partials.alerts')
 						</div>
 
-					   	 <div class="panel-heading"> 
-						<br>&nbsp;	
-						<a href="{{ route('categorias.papelera') }}">
-							<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
-							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Papelera"><i class="demo-psi-recycling icon-sm"></i></button>
-						</a>
-							<a href="{{ route('categorias.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoría</button></a>
-					    </div>
 					    <div class="panel-body">
 					        <table id="categorias" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
@@ -71,20 +67,8 @@
                                     @foreach($categorias as $categoria)
 					                <tr>
 					                    <td>{{ $categoria->nombre }}</td>
-					                    <td>Activo</td>
+					                    <td>Inactivo</td>
 					                    <td>
-											<a href="{{ route('categorias.show',$categoria) }}">	
-											<button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
-											data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
-											</button>
-										    </a>
-											
-											<a href="{{ route('categorias.edit',$categoria) }}">
-												<button class="btn btn-sm btn-primary btn-icon add-tooltip"
-												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Actalizar"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											</a>
-											
-											
 											<form action="{{ route('categorias.destroy', $categoria) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
 												@csrf
 												@method('DELETE')
@@ -101,7 +85,6 @@
 					        </table>
 					    </div>
 					</div>
-					<!--===================================================-->
 					<!-- End Striped Table -->
 				
                 </div>

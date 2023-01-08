@@ -17,5 +17,7 @@ use App\Http\Controllers\CategoriaController;
 
 Route::view('/', 'bienvenido')->name('bienvenido');
 
-Route::resource('marcas',MarcaController::class);
 Route::resource('categorias', CategoriaController::class);
+Route::get('papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');
+
+Route::resource('marcas',MarcaController::class);

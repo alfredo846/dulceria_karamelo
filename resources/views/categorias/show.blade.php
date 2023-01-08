@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Create categoría')
+  @section('title', 'Show categoría')
 
     @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -43,7 +43,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold"> Alta Categoría</p><p></p>
+					         <p class="text-2x mar-no text-semibold"> Consultar Categoría</p><p></p>
 					     </div>
 					 </div>
 		    </div><br><br><br>
@@ -57,34 +57,19 @@
 					            <div class="panel-heading">
 					                <h3 class="panel-title">Categoría</h3>
 					            </div>
-                                    <form action="{{ route('categorias.store') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                        @csrf
-                                        @method('POST')
-                                         <div class="panel-body">
+                                        <div class="panel-body">
                                             <div class="form-group">
-                                              <label for="demo-is-inputnormal" class="col-sm-3 control-label text-bold text-semibold">Nombre:</label>
-                                              <div class="col-sm-6">
-                                                <input type="text" name="nombre" placeholder="Nombre categoría" autocomplete="off" class="form-control" id="demo-is-inputnormal">
-                                                    @if($errors->first('nombre'))
-                                                        <i class="text-danger">{{ $errors->first('nombre') }}</i>
-                                                    @endif
-                                               </div>
-                                            </div>
-                                          </div>
-                                        
-                                            <div class="panel-footer">
-                                                <div class="row">
-                                                    <div class="col-sm-9 col-sm-offset-3">
-                                                      <button class="btn btn-success" type="submit">Guardar</button>
-                                                      <button class="btn btn-primary" type="reset">Reniciar</button>
-                                                    </div>
+                                                <label for="demo-is-inputnormal" class="col-sm-2 control-label text-bold text-semibold">Nombre:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" readonly name="nombre" value="{{ $categoria->nombre }}" placeholder="Nombre categoría" autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                                 </div>
                                             </div>
-                                           <div class="panel-footer text-right">
-                                                <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario add-tooltip"
-                                                data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
-                                          </div>
-                                    </form>
+                                        </div>
+                                        
+                                    <div class="panel-footer text-right">
+                                        <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario add-tooltip"
+                                        data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
+                                    </div>
 					        </div>
 					    </div>
 					</div>

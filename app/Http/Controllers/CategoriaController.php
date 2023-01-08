@@ -21,6 +21,13 @@ class CategoriaController extends Controller
         ->with(['categorias' => $categorias]);
     }
 
+    public function papelera()
+    {
+        $categorias = Categoria::onlyTrashed()->get();
+        return view('categorias.papelera')
+        ->with(['categorias' => $categorias]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,7 +60,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+         return view('categorias.show',compact('categoria'));
     }
 
     /**
