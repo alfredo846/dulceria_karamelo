@@ -47,8 +47,8 @@
     }
 
 	#mainnav-menu>.active {
-    background-color: #e7e5e7 !important;
-	opacity: .9;
+    background-color: #f1d7f1 !important;
+	opacity: .8;
      }
 
     #mainnav-menu ul a:hover,.menu-popover .sub-menu ul a:hover{

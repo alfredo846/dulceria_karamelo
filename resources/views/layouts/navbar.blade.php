@@ -4,8 +4,8 @@
 
                 <!--Brand logo & name-->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand">
-                        <!-- <img src="{{ asset('assets\img\logo1.png') }}" alt="Dulcería Karamelo" height="57" width="230" > -->
+                    <a href="{{ route('bienvenido') }}" class="navbar-brand">
+                       <img src="{{ asset('assets\img\logo2.png') }}" alt="Dulcería Karamelo" height="58" width="230">
                     </a>
                 </div>
                 <!--End brand logo & name-->

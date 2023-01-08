@@ -46,7 +46,7 @@
 					<div class="panel">
 
                           <div class="panel-footer text-right">
-                             <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
+                             <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
                           </div>
 						<div class="content">
 							@include('layouts.partials.alerts')
@@ -72,7 +72,7 @@
 										<form action="{{ route('categorias.activar', $categoria) }}" method="POST"  style="display: inline-block" class="formulario-activar" >
 											@csrf
 											@method('DELETE')
-												<button type="submit" class="btn btn-sm btn-primary btn-icon">Activar</button>
+												<button type="submit" class="btn btn-sm btn-success btn-icon">Activar</button>
 											</form>
 
 											<form action="{{ route('categorias.borrar', $categoria) }}" method="POST" style="display: inline-block" class="formulario-borrar" >
