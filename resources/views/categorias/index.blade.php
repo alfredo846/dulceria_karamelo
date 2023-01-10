@@ -49,7 +49,7 @@
 							@include('layouts.partials.alerts')
 						</div>
 
-					   	 <div class="panel-heading"> 
+					   	<div class="panel-heading"> 
 						<br>&nbsp;	
 						<a href="{{ route('categorias.papelera') }}">
 							<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
@@ -150,6 +150,7 @@
 
 			$(document).ready(function() {
    			 $('#categorias').DataTable( {
+			 order: [[1, 'desc']],
     	    "language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "Nada encontrado - disculpa",
@@ -183,7 +184,7 @@
 			text: "¡Este registro se eliminará!",
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
+			confirmButtonColor: '#3f7a4a',
 			cancelButtonColor: '#d33',
 			confirmButtonText: '¡Si, eliminar!',
 			cancelButtonText: 'Cancelar'

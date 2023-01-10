@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Categorias\CreateCategoriaRequest;
 use App\Http\Requests\Categorias\EditCategoriaRequest;
 
+
 class CategoriaController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all()->where('deleted_at', '=', NULL);
+        $categorias = Categoria::orderBy('categoria_id','DESC')->where('deleted_at', '=', NULL)->get();
+        // dd($categorias);
         return view('categorias.index')
         ->with(['categorias' => $categorias]);
     }
