@@ -49,14 +49,18 @@
 							@include('layouts.partials.alerts')
 						</div>
 
-					   	<div class="panel-heading"> 
+					   	<div class="panel-heading demo-icon"> 
 						<br>&nbsp;	
 						<a href="{{ route('categorias.papelera') }}">
-							<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
-							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Papelera"><i class="demo-psi-recycling icon-sm"></i></button>
+							<button id="deleteItem" type="submit" class="btn btn-circle btn-danger btn-icon add-tooltip"
+							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Papelera"><i class="demo-psi-recycling icon-lg"></i></button>
+						</a>
+						<a href="{{ route('categorias.export') }}">
+						<button id="deleteItem" type="submit" class="btn btn-circle btn-success btn-icon add-tooltip"
+							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Exportar"><i class="fa fa-file-excel-o fa-lg"></i></button>
 						</a>
 							<a href="{{ route('categorias.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva categoría</button></a>
-					    </div>
+					    </div><br>
 					    <div class="panel-body">
 					        <table id="categorias" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>

@@ -21,5 +21,6 @@ Route::resource('categorias', CategoriaController::class);
 Route::get('papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');
 Route::delete('borrar/{categoria_id}',[CategoriaController::class, 'borrar'])->name('categorias.borrar');
 Route::delete('activar/{categoria_id}',[CategoriaController::class, 'activar'])->name('categorias.activar');
+Route::get('export',[CategoriaController::class, 'export'])->name('categorias.export');
 
 Route::resource('marcas',MarcaController::class);

@@ -6,7 +6,8 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Requests\Categorias\CreateCategoriaRequest;
 use App\Http\Requests\Categorias\EditCategoriaRequest;
-
+use App\Exports\CategoriasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoriaController extends Controller
 {
@@ -115,6 +116,11 @@ class CategoriaController extends Controller
         $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->forcedelete();
 
         return redirect()->route('categorias.papelera')->with('borrar','ok');
+    }
+
+    public function export()
+    {
+       return Excel::download(new CategoriasExport, 'categorias.xlsx');
     }
 
 }
