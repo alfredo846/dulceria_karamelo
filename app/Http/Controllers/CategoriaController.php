@@ -8,6 +8,7 @@ use App\Http\Requests\Categorias\CreateCategoriaRequest;
 use App\Http\Requests\Categorias\EditCategoriaRequest;
 use App\Exports\CategoriasExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriaController extends Controller
 {
@@ -49,7 +50,17 @@ class CategoriaController extends Controller
      */
     public function store(CreateCategoriaRequest $request)
     {
-         Categoria::create($request->all());
+        $imagen2 = "shadow.jpg";
+        $newCategoria = Categoria::create($request->all());
+
+        if ($request->hasFile('imagen')) {
+          $newCategoria->imagen = Storage::disk('categoria-imagenes')->putFile('', $request->file('imagen'));
+        }else{    
+          $newCategoria->imagen = ($imagen2);
+        }
+        $newCategoria->save();
+
+        //  Categoria::create($request->all());
 
          return redirect()->route('categorias.index')
         ->with('message', 'Categoría creada exitosamente');
@@ -87,7 +98,22 @@ class CategoriaController extends Controller
      */
     public function update(EditCategoriaRequest $request, Categoria $categoria)
     {
-         $categoria->update($request->all());
+        //  $categoria->update($request->all());
+         $categoria->update($request->except(['categoria_id', 'imagen']));
+
+         if ($request->hasFile('imagen')) {
+            if (Storage::disk('categoria-imagenes')->exists("$categoria->imagen")) {
+                if($categoria->imagen == "shadow.jpg"){
+                     $categoria->imagen = "shadow.jpg";
+                } else {
+                 Storage::disk('categoria-imagenes')->delete("$categoria->imagen");
+                }
+            }
+            $categoria->imagen = Storage::disk('categoria-imagenes')->putFile('', $request->file('imagen'));
+        }
+
+        $categoria->save();
+
         return redirect()->route('categorias.index')->with('message', 'Categoría actualizada exitosamente');
     }
 
@@ -113,6 +139,16 @@ class CategoriaController extends Controller
 
     public function borrar($categoria_id)
     {
+        $categoria = Categoria::withTrashed()->where('categoria_id', $categoria_id)->find($categoria_id);
+
+        if (Storage::disk('categoria-imagenes')->exists("$categoria->imagen")) {
+            if($categoria->imagen == "shadow.jpg"){
+                    
+                } else {
+                    Storage::disk('categoria-imagenes')->delete("$categoria->imagen");
+                }
+        }
+        
         $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->forcedelete();
 
         return redirect()->route('categorias.papelera')->with('borrar','ok');

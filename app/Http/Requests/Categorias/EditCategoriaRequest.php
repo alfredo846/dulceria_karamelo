@@ -25,7 +25,8 @@ class EditCategoriaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required', 'max:60', 'regex:/^[a-z,\s,A-Z,á,Á,é,É,í,Í,ó,Ó,ü,ú,Ú,ñ,Ñ,]+$/', Rule::unique('categorias','nombre')->ignore($this->categoria)]
+            'nombre' => ['required', 'max:60', 'regex:/^[a-z,\s,A-Z,á,Á,é,É,í,Í,ó,Ó,ü,ú,Ú,ñ,Ñ,]+$/', Rule::unique('categorias','nombre')->ignore($this->categoria)],
+              'imagen' => ['image', 'max:2048'],
         ];
     }
 }

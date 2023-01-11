@@ -66,6 +66,7 @@
 					            <thead>
 					                <tr>
 					                    <th>Nombre</th>
+					                    <th>Imagén</th>
 					                    <th class="min-tablet">Estado</th>
 					                    <th class="min-tablet">Acciones</th>
 					                </tr>
@@ -75,7 +76,8 @@
                                     @foreach($categorias as $categoria)
 					                <tr>
 					                    <td>{{ $categoria->nombre }}</td>
-					                    <td>Activo</td>
+					                    <td><img class='profile-image' src="{{ asset('imagenes/categorias/' . $categoria->imagen) }}" alt="foto"></td>
+					                    <td><span class="label label-success">Activo</span></td>
 					                    <td>
 											<a href="{{ route('categorias.show',$categoria) }}">	
 											<button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"

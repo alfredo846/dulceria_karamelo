@@ -57,6 +57,7 @@
 					            <thead>
 					                <tr>
 					                    <th>Nombre</th>
+					                    <th>Imagén</th>
 					                    <th class="min-tablet">Estado</th>
 					                    <th class="min-tablet">Acciones</th>
 					                </tr>
@@ -66,7 +67,8 @@
                                     @foreach($categorias as $categoria)
 					                <tr>
 					                    <td>{{ $categoria->nombre }}</td>
-					                    <td>Inactivo</td>
+										<td><img class='profile-image' src="{{ asset('imagenes/categorias/' . $categoria->imagen) }}" alt="foto"></td>
+					                    <td><span class="label label-danger">Inactivo</span></td>
 					                    <td>
 
 										<form action="{{ route('categorias.activar', $categoria) }}" method="POST"  style="display: inline-block" class="formulario-activar" >

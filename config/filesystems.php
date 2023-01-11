@@ -35,6 +35,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'categoria-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/categorias'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

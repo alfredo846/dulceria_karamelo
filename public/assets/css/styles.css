@@ -1,0 +1,111 @@
+/* estilos navbar */
+#mainnav {
+    height: 100%;
+    background-image: url("../../assets/img/sidebar4.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    padding: 0;
+    opacity: .9;
+    color: #1c3550 !important;
+}
+
+#mainnav-menu>.active {
+    background-color: #f1d7f1 !important;
+    opacity: .8;
+}
+
+#mainnav-menu ul a:hover,
+.menu-popover .sub-menu ul a:hover {
+    color: #783449 !important
+}
+
+#mainnav-menu>li>a:hover,
+#mainnav-menu>li>a:active {
+    color: #783449 !important
+}
+
+#mainnav-menu .active:not(.active-sub)>a {
+    color: #783449;
+}
+
+/* estilos  instrucciones * */
+.is-instruccion {
+    margin-left: 0px;
+    color: red;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* campos requeridos */
+.is-required:before {
+    content: '*';
+    margin-left: 0px;
+    color: red;
+    font-weight: bold;
+    /* font-size: 1.8rem; */
+}
+
+/* imagenes de categorias */
+.fotoperfil {
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+    box-shadow: 0 0 15px 15px #1266e4;
+    -webkit-box-shadow: 0 0 5px 5px #783449;
+    width: 180px;
+    height: 140px;
+    
+}
+.text-foto {
+    font-size: 1.1rem;
+    color: #4d627b;
+}
+
+#imagePreview{
+padding: 10px 0px 15px 0;
+}
+
+.profile-image {
+    width: 70px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.profile-image-show {
+    width: 190px;
+    height: 140px;
+    border-radius: 5px;
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+    box-shadow: 0 0 15px 15px #1266e4;
+    -webkit-box-shadow: 0 0 5px 5px #783449;
+}
+
+/* input file de categorias */
+.upload-box{
+    font-size: 12px;
+    background:white;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px black;
+    width:300px;
+    outline:none;
+    cursor: pointer;
+}
+
+::-webkit-file-upload-button{
+    color: white;
+    background: #783449;
+    padding: 7px;
+    border: none;
+    border-radius: 8px;
+    outline:none;
+    width: 140px;
+    cursor: pointer;
+}
+
+::-webkit-file-upload-button:hover {
+    background: #782449;
+}
