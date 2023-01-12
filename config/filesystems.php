@@ -40,6 +40,11 @@ return [
             'root' => public_path('imagenes/categorias'),
         ],
 
+        'marca-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/marcas'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

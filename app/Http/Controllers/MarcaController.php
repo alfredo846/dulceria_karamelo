@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use App\Http\Requests\Marcas\CreateMarcaRequest;
+use App\Http\Requests\Marcas\EditMarcaRequest;
+use App\Exports\MarcasExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class MarcaController extends Controller
 {
@@ -14,9 +19,17 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $datos = Marca::orderBy('nombre', 'desc')->get();
-        return view('marca.index')
-        ->with(['datos' => $datos]);
+        $marcas = Marca::orderBy('marca_id','DESC')->where('deleted_at', '=', NULL)->get();
+        // dd($marcas);
+        return view('marcas.index')
+        ->with(['marcas' => $marcas]);
+    }
+
+    public function papelera()
+    {
+        $marcas = Marca::onlyTrashed()->get();
+        return view('marcas.papelera')
+        ->with(['marcas' => $marcas]);
     }
 
     /**
@@ -26,7 +39,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('marcas.create');
     }
 
     /**
@@ -35,9 +48,22 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMarcaRequest $request)
     {
-        //
+        $imagen2 = "shadow.jpg";
+        $newMarca = Marca::create($request->all());
+
+        if ($request->hasFile('imagen')) {
+          $newMarca->imagen = Storage::disk('marca-imagenes')->putFile('', $request->file('imagen'));
+        }else{    
+          $newMarca->imagen = ($imagen2);
+        }
+        $newMarca->save();
+
+        //  Marca::create($request->all());
+
+         return redirect()->route('marcas.index')
+        ->with('message', 'Marca creada exitosamente');
     }
 
     /**
@@ -48,7 +74,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+         return view('marcas.show',compact('marca'));
     }
 
     /**
@@ -59,7 +85,7 @@ class MarcaController extends Controller
      */
     public function edit(Marca $marca)
     {
-        //
+         return view('marcas.edit',compact('marca'));
     }
 
     /**
@@ -69,9 +95,25 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marca $marca)
+    public function update(EditMarcaRequest $request, Marca $marca)
     {
-        //
+       //  $marca->update($request->all());
+         $marca->update($request->except(['marca_id', 'imagen']));
+
+         if ($request->hasFile('imagen')) {
+            if (Storage::disk('marca-imagenes')->exists("$marca->imagen")) {
+                if($marca->imagen == "shadow.jpg"){
+                     $marca->imagen = "shadow.jpg";
+                } else {
+                 Storage::disk('marca-imagenes')->delete("$marca->imagen");
+                }
+            }
+            $marca->imagen = Storage::disk('marca-imagenes')->putFile('', $request->file('imagen'));
+        }
+
+        $marca->save();
+
+        return redirect()->route('marcas.index')->with('message', 'Marca actualizada exitosamente');
     }
 
     /**
@@ -82,6 +124,37 @@ class MarcaController extends Controller
      */
     public function destroy(Marca $marca)
     {
-        //
+         $marca->delete();
+
+        return redirect()->route('marcas.index')->with('eliminar','ok');
+    }
+
+    public function activar($marca_id)
+    {
+        $marcas = Marca::withTrashed()->where('marca_id', $marca_id)->restore();
+
+        return redirect()->route('marcas.papelera')->with('activar','ok');
+    }
+
+    public function borrar($marca_id)
+    {
+        $marca = Marca::withTrashed()->where('marca_id', $marca_id)->find($marca_id);
+
+        if (Storage::disk('marca-imagenes')->exists("$marca->imagen")) {
+            if($marca->imagen == "shadow.jpg"){
+                    
+                } else {
+                    Storage::disk('marca-imagenes')->delete("$marca->imagen");
+                }
+        }
+        
+        $marcas = Marca::withTrashed()->where('marca_id', $marca_id)->forcedelete();
+
+        return redirect()->route('marcas.papelera')->with('borrar','ok');
+    }
+
+    public function export()
+    {
+       return Excel::download(new MarcasExport, 'marcas.xlsx');
     }
 }

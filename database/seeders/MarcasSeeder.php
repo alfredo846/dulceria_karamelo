@@ -5,8 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-
-class CategoriasSeeder extends Seeder
+class MarcasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,96 +16,96 @@ class CategoriasSeeder extends Seeder
     {
         $data = [
         [
-            'nombre' => 'Botanas',
+            'nombre' => 'Caenels',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Caramelos',
+            'nombre' => 'La corona',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Chicles',
+            'nombre' => 'Coronado',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Chocolates',
+            'nombre' => 'Barcel',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Dulces con juguete',
+            'nombre' => 'Gamesa',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Dulces Típicos',
+            'nombre' => 'Alvbro',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],  
         [
-            'nombre' => 'Galletas',
+            'nombre' => 'Cerezo',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Gelatinas',
+            'nombre' => 'Marinela',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Gomitas',
+            'nombre' => 'Mars',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Malvaviscos',
+            'nombre' => 'JulyMoy',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Mazapanes',
+            'nombre' => 'Karla',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Paletas',
+            'nombre' => 'Lucass',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Pulpas',
+            'nombre' => 'Nestle',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
         [
-            'nombre' => 'Polvitos',
+            'nombre' => 'Totis',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ],
          [
-            'nombre' => 'Repostería',
+            'nombre' => 'Ricolino',
             'imagen' => 'shadow.jpg',
             'created_at' => '2023-01-02 18:19:52',
             'updated_at' => '2023-01-02 18:19:52'
         ]
         ];
-        DB::table('categorias')->insert($data);
+        DB::table('marcas')->insert($data);
     }
 }

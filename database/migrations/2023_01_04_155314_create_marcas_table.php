@@ -16,6 +16,7 @@ class CreateMarcasTable extends Migration
         Schema::create('marcas', function (Blueprint $table) {
             $table->bigIncrements('marca_id');
             $table->string('nombre',60);
+            $table->text('imagen')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -8,10 +8,10 @@
     </thead>
     <tbody>
 
-        @foreach ($categorias as $categoria)
+        @foreach ($marcas as $marca)
             <tr>
-                <td>{{ $categoria->categoria_id }}</td>
-                <td>{{ $categoria->nombre }}</td>
+                <td>{{ $marca->marca_id }}</td>
+                <td>{{ $marca->nombre }}</td>
                 <td>Activo</td>
             </tr>
         @endforeach
