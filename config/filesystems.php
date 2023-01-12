@@ -45,6 +45,11 @@ return [
             'root' => public_path('imagenes/marcas'),
         ],
 
+        'temporada-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/temporadas'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

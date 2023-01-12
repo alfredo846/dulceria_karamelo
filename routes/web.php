@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\TemporadaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::get('categoria_export',[CategoriaController::class, 'export'])->name('cat
 
 Route::resource('marcas',MarcaController::class);
 Route::get('marca_papelera',[MarcaController::class, 'papelera'])->name('marcas.papelera');
-Route::delete('marca_borrar/{categoria_id}',[MarcaController::class, 'borrar'])->name('marcas.borrar');
-Route::delete('marca_activar/{categoria_id}',[MarcaController::class, 'activar'])->name('marcas.activar');
+Route::delete('marca_borrar/{marca_id}',[MarcaController::class, 'borrar'])->name('marcas.borrar');
+Route::delete('marca_activar/{marca_id}',[MarcaController::class, 'activar'])->name('marcas.activar');
 Route::get('marca_export',[MarcaController::class, 'export'])->name('marcas.export');
+
+Route::resource('temporadas', TemporadaController::class);
+Route::get('temporada_papelera',[TemporadaController::class, 'papelera'])->name('temporadas.papelera');
+Route::delete('temporada_borrar/{temporada_id}',[TemporadaController::class, 'borrar'])->name('temporadas.borrar');
+Route::delete('temporada_activar/{temporada_id}',[TemporadaController::class, 'activar'])->name('temporadas.activar');
+Route::get('temporada_export',[TemporadaController::class, 'export'])->name('temporadas.export');
