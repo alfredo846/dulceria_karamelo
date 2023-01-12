@@ -9,21 +9,6 @@
 	<!--Ion Icons [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\ionicons\css\ionicons.min.css') }}" rel="stylesheet">
 
-	<style>
-    table th{
-        background-color: #f1f2f7 !important;
-        color: #121f3e;
-        font-size: 15px;
-    }
-    table tr{
-        border: inset 0pt !important;
-        font-size: 14px;
-		color: #121f3e !important;
-        cursor:pointer;
-    }
-
-	
- 	</style>
 	@endsection
 
     @section('content')
