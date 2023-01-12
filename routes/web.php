@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TemporadaController;
+use App\Http\Controllers\EmpaqueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,9 @@ Route::get('temporada_papelera',[TemporadaController::class, 'papelera'])->name(
 Route::delete('temporada_borrar/{temporada_id}',[TemporadaController::class, 'borrar'])->name('temporadas.borrar');
 Route::delete('temporada_activar/{temporada_id}',[TemporadaController::class, 'activar'])->name('temporadas.activar');
 Route::get('temporada_export',[TemporadaController::class, 'export'])->name('temporadas.export');
+
+Route::resource('empaques', EmpaqueController::class);
+Route::get('empaque_papelera',[EmpaqueController::class, 'papelera'])->name('empaques.papelera');
+Route::delete('empaque_borrar/{empaque_id}',[EmpaqueController::class, 'borrar'])->name('empaques.borrar');
+Route::delete('empaque_activar/{empaque_id}',[EmpaqueController::class, 'activar'])->name('empaques.activar');
+Route::get('empaque_export',[EmpaqueController::class, 'export'])->name('empaques.export');
