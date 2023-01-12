@@ -29,8 +29,9 @@
 						                <ul class="collapse text-semibold">
 											<li><a href="{{ route('categorias.index') }}">Categorías</a></li>
 						                    <li><a href="{{ route('marcas.index') }}">Marcas</a></li>
-											<li><a href="{{ route('temporadas.index') }}">Temporada</a></li>											
-											<li><a href="{{ route('empaques.index') }}">Empaque</a></li>											
+											<li><a href="{{ route('temporadas.index') }}">Temporadas</a></li>											
+											<li><a href="{{ route('empaques.index') }}">Empaques</a></li>											
+											<li><a href="{{ route('productos.index') }}">Productos</a></li>											
 						                </ul>
 						            </li>
 

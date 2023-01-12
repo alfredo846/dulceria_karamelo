@@ -50,6 +50,11 @@ return [
             'root' => public_path('imagenes/temporadas'),
         ],
 
+        'producto-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/productos'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

@@ -5,6 +5,7 @@ use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TemporadaController;
 use App\Http\Controllers\EmpaqueController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,9 @@ Route::get('empaque_papelera',[EmpaqueController::class, 'papelera'])->name('emp
 Route::delete('empaque_borrar/{empaque_id}',[EmpaqueController::class, 'borrar'])->name('empaques.borrar');
 Route::delete('empaque_activar/{empaque_id}',[EmpaqueController::class, 'activar'])->name('empaques.activar');
 Route::get('empaque_export',[EmpaqueController::class, 'export'])->name('empaques.export');
+
+Route::resource('productos', ProductoController::class);
+Route::get('producto_papelera',[ProductoController::class, 'papelera'])->name('productos.papelera');
+Route::delete('producto_borrar/{producto_id}',[ProductoController::class, 'borrar'])->name('productos.borrar');
+Route::delete('producto_activar/{producto_id}',[ProductoController::class, 'activar'])->name('productos.activar');
+Route::get('producto_export',[ProductoController::class, 'export'])->name('productos.export');
