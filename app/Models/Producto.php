@@ -15,7 +15,15 @@ class Producto extends Model
     protected $primaryKey = 'producto_id';
 
     protected $fillable = [
+        'codigo_empaque',
+        'codigo_pieza',
+        'nombre',
         'descripcion',
         'imagen',
+        'categoria_id',
+        'marca_id',
+        'temporada_id',
+        'empaque_id',
+        'piezas_por_empaque',
     ];
 }

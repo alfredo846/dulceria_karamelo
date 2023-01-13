@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Categoria;
+use App\Models\Marca;
+use App\Models\Temporada;
+use App\Models\Empaque;
 use Illuminate\Http\Request;
 use App\Http\Requests\Productos\CreateProductoRequest;
 use App\Http\Requests\Productos\EditProductoRequest;
@@ -39,7 +43,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('productos.create');
+        $categorias = Categoria::all();
+        $marcas = Marca::all();
+        $temporadas = Temporada::all();
+        $empaques = Empaque::all();
+        return view('productos.create',compact('categorias','marcas','temporadas','empaques'));
     }
 
     /**

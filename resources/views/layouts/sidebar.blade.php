@@ -30,8 +30,7 @@
 											<li><a href="{{ route('categorias.index') }}">Categorías</a></li>
 						                    <li><a href="{{ route('marcas.index') }}">Marcas</a></li>
 											<li><a href="{{ route('temporadas.index') }}">Temporadas</a></li>											
-											<li><a href="{{ route('empaques.index') }}">Empaques</a></li>											
-											<li><a href="{{ route('productos.index') }}">Productos</a></li>											
+											<li><a href="{{ route('empaques.index') }}">Empaques</a></li>
 						                </ul>
 						            </li>
 
@@ -47,9 +46,7 @@
 						
 						                <!--Submenu-->
 						                <ul class="collapse text-semibold">
-						                    <li><a href="layouts-collapsed-navigation.html">Marcas</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">Categorías</a></li>
-											<li><a href="layouts-offcanvas-slide-in-navigation.html">Temporada</a></li>											
+						                    <li><a href="{{ route('productos.index') }}">Productos</a></li>	
 						                </ul>
 						            </li>
 									<li class="list-divider"></li>

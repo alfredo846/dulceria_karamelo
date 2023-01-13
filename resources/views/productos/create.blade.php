@@ -55,29 +55,64 @@
         <!--Page content-->
         <div id="page-content">
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <div class="panel">
-                        <div class="panel-heading"><br>
-                            <h4 class="text-main text-bold mar-no text-center">Producto</h4>
-                        </div>
-                        <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data"
-                            class="form-horizontal">
-                            @csrf
-                            @method('POST')
+                <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data"
+                    class="form-horizontal">
+                    @csrf
+                    @method('POST')
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-heading"><br>
+                                <h4 class="text-main text-bold mar-no text-center">Producto</h4>
+                            </div>
+
                             <div class="panel-body">
 
                                 <div class="form-group">
-                                    <div class="col-sm-3">
-                                    </div>
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-9 control-label text-bold text-semibold is-instruccion">Los campos indicados con * son obligatorios.</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código
+                                        (empaque):</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="codigo_empaque" maxlength="14"
+                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+                                            placeholder="Código de barras del empaque de producto" autocomplete="off"
+                                            class="form-control" id="demo-is-inputnormal">
+                                        @if ($errors->first('codigo_empaque'))
+                                            <i class="text-danger">{{ $errors->first('codigo_empaque') }}</i>
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold is-required">Descripción:</label>
-                                    <div class="col-sm-6">
+                                        class="col-sm-4 control-label text-bold text-semibold text-left">Código
+                                        (pieza):</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="codigo_pieza" maxlength="14"
+                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+                                            placeholder="Código de barras de la pieza del producto" autocomplete="off"
+                                            class="form-control" id="demo-is-inputnormal">
+                                        @if ($errors->first('codigo_pieza'))
+                                            <i class="text-danger">{{ $errors->first('codigo_pieza') }}</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="nombre" placeholder="Nombre del producto"
+                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                        @if ($errors->first('nombre'))
+                                            <i class="text-danger">{{ $errors->first('nombre') }}</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Descripción:</label>
+                                    <div class="col-sm-8">
                                         <input type="text" name="descripcion" placeholder="Descripción"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                         @if ($errors->first('descripcion'))
@@ -88,21 +123,131 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold">Imagén:</label>
-                                    <div class="col-sm-9">
+                                        class="col-sm-4 control-label text-bold text-semibold text-left">Imagén:</label>
+                                    <div class="col-sm-8">
                                         <div id="imagePreview"></div>
-                                        <input type="file" placeholder="Coloque su fotografía" id="imagen" class="upload-box"
-                                            name="imagen" accept="image/png,image/jpeg,image/jpg,image/jfif">
-                                            @if ($errors->first('imagen'))<br>
+                                        <input type="file" placeholder="Coloque su fotografía" id="imagen"
+                                            class="upload-box" name="imagen"
+                                            accept="image/png,image/jpeg,image/jpg,image/jfif">
+                                        @if ($errors->first('imagen'))
+                                            <br>
                                             <i class="text-danger">{{ $errors->first('imagen') }}
-                                           <label> La imagén no debe exceder los 2 Mb y solo acepta
-                                        imágenes con extensiones 'jpeg, jpg, png, jfif</label></i>
+                                                <label> La imagén no debe exceder los 2 Mb y solo acepta
+                                                    imágenes con extensiones 'jpeg, jpg, png, jfif</label></i>
                                         @endif
                                     </div>
                                 </div>
-                                
-                            </div>
 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-9 control-label text-bold text-semibold is-instruccion">Los campos
+                                        indicados con * son obligatorios.</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Categoría:</label>
+                                    <div class="col-sm-8">
+
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="categoria_id">
+                                            <option value="">-- Seleccione una categoría --</option>
+                                            @foreach ($categorias as $categoria)
+                                                <option value="{{ $categoria->categoria_id }}">{{ $categoria->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->first('categoria_id'))
+                                            <i class="text-danger">El campo categoría es obligatorio</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Marca:</label>
+                                    <div class="col-sm-8">
+
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="marca_id">
+                                            <option value="">-- Seleccione una marca --</option>
+                                            @foreach ($marcas as $marca)
+                                                <option value="{{ $marca->marca_id }}">{{ $marca->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->first('marca_id'))
+                                            <i class="text-danger">El campo categoría es obligatorio</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Temporada:</label>
+                                    <div class="col-sm-8">
+
+                                       <select data-placeholder="-- Seleccione una temporada --" id="demo-chosen-select"
+                                            tabindex="2" style="width:330px" name="temporada_id">
+                                            <option value="">-- Seleccione una temporada --</option>
+                                            @foreach ($temporadas as $temporada)
+                                                <option value="{{ $temporada->temporada_id }}">{{ $temporada->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->first('temporada_id'))
+                                            <i class="text-danger">El campo temporada es obligatorio</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Empaque:</label>
+                                    <div class="col-sm-8">
+
+                                        <select data-placeholder="-- Seleccione un empaque --" 
+                                            style="width:330px" class="selectpicker" name="empaque_id">
+                                            <option value="">-- Seleccione un empaque &nbsp; --</option>
+                                            @foreach ($empaques as $empaque)
+                                                <option value="{{ $empaque->empaque_id }}">{{ $empaque->nombre }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->first('empaque_id'))
+                                            <i class="text-danger">El campo empaque es obligatorio</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                    <div class="form-group">
+                                        <label for="demo-is-inputnormal"
+                                            class="col-sm-4 control-label text-bold text-semibold is-required text-left">Piezas por empaque</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="piezas_por_empaque" placeholder="Número de piezas que trae el empaque"
+                                            maxlength="3"
+                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            @if ($errors->first('piezas_por_empaque'))
+                                                <i class="text-danger">{{ $errors->first('piezas_por_empaque') }}</i>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                            </div>
                             <div class="panel-footer">
                                 <div class="row">
                                     <div class="col-sm-9 col-sm-offset-4">
@@ -115,14 +260,12 @@
                                 <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>
-                        </form>
-
-
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-        <!--End page content-->
+    </div>
+    </div>
+    <!--End page content-->
     </div>
     <!--END CONTENT CONTAINER-->
 
