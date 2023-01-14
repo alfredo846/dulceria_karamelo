@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create temporada')
+@section('title', 'Agregar temporada')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -46,7 +46,7 @@
         <div class="col-md-12">
             <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
                 <div class="media-body">
-                    <p class="text-2x mar-no text-semibold"> Alta Temporada</p>
+                    <p class="text-2x mar-no text-semibold"> Agregar Temporada</p>
                     <p></p>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-footer text-right">
+                            <div class="panel-footer text-left">
                                 <a href="{{ route('temporadas.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>

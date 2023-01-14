@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Temporada;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\Temporadas\CreateTemporadaRequest;
 use App\Http\Requests\Temporadas\EditTemporadaRequest;
@@ -139,17 +140,24 @@ class TemporadaController extends Controller
     {
         $temporada = Temporada::withTrashed()->where('temporada_id', $temporada_id)->find($temporada_id);
 
-        if (Storage::disk('temporada-imagenes')->exists("$temporada->imagen")) {
-            if($temporada->imagen == "shadow.jpg"){
-                    
-                } else {
-                    Storage::disk('temporada-imagenes')->delete("$temporada->imagen");
-                }
-        }
-        
-        $temporadas = Temporada::withTrashed()->where('temporada_id', $temporada_id)->forcedelete();
+        $buscaproductos = Producto::where('temporada_id',$temporada_id)->get(); 
+        $cuantos = count($buscaproductos); 
+        if($cuantos==0) 
+        { 
+            if (Storage::disk('temporada-imagenes')->exists("$temporada->imagen")) {
+                if($temporada->imagen == "shadow.jpg"){
+                        
+                    } else {
+                        Storage::disk('temporada-imagenes')->delete("$temporada->imagen");
+                    }
+            }
+            
+            $temporadas = Temporada::withTrashed()->where('temporada_id', $temporada_id)->forcedelete();
 
-        return redirect()->route('temporadas.papelera')->with('borrar','ok');
+            return redirect()->route('temporadas.papelera')->with('borrar','ok');
+        }else{
+             return redirect()->route('temporadas.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
     }
 
     public function export()

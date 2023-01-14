@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit temporada')
+@section('title', 'Actualizar temporada')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-footer text-right">
+                            <div class="panel-footer text-left">
                                 <a href="{{ route('temporadas.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>
