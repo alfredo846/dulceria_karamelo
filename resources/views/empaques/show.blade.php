@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Show empaque')
+@section('title', 'Consultar empaque')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -81,7 +81,7 @@
                                 
                             </div>
 
-                            <div class="panel-footer text-right">
+                            <div class="panel-footer text-left">
                                 <a href="{{ route('empaques.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empaque;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\Empaques\CreateEmpaqueRequest;
 use App\Http\Requests\Empaques\EditEmpaqueRequest;
@@ -112,10 +113,19 @@ class EmpaqueController extends Controller
     }
 
     public function borrar($empaque_id)
-    {
-        $empaques = Empaque::withTrashed()->where('empaque_id', $empaque_id)->forcedelete();
+     {
+        $empaque = Empaque::withTrashed()->where('empaque_id', $empaque_id)->find($empaque_id);
 
-        return redirect()->route('empaques.papelera')->with('borrar','ok');
+        $buscaproductos = Producto::where('empaque_id',$empaque_id)->get(); 
+        $cuantos = count($buscaproductos); 
+        if($cuantos==0) 
+        { 
+            $empaques = Empaque::withTrashed()->where('empaque_id', $empaque_id)->forcedelete();
+
+            return redirect()->route('empaques.papelera')->with('borrar','ok');
+        }else{
+             return redirect()->route('empaques.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
     }
 
     public function export()
