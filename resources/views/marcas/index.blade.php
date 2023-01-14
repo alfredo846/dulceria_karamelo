@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Marca')
+  @section('title', 'Marcas')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
@@ -19,7 +19,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold">Marcas</p><p></p>
+					         <p class="text-2x mar-no text-semibold">Marcas | Listado</p><p></p>
 					     </div>
 					 </div>
 		   </div>

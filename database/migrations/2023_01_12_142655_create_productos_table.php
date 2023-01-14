@@ -20,13 +20,16 @@ class CreateProductosTable extends Migration
             $table->string('descripcion',60);
             $table->text('imagen')->nullable();
             $table->unsignedBigInteger('categoria_id');
-            $table->integer('marca_id');
-            $table->integer('temporada_id');
-            $table->integer('empaque_id');
+            $table->unsignedBigInteger('marca_id');
+            $table->unsignedBigInteger('temporada_id');
+            $table->unsignedBigInteger('empaque_id');
             $table->integer('piezas_por_empaque');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('categoria_id')->references('categoria_id')->on('categorias');
+            $table->foreign('marca_id')->references('marca_id')->on('marcas');
+            $table->foreign('temporada_id')->references('temporada_id')->on('temporadas');
+            $table->foreign('empaque_id')->references('empaque_id')->on('empaques');
         });
     }
 

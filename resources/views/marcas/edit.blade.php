@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit marca')
+@section('title', 'Actualizar marca')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-footer text-right">
+                            <div class="panel-footer text-left">
                                 <a href="{{ route('marcas.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marca;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\Marcas\CreateMarcaRequest;
 use App\Http\Requests\Marcas\EditMarcaRequest;
@@ -140,17 +141,23 @@ class MarcaController extends Controller
     {
         $marca = Marca::withTrashed()->where('marca_id', $marca_id)->find($marca_id);
 
-        if (Storage::disk('marca-imagenes')->exists("$marca->imagen")) {
-            if($marca->imagen == "shadow.jpg"){
-                    
-                } else {
-                    Storage::disk('marca-imagenes')->delete("$marca->imagen");
-                }
-        }
-        
-        $marcas = Marca::withTrashed()->where('marca_id', $marca_id)->forcedelete();
+        $buscaproductos = Producto::where('marca_id',$marca_id)->get(); 
+        $cuantos = count($buscaproductos); 
+        if($cuantos==0) 
+        { 
+            if (Storage::disk('marca-imagenes')->exists("$marca->imagen")) {
+                if($marca->imagen == "shadow.jpg"){
+                        
+                    } else {
+                        Storage::disk('marca-imagenes')->delete("$marca->imagen");
+                    }
+            }
+            $marcas = Marca::withTrashed()->where('marca_id', $marca_id)->forcedelete();
 
-        return redirect()->route('marcas.papelera')->with('borrar','ok');
+            return redirect()->route('marcas.papelera')->with('borrar','ok');
+        }else{
+             return redirect()->route('marcas.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
     }
 
     public function export()
