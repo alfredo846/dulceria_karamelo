@@ -23,10 +23,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+         $productos = Producto::orderBy('categoria_id','DESC')->where('deleted_at', '=', NULL)->get();
+         $marcas = Marca::all();
         // dd($productos);
         return view('productos.index')
-        ->with(['productos' => $productos]);
+        ->with(['productos' => $productos])
+        ->with(['marcas' => $marcas]);
     }
 
      public function papelera()

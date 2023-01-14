@@ -1,7 +1,7 @@
 /* estilos navbar */
 #mainnav {
     height: 100%;
-    background-image: url("../../assets/img/sidebar4.png");
+    /* background-image: url("../../assets/img/sidebar4.png"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -121,4 +121,9 @@ table tr {
     font-size: 14px;
     color: #121f3e !important;
     cursor: pointer;
+}
+
+#container .table.dataTable tbody tr.selected {
+    background-color: #783449 !important;
+    color: rgb(255, 255, 255) !important;
 }

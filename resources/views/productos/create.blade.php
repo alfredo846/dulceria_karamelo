@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create producto')
+@section('title', 'Agregar producto')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -46,7 +46,7 @@
         <div class="col-md-12">
             <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
                 <div class="media-body">
-                    <p class="text-2x mar-no text-semibold"> Alta Producto</p>
+                    <p class="text-2x mar-no text-semibold"> Agregar Producto</p>
                     <p></p>
                 </div>
             </div>
@@ -69,30 +69,14 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código
-                                        (empaque):</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código de barras</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="codigo_empaque" maxlength="14"
+                                        <input type="text" name="codigo_barras" maxlength="14" value ="{{ old('codigo_barras') }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Código de barras del empaque de producto" autocomplete="off"
+                                            placeholder="Código de barras" autocomplete="off"
                                             class="form-control" id="demo-is-inputnormal">
-                                        @if ($errors->first('codigo_empaque'))
-                                            <i class="text-danger">{{ $errors->first('codigo_empaque') }}</i>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold text-left">Código
-                                        (pieza):</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="codigo_pieza" maxlength="14"
-                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Código de barras de la pieza del producto" autocomplete="off"
-                                            class="form-control" id="demo-is-inputnormal">
-                                        @if ($errors->first('codigo_pieza'))
-                                            <i class="text-danger">{{ $errors->first('codigo_pieza') }}</i>
+                                        @if ($errors->first('codigo_barras'))
+                                            <i class="text-danger">{{ $errors->first('codigo_barras') }}</i>
                                         @endif
                                     </div>
                                 </div>
@@ -101,7 +85,7 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="nombre" placeholder="Nombre del producto"
+                                        <input type="text" name="nombre" placeholder="Nombre del producto" value ="{{ old('nombre') }}"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                         @if ($errors->first('nombre'))
                                             <i class="text-danger">{{ $errors->first('nombre') }}</i>
@@ -113,7 +97,7 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Descripción:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="descripcion" placeholder="Descripción"
+                                        <input type="text" name="descripcion" placeholder="Descripción" value ="{{ old('descripcion') }}"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                         @if ($errors->first('descripcion'))
                                             <i class="text-danger">{{ $errors->first('descripcion') }}</i>
@@ -136,6 +120,12 @@
                                                     imágenes con extensiones 'jpeg, jpg, png, jfif</label></i>
                                         @endif
                                     </div>
+                                </div>
+
+                                 <div class="panel-footer text-left">
+                                    <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30"
+                                            height="30"></a>
                                 </div>
 
                             </div>
@@ -162,8 +152,12 @@
                                             name="categoria_id">
                                             <option value="">-- Seleccione una categoría --</option>
                                             @foreach ($categorias as $categoria)
-                                                <option value="{{ $categoria->categoria_id }}">{{ $categoria->nombre }}
-                                                </option>
+                                                @if(old('categoria_id') == $categoria->categoria_id)
+                                                     <option value="{{ $categoria->categoria_id }}" selected>{{ $categoria->nombre }}
+                                                @else 
+                                                    <option value="{{ $categoria->categoria_id }}">{{ $categoria->nombre }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -181,9 +175,13 @@
                                         <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="marca_id">
                                             <option value="">-- Seleccione una marca --</option>
-                                            @foreach ($marcas as $marca)
-                                                <option value="{{ $marca->marca_id }}">{{ $marca->nombre }}
-                                                </option>
+                                             @foreach ($marcas as $marca)
+                                                @if(old('marca_id') == $marca->marca_id)
+                                                     <option value="{{ $marca->marca_id }}" selected>{{ $marca->nombre }}
+                                                @else 
+                                                    <option value="{{ $marca->marca_id }}">{{ $marca->nombre }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -198,12 +196,16 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Temporada:</label>
                                     <div class="col-sm-8">
 
-                                       <select data-placeholder="-- Seleccione una temporada --" id="demo-chosen-select"
+                                        <select data-placeholder="-- Seleccione una temporada --" id="demo-chosen-select"
                                             tabindex="2" style="width:330px" name="temporada_id">
                                             <option value="">-- Seleccione una temporada --</option>
-                                            @foreach ($temporadas as $temporada)
-                                                <option value="{{ $temporada->temporada_id }}">{{ $temporada->nombre }}
-                                                </option>
+                                             @foreach ($temporadas as $temporada)
+                                                @if(old('temporada_id') == $temporada->temporada_id)
+                                                     <option value="{{ $temporada->temporada_id }}" selected>{{ $temporada->nombre }}
+                                                @else 
+                                                    <option value="{{ $temporada->temporada_id }}">{{ $temporada->nombre }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -218,47 +220,49 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Empaque:</label>
                                     <div class="col-sm-8">
 
-                                        <select data-placeholder="-- Seleccione un empaque --" 
-                                            style="width:330px" class="selectpicker" name="empaque_id">
+                                        <select data-placeholder="-- Seleccione un empaque --" style="width:830px"
+                                            class="selectpicker" name="empaque_id">
                                             <option value="">-- Seleccione un empaque &nbsp; --</option>
                                             @foreach ($empaques as $empaque)
-                                                <option value="{{ $empaque->empaque_id }}">{{ $empaque->nombre }}
-                                                </option>
+                                                @if(old('empaque_id') == $empaque->empaque_id)
+                                                     <option value="{{ $empaque->empaque_id }}" selected>{{ $empaque->nombre }}
+                                                @else 
+                                                    <option value="{{ $empaque->empaque_id }}">{{ $empaque->nombre }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
 
-                                        @if ($errors->first('empaque_id'))
+                                        @if ($errors->first('empaque_id'))<br>
                                             <i class="text-danger">El campo empaque es obligatorio</i>
                                         @endif
                                     </div>
                                 </div>
 
-                                    <div class="form-group">
-                                        <label for="demo-is-inputnormal"
-                                            class="col-sm-4 control-label text-bold text-semibold is-required text-left">Piezas por empaque</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="piezas_por_empaque" placeholder="Número de piezas que trae el empaque"
-                                            maxlength="3"
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Piezas
+                                        por empaque</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="piezas_por_empaque" value ="{{ old('piezas_por_empaque') }}"
+                                            placeholder="Número de piezas que trae el empaque" maxlength="3"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
-                                            @if ($errors->first('piezas_por_empaque'))
-                                                <i class="text-danger">{{ $errors->first('piezas_por_empaque') }}</i>
-                                            @endif
-                                        </div>
+                                        @if ($errors->first('piezas_por_empaque'))
+                                            <i class="text-danger">{{ $errors->first('piezas_por_empaque') }}</i>
+                                        @endif
                                     </div>
+                                </div>
 
                             </div>
                             <div class="panel-footer">
                                 <div class="row">
                                     <div class="col-sm-9 col-sm-offset-4">
                                         <button class="btn btn-success" type="submit">Guardar</button>
-                                        <button class="btn btn-primary" type="reset">Reniciar</button>
+                                        {{-- <button class="btn btn-primary" type="reset">Reniciar</button> --}}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel-footer text-right">
-                                <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
-                                        src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
+                               
                             </div>
                 </form>
             </div>

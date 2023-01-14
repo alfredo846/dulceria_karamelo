@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Producto')
+  @section('title', 'Productos')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
@@ -19,7 +19,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold">Productos</p><p></p>
+					         <p class="text-2x mar-no text-semibold">Productos | Listado</p><p></p>
 					     </div>
 					 </div>
 		   </div>
@@ -47,24 +47,32 @@
 						</a>
 							<a href="{{ route('productos.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nueva producto</button></a>
 					    </div><br>
+					   
 					    <div class="panel-body">
 					        <table id="productos" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
 					                <tr>
+					                    <th>Código de barras</th>
 					                    <th>Nombre</th>
-					                    <th>Imagén</th>
-					                    <th class="min-tablet">Estado</th>
-					                    <th class="min-tablet">Acciones</th>
+					                    <th>Imagen</th>
+					                    <th>Marca</th>
+					                    <th>Estado</th>
+					                    <th>Acciones</th>
 					                </tr>
 					            </thead>
 					            <tbody>
-
-                                    @foreach($productos as $producto)
+					                @foreach($productos as $producto)
 					                <tr>
-					                    <td>{{ $producto->descripcion }}</td>
-					                    <td><img class='profile-image' src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt="foto"></td>
-					                    <td><span class="label label-success">Activo</span></td>
-					                    <td>
+					                    <td>{{ $producto->codigo_barras }}</td>
+					                    <td width="180">{{ $producto->nombre }}</td>
+										<td><img class='profile-image' src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt="foto"></td>
+										@foreach($marcas as $marca)
+											@if($marca->marca_id == $producto->marca_id)
+											<td>{{ $marca->nombre }}</td>
+											@endif
+										@endforeach
+										<td><span class="label label-success">Activo</span></td>
+					                    <td width="140">
 											<a href="{{ route('productos.show',$producto) }}">	
 											<button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
 											data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
@@ -76,22 +84,21 @@
 												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Actalizar"><i class="demo-psi-pen-5 icon-sm"></i></button>
 											</a>
 											
-											
 											<form action="{{ route('productos.destroy', $producto) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
 												@csrf
 												@method('DELETE')
 												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
 												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Eliminar"><i class="demo-psi-recycling icon-sm"></i></button>
 											</form>
-
 									    </td>
 					                </tr>
                                     @endforeach
-					               
+					                
 					               
 					            </tbody>
 					        </table>
 					    </div>
+					
 					</div>
 					<!--===================================================-->
 					<!-- End Striped Table -->
@@ -120,47 +127,19 @@
     <script src="{{ asset('assets\js\sweetalert2@11.js') }}"></script>
 	
 
-	@if(session('eliminar') == 'ok')
-	<script>
-		Swal.fire(
-		'¡Eliminado!',
-		'El registro se elimino exitosamente.',
-		'success'
-				)
-	</script>
-	@endif
+		@if(session('eliminar') == 'ok')
+		<script>
+			Swal.fire(
+			'¡Eliminado!',
+			'El registro se elimino exitosamente.',
+			'success'
+					)
+		</script>
+		@endif
 
-	  <script type="text/javascript">
-         $(document).ready(function() {
-             $('#demo-dt-basic').DataTable({
-            language:{
-                url:"{{ asset('assets/js/spanish.json') }}"
-            }
-        });
-            } );
-
-
-			$(document).ready(function() {
-   			 $('#productos').DataTable( {
-			 order: [[1, 'desc']],
-    	    "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "Nada encontrado - disculpa",
-            "info": "Mostrando la página _PAGE_ de _PAGES_",
-            "infoEmpty": "No records available",
-            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
-			'search': 'Buscar:',
-			'paginate': {
-				'next': 'Siguiente',
-				'previous': 'Anterior'
-			}
-       		 }
-    		} );
-			} );
-     </script>
-
+	
 		<script type="text/javascript">
-		$(document).ready(function() {
+		   $(document).ready(function() {
 			setTimeout(function() {
 				$(".content").fadeOut(1500);
 			},3000);
@@ -189,4 +168,26 @@
 			});
 
 		</script>
+
+	  <script type="text/javascript">
+			$(document).ready(function() {
+   			 $('#productos').DataTable( {
+			  order: [[1, 'desc']],
+			  scrollX: true,
+			//   scrollY: '290px',
+    	    "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+			'search': 'Buscar:',
+			'paginate': {
+				'next': 'Siguiente',
+				'previous': 'Anterior'
+			}
+       		 }
+    		} );
+			} );
+     </script>
     @endsection
