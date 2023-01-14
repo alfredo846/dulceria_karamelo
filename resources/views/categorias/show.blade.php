@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Show categoría')
+@section('title', 'Consultar categoría')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -89,7 +89,7 @@
                                 
                             </div>
 
-                            <div class="panel-footer text-right">
+                            <div class="panel-footer text-left">
                                 <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario"><img
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>

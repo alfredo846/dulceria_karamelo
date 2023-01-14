@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\Categorias\CreateCategoriaRequest;
 use App\Http\Requests\Categorias\EditCategoriaRequest;
@@ -141,17 +142,24 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::withTrashed()->where('categoria_id', $categoria_id)->find($categoria_id);
 
-        if (Storage::disk('categoria-imagenes')->exists("$categoria->imagen")) {
-            if($categoria->imagen == "shadow.jpg"){
-                    
-                } else {
-                    Storage::disk('categoria-imagenes')->delete("$categoria->imagen");
-                }
-        }
-        
-        $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->forcedelete();
+        $buscaproductos = Producto::where('categoria_id',$categoria_id)->get(); 
+        $cuantos = count($buscaproductos); 
+        if($cuantos==0) 
+        { 
+            if (Storage::disk('categoria-imagenes')->exists("$categoria->imagen")) {
+                if($categoria->imagen == "shadow.jpg"){
+                        
+                    } else {
+                        Storage::disk('categoria-imagenes')->delete("$categoria->imagen");
+                    }
+            }
+            
+            $categorias = Categoria::withTrashed()->where('categoria_id', $categoria_id)->forcedelete();
 
-        return redirect()->route('categorias.papelera')->with('borrar','ok');
+             return redirect()->route('categorias.papelera')->with('borrar','ok');
+        }else{
+             return redirect()->route('categorias.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
     }
 
     public function export()
