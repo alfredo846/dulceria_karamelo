@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('title', 'Producto-papelera')
+  @section('title', 'Producto papelera')
 
     @section('head')
      <!--DataTables [ OPTIONAL ]-->
@@ -18,7 +18,7 @@
 				     <div class="col-md-12">
 					     <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
 					     <div class="media-body">
-					         <p class="text-2x mar-no text-semibold">Papelera Productos</p><p></p>
+					         <p class="text-2x mar-no text-semibold">Productos | Papelera</p><p></p>
 					     </div>
 					 </div>
 		   </div>
@@ -30,7 +30,7 @@
 					<!-- Basic Data Tables -->
 					<div class="panel">
 
-                          <div class="panel-footer text-right">
+                          <div class="panel-footer text-left">
                              <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Regresar"><img src="{{ asset('assets/img/regresar.jpg')}}" width="30" height="30"></a>
                           </div>
 						<div class="content">

@@ -53,8 +53,8 @@
 					            <thead>
 					                <tr>
 					                    <th>Código de barras</th>
-					                    <th>Nombre</th>
 					                    <th>Imagen</th>
+					                    <th>Nombre</th>
 					                    <th>Marca</th>
 					                    <th>Estado</th>
 					                    <th>Acciones</th>
@@ -64,11 +64,16 @@
 					                @foreach($productos as $producto)
 					                <tr>
 					                    <td>{{ $producto->codigo_barras }}</td>
-					                    <td width="180">{{ $producto->nombre }}</td>
 										<td><img class='profile-image' src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt="foto"></td>
+										<td width="180">{{ $producto->nombre }}</td>
 										@foreach($marcas as $marca)
 											@if($marca->marca_id == $producto->marca_id)
-											<td>{{ $marca->nombre }}</td>
+											 <td>{{ $marca->nombre }}</td>
+											@endif
+										@endforeach
+										@foreach($marcasd as $marca)
+											@if($marca->marca_id == $producto->marca_id)
+											 <td>{{ $marca->nombre }}</td>
 											@endif
 										@endforeach
 										<td><span class="label label-success">Activo</span></td>
@@ -169,12 +174,19 @@
 
 		</script>
 
-	  <script type="text/javascript">
+     <script type="text/javascript">
+         $(document).ready(function() {
+             $('#demo-dt-basic').DataTable({
+            language:{
+                url:"{{ asset('assets/js/spanish.json') }}"
+            }
+        });
+            } );
+
+
 			$(document).ready(function() {
    			 $('#productos').DataTable( {
-			  order: [[1, 'desc']],
-			  scrollX: true,
-			//   scrollY: '290px',
+			 order: [[1, 'desc']],
     	    "language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "Nada encontrado - disculpa",
