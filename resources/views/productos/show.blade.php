@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Show producto')
+@section('title', 'Consultar producto')
 
 @section('head')
     <!--Switchery [ OPTIONAL ]-->
@@ -55,52 +55,159 @@
         <!--Page content-->
         <div id="page-content">
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
-                    <div class="panel">
-                        <div class="panel-heading"><br>
-                            <h4 class="text-main text-bold mar-no text-center">Producto</h4>
-                        </div>
-                        <form class="form-horizontal">
-                          
+                <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data"
+                    class="form-horizontal">
+                    @csrf
+                    @method('POST')
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-heading"><br>
+                                <h4 class="text-main text-bold mar-no text-center">Producto</h4>
+                            </div>
+
                             <div class="panel-body">
 
                                 <div class="form-group">
-                                    <div class="col-sm-3">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold">Nombre:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" name="nombre" readonly class="form-control" 
-                                        id="demo-is-inputnormal" value ="{{ $producto->descripcion}}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold">Imagén:</label>
-                                    <div class="col-sm-9">
+                                        class="col-sm-4 control-label text-bold text-semibold text-left"></label>
+                                    <div class="col-sm-8">
+                                        <div id="imagePreview"></div>
                                        <img class='profile-image-show' src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt="foto">
                                     </div>
                                 </div>
-                                
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Código de barras:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="codigo_barras" maxlength="14" value ="{{ ($producto->codigo_barras) }}"
+                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+                                            placeholder="Código de barras" autocomplete="off" disabled
+                                            class="form-control" id="demo-is-inputnormal">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Nombre:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="nombre" placeholder="Nombre del producto" value ="{{ ($producto->nombre) }}"
+                                            autocomplete="off" class="form-control" id="demo-is-inputnormal" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Descripción:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="descripcion" placeholder="Descripción"value ="{{ ($producto->descripcion) }}"
+                                            autocomplete="off" class="form-control" id="demo-is-inputnormal" disabled>
+                                        @if ($errors->first('descripcion'))
+                                            <i class="text-danger">{{ $errors->first('descripcion') }}</i>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                 <div class="panel-footer text-left">
+                                    <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30"
+                                            height="30"></a>
+                                </div>
+
                             </div>
-
-                            <div class="panel-footer text-right">
-                                <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
-                                        src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
-                            </div>
-                        </form>
-
-
+                        </div>
                     </div>
-                </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Categoría:</label>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="categoria_id" disabled>
+                                            @foreach ($categorias as $categoria)
+                                                @if($producto->categoria_id == $categoria->categoria_id)
+                                                     <option value="{{ $categoria->categoria_id }}" selected>{{ $categoria->nombre }}
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><br>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Marca:</label>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="marca_id" disabled>
+                                             @foreach ($marcas as $marca)
+                                                @if($producto->marca_id == $marca->marca_id)
+                                                     <option value="{{ $marca->marca_id }}" selected>{{ $marca->nombre }}
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><br>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Temporada:</label>
+                                    <div class="col-sm-8">
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="marca_id" disabled>
+                                             @foreach ($temporadas as $temporada)
+                                                @if($producto->temporada_id == $temporada->temporada_id)
+                                                     <option value="{{ $temporada->temporada_id }}" selected>{{ $temporada->nombre }}
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><br>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Empaque:</label>
+                                    <div class="col-sm-8">
+                                       <select class="selectpicker" data-live-search="true" data-width="100%"
+                                            name="temporada_id" disabled>
+                                            @foreach ($empaques as $empaque)
+                                                @if($producto->empaque_id== $empaque->empaque_id)
+                                                     <option value="{{ $empaque->empaque_id }}" selected>{{ $empaque->nombre }}
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><br>
+
+                                <div class="form-group">
+                                    <label for="demo-is-inputnormal"
+                                        class="col-sm-4 control-label text-bold text-semibold  text-left">Piezas
+                                        por empaque:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="piezas_por_empaque" value ="{{ $producto->piezas_por_empaque }}"
+                                            placeholder="Número de piezas que trae el empaque" maxlength="3" disabled
+                                            onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
+                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                    </div>
+                                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+
+                            </div>
+                           
+                </form>
             </div>
         </div>
-        <!--End page content-->
+    </div>
+    </div>
+    <!--End page content-->
     </div>
     <!--END CONTENT CONTAINER-->
 

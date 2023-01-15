@@ -69,7 +69,7 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código de barras</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código de barras:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="codigo_barras" maxlength="14" value ="{{ old('codigo_barras') }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
@@ -83,7 +83,7 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="nombre" placeholder="Nombre del producto" value ="{{ old('nombre') }}"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
@@ -242,7 +242,7 @@
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Piezas
-                                        por empaque</label>
+                                        por empaque:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="piezas_por_empaque" value ="{{ old('piezas_por_empaque') }}"
                                             placeholder="Número de piezas que trae el empaque" maxlength="3"

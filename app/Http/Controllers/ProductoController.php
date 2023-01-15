@@ -86,7 +86,12 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-         return view('productos.show',compact('producto'));
+        $categorias = Categoria::all();
+        $marcas = Marca::all();
+        $temporadas = Temporada::all();
+        $empaques = Empaque::all();
+        
+        return view('productos.show',compact('producto','categorias','marcas','temporadas','empaques'));
     }
 
     /**
