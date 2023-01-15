@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TemporadaController;
 use App\Http\Controllers\EmpaqueController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\SucursalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,9 @@ Route::get('producto_papelera',[ProductoController::class, 'papelera'])->name('p
 Route::delete('producto_borrar/{producto_id}',[ProductoController::class, 'borrar'])->name('productos.borrar');
 Route::delete('producto_activar/{producto_id}',[ProductoController::class, 'activar'])->name('productos.activar');
 Route::get('producto_export',[ProductoController::class, 'export'])->name('productos.export');
+
+Route::resource('sucursales', SucursalController::class);
+Route::get('sucursal_papelera',[SucursalController::class, 'papelera'])->name('sucursales.papelera');
+Route::delete('sucursal_borrar/{sucursal_id}',[SucursalController::class, 'borrar'])->name('sucursales.borrar');
+Route::delete('sucursal_activar/{sucursal_id}',[SucursalController::class, 'activar'])->name('sucursales.activar');
+Route::get('sucursal_export',[SucursalController::class, 'export'])->name('sucursales.export');

@@ -55,6 +55,11 @@ return [
             'root' => public_path('imagenes/productos'),
         ],
 
+        'sucursal-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/sucursales'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
