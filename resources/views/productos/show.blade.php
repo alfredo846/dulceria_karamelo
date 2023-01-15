@@ -139,6 +139,11 @@
                                                      <option value="{{ $categoria->categoria_id }}" selected>{{ $categoria->nombre }}
                                                 @endif
                                             @endforeach
+                                            @foreach ($categoriasd as $categoria)
+                                                @if($producto->categoria_id == $categoria->categoria_id)
+                                                     <option value="{{ $categoria->categoria_id }}" selected>{{ $categoria->nombre }}
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div><br>
@@ -150,6 +155,11 @@
                                         <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="marca_id" disabled>
                                              @foreach ($marcas as $marca)
+                                                @if($producto->marca_id == $marca->marca_id)
+                                                     <option value="{{ $marca->marca_id }}" selected>{{ $marca->nombre }}
+                                                @endif
+                                            @endforeach
+                                             @foreach ($marcasd as $marca)
                                                 @if($producto->marca_id == $marca->marca_id)
                                                      <option value="{{ $marca->marca_id }}" selected>{{ $marca->nombre }}
                                                 @endif
@@ -169,6 +179,11 @@
                                                      <option value="{{ $temporada->temporada_id }}" selected>{{ $temporada->nombre }}
                                                 @endif
                                             @endforeach
+                                             @foreach ($temporadasd as $temporada)
+                                                @if($producto->temporada_id == $temporada->temporada_id)
+                                                     <option value="{{ $temporada->temporada_id }}" selected>{{ $temporada->nombre }}
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div><br>
@@ -180,6 +195,11 @@
                                        <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="temporada_id" disabled>
                                             @foreach ($empaques as $empaque)
+                                                @if($producto->empaque_id== $empaque->empaque_id)
+                                                     <option value="{{ $empaque->empaque_id }}" selected>{{ $empaque->nombre }}
+                                                @endif
+                                            @endforeach
+                                            @foreach ($empaquesd as $empaque)
                                                 @if($producto->empaque_id== $empaque->empaque_id)
                                                      <option value="{{ $empaque->empaque_id }}" selected>{{ $empaque->nombre }}
                                                 @endif

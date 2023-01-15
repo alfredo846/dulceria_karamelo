@@ -86,12 +86,16 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        $categorias = Categoria::all();
-        $marcas = Marca::all();
-        $temporadas = Temporada::all();
-        $empaques = Empaque::all();
+        $categorias    = Categoria::all();
+        $categoriasd   = Categoria::onlyTrashed()->get();
+        $marcas        = Marca::all();
+        $marcasd       = Marca::onlyTrashed()->get();
+        $temporadas    = Temporada::all();
+        $temporadasd   = Temporada::onlyTrashed()->get();
+        $empaques      = Empaque::all();
+        $empaquesd     = Empaque::onlyTrashed()->get();
         
-        return view('productos.show',compact('producto','categorias','marcas','temporadas','empaques'));
+        return view('productos.show',compact('producto','categorias', 'categoriasd', 'marcas', 'marcasd', 'temporadas', 'temporadasd', 'empaques', 'empaquesd'));
     }
 
     /**
@@ -102,7 +106,11 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-         return view('productos.edit',compact('producto'));
+        $categorias = Categoria::all();
+        $marcas = Marca::all();
+        $temporadas = Temporada::all();
+        $empaques = Empaque::all();
+         return view('productos.edit',compact('producto','categorias','marcas','temporadas','empaques'));
     }
 
     /**
