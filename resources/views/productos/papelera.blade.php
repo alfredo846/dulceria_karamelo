@@ -38,23 +38,35 @@
 						</div>
 
 					    <div class="panel-body">
-					        <table id="productos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					       <table id="productos" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
 					                <tr>
-					                    <th>Descripción</th>
-					                    <th>Imagén</th>
-					                    <th class="min-tablet">Estado</th>
-					                    <th class="min-tablet">Acciones</th>
+					                    <th>Código de barras</th>
+					                    <th>Imagen</th>
+					                    <th>Nombre</th>
+					                    <th>Marca</th>
+					                    <th>Estado</th>
+					                    <th>Acciones</th>
 					                </tr>
 					            </thead>
 					            <tbody>
-
-                                    @foreach($productos as $producto)
+					                @foreach($productos as $producto)
 					                <tr>
-					                    <td>{{ $producto->descripcion }}</td>
+					                    <td>{{ $producto->codigo_barras }}</td>
 										<td><img class='profile-image' src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt="foto"></td>
-					                    <td><span class="label label-danger">Inactivo</span></td>
-					                    <td>
+										<td width="180">{{ $producto->nombre }}</td>
+										@foreach($marcas as $marca)
+											@if($marca->marca_id == $producto->marca_id)
+											 <td>{{ $marca->nombre }}</td>
+											@endif
+										@endforeach
+										@foreach($marcasd as $marca)
+											@if($marca->marca_id == $producto->marca_id)
+											 <td>{{ $marca->nombre }}</td>
+											@endif
+										@endforeach
+										<td><span class="label label-danger">Inactivo</span></td>
+					                  <td>
 
 										<form action="{{ route('productos.activar', $producto) }}" method="POST"  style="display: inline-block" class="formulario-activar" >
 											@csrf
@@ -71,7 +83,7 @@
 									    </td>
 					                </tr>
                                     @endforeach
-					               
+					                
 					               
 					            </tbody>
 					        </table>

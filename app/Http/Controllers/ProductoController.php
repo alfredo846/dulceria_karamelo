@@ -35,10 +35,14 @@ class ProductoController extends Controller
 
      public function papelera()
     {
-        $productos = Producto::onlyTrashed()->get();
+        $productos   = Producto::onlyTrashed()->get();
+        $marcas      = Marca::all();
+        $marcasd     = Marca::onlyTrashed()->get();
 
         return view('productos.papelera')
-        ->with(['productos' => $productos]);
+        ->with(['productos'   => $productos])
+        ->with(['marcas'      => $marcas])
+        ->with(['marcasd'     => $marcasd]);
     }
 
     /**
