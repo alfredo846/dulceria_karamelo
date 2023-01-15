@@ -141,7 +141,15 @@ class TemporadaController extends Controller
         $temporada = Temporada::withTrashed()->where('temporada_id', $temporada_id)->find($temporada_id);
 
         $buscaproductos = Producto::where('temporada_id',$temporada_id)->get(); 
-        $cuantos = count($buscaproductos); 
+        $buscaproductosd = Producto::withTrashed()->where('temporada_id', $temporada_id)->get();
+
+        $cuantos    = count($buscaproductos); 
+        $cuantosd   = count($buscaproductosd); 
+
+        if($cuantosd>=1) {
+           return redirect()->route('temporadas.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
+
         if($cuantos==0) 
         { 
             if (Storage::disk('temporada-imagenes')->exists("$temporada->imagen")) {

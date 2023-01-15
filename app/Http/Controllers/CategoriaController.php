@@ -142,8 +142,16 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::withTrashed()->where('categoria_id', $categoria_id)->find($categoria_id);
 
-        $buscaproductos = Producto::where('categoria_id',$categoria_id)->get(); 
+        $buscaproductos   = Producto::where('categoria_id',$categoria_id)->get(); 
+        $buscaproductosd  = Producto::withTrashed()->where('categoria_id', $categoria_id)->get();
+
         $cuantos = count($buscaproductos); 
+        $cuantosd = count($buscaproductosd);
+
+        if($cuantosd>=1) {
+           return redirect()->route('categorias.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
+
         if($cuantos==0) 
         { 
             if (Storage::disk('categoria-imagenes')->exists("$categoria->imagen")) {

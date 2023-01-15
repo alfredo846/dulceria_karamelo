@@ -117,7 +117,15 @@ class EmpaqueController extends Controller
         $empaque = Empaque::withTrashed()->where('empaque_id', $empaque_id)->find($empaque_id);
 
         $buscaproductos = Producto::where('empaque_id',$empaque_id)->get(); 
-        $cuantos = count($buscaproductos); 
+        $buscaproductosd = Producto::withTrashed()->where('empaque_id', $empaque_id)->get();
+
+        $cuantos    = count($buscaproductos); 
+        $cuantosd   = count($buscaproductosd);
+
+        if($cuantosd>=1) {
+           return redirect()->route('empaques.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
+
         if($cuantos==0) 
         { 
             $empaques = Empaque::withTrashed()->where('empaque_id', $empaque_id)->forcedelete();

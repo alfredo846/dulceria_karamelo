@@ -140,9 +140,17 @@ class MarcaController extends Controller
     public function borrar($marca_id)
     {
         $marca = Marca::withTrashed()->where('marca_id', $marca_id)->find($marca_id);
+        
+        $buscaproductos  = Producto::where('marca_id',$marca_id)->get(); 
+        $buscaproductosd = Producto::withTrashed()->where('marca_id', $marca_id)->get();
 
-        $buscaproductos = Producto::where('marca_id',$marca_id)->get(); 
-        $cuantos = count($buscaproductos); 
+        $cuantos  = count($buscaproductos); 
+        $cuantosd = count($buscaproductosd); 
+
+        if($cuantosd>=1) {
+           return redirect()->route('marcas.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
+        }
+
         if($cuantos==0) 
         { 
             if (Storage::disk('marca-imagenes')->exists("$marca->imagen")) {
@@ -155,7 +163,9 @@ class MarcaController extends Controller
             $marcas = Marca::withTrashed()->where('marca_id', $marca_id)->forcedelete();
 
             return redirect()->route('marcas.papelera')->with('borrar','ok');
-        }else{
+        }
+        
+        else{
              return redirect()->route('marcas.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Productos');
         }
     }
