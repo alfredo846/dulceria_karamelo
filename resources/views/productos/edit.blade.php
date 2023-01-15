@@ -161,9 +161,16 @@
                                                      <option value={{ $categoria->categoria_id }} selected>{{ $categoria->nombre }}</option>
                                                 @endif
                                                 @if($producto->categoria_id != $categoria->categoria_id)
-                                                     <option value="{{ $categoria->categoria_id }}">{{ $categoria->nombre }}
+                                                     <option value={{ $categoria->categoria_id }}>{{ $categoria->nombre }}</option>
                                                 @endif
                                               @endforeach
+
+                                               @foreach ($categoriasd as $categoria)
+                                                @if($producto->categoria_id == $categoria->categoria_id)
+                                                     <option value={{ $categoria->categoria_id }} selected>{{ $categoria->nombre }}</option>
+                                                @endif
+                                              @endforeach
+
                                         </select>
                                         @if ($errors->first('categoria_id'))
                                             <i class="text-danger">El campo categoría es obligatorio</i>
@@ -178,14 +185,20 @@
                                         <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="marca_id">
                                             <option value="">-- Seleccione una marca --</option>
-                                            @foreach ($marcas as $marca)
+                                             @foreach ($marcas as $marca)
                                                 @if($producto->marca_id == $marca->marca_id)
                                                      <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}</option>
                                                 @endif
                                                 @if($producto->marca_id != $marca->marca_id)
-                                                     <option value="{{ $marca->marca_id }}">{{ $marca->nombre }}
+                                                     <option value={{ $marca->marca_id }}>{{ $marca->nombre }}</option>
                                                 @endif
-                                            @endforeach
+                                              @endforeach
+
+                                               @foreach ($marcasd as $marca)
+                                                @if($producto->marca_id == $marca->marca_id)
+                                                     <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}</option>
+                                                @endif
+                                              @endforeach
                                         </select>
                                         @if ($errors->first('marca_id'))
                                             <i class="text-danger">El campo categoría es obligatorio</i>
@@ -200,14 +213,20 @@
                                         <select data-placeholder="-- Seleccione una temporada --" id="demo-chosen-select"
                                             tabindex="2" style="width:330px" name="temporada_id">
                                             <option value="">-- Seleccione una temporada --</option>
-                                             @foreach ($temporadas as $temporada)
+                                            @foreach ($temporadas as $temporada)
                                                 @if($producto->temporada_id == $temporada->temporada_id)
                                                      <option value={{ $temporada->temporada_id }} selected>{{ $temporada->nombre }}</option>
                                                 @endif
                                                 @if($producto->temporada_id != $temporada->temporada_id)
-                                                     <option value="{{ $temporada->temporada_id }}">{{ $temporada->nombre }}
+                                                     <option value={{ $temporada->temporada_id }}>{{ $temporada->nombre }}</option>
                                                 @endif
-                                             @endforeach
+                                              @endforeach
+
+                                               @foreach ($temporadasd as $temporada)
+                                                @if($producto->temporada_id == $temporada->temporada_id)
+                                                     <option value={{ $temporada->temporada_id }} selected>{{ $temporada->nombre }}</option>
+                                                @endif
+                                              @endforeach
                                         </select>
                                         @if ($errors->first('temporada_id'))
                                             <i class="text-danger">El campo temporada es obligatorio</i>
@@ -227,7 +246,13 @@
                                                      <option value={{ $empaque->empaque_id }} selected>{{ $empaque->nombre }}</option>
                                                 @endif
                                                 @if($producto->empaque_id != $empaque->empaque_id)
-                                                     <option value="{{ $empaque->empaque_id }}">{{ $empaque->nombre }}
+                                                     <option value={{ $empaque->empaque_id }}>{{ $empaque->nombre }}</option>
+                                                @endif
+                                              @endforeach
+
+                                               @foreach ($empaquesd as $empaque)
+                                                @if($producto->empaque_id == $empaque->empaque_id)
+                                                     <option value={{ $empaque->empaque_id }} selected>{{ $empaque->nombre }}</option>
                                                 @endif
                                               @endforeach
                                         </select>

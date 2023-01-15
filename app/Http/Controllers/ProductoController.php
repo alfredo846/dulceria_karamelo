@@ -23,19 +23,20 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
-        $marcas = Marca::all();
-        $marcasd = Marca::onlyTrashed()->get();
-        // dd($productos);
+        $productos   = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $marcas      = Marca::all();
+        $marcasd     = Marca::onlyTrashed()->get();
+       
         return view('productos.index')
         ->with(['productos' => $productos])
-        ->with(['marcas' => $marcas])
-        ->with(['marcasd' => $marcasd]);
+        ->with(['marcas'    => $marcas])
+        ->with(['marcasd'   => $marcasd]);
     }
 
      public function papelera()
     {
         $productos = Producto::onlyTrashed()->get();
+
         return view('productos.papelera')
         ->with(['productos' => $productos]);
     }
@@ -47,10 +48,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
-        $marcas = Marca::all();
-        $temporadas = Temporada::all();
-        $empaques = Empaque::all();
+        $categorias   = Categoria::all();
+        $marcas       = Marca::all();
+        $temporadas   = Temporada::all();
+        $empaques     = Empaque::all();
+
         return view('productos.create',compact('categorias','marcas','temporadas','empaques'));
     }
 
@@ -106,11 +108,16 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        $categorias = Categoria::all();
-        $marcas = Marca::all();
-        $temporadas = Temporada::all();
-        $empaques = Empaque::all();
-         return view('productos.edit',compact('producto','categorias','marcas','temporadas','empaques'));
+        $categorias    = Categoria::all();
+        $categoriasd   = Categoria::onlyTrashed()->get();
+        $marcas        = Marca::all();
+        $marcasd       = Marca::onlyTrashed()->get();
+        $temporadas    = Temporada::all();
+        $temporadasd   = Temporada::onlyTrashed()->get();
+        $empaques      = Empaque::all();
+        $empaquesd     = Empaque::onlyTrashed()->get();
+
+        return view('productos.edit', compact('producto','categorias', 'categoriasd', 'marcas', 'marcasd', 'temporadas', 'temporadasd', 'empaques', 'empaquesd'));
     }
 
     /**
