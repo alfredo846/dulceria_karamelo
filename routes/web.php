@@ -56,3 +56,6 @@ Route::get('sucursal_papelera',[SucursalController::class, 'papelera'])->name('s
 Route::delete('sucursal_borrar/{sucursal_id}',[SucursalController::class, 'borrar'])->name('sucursales.borrar');
 Route::delete('sucursal_activar/{sucursal_id}',[SucursalController::class, 'activar'])->name('sucursales.activar');
 Route::get('sucursal_export',[SucursalController::class, 'export'])->name('sucursales.export');
+
+Route::get('get-municipios', [SucursalController::class, 'getMunicipios'])->name('getMunicipios');
+Route::get('get-localidades', [SucursalController::class, 'getLocalidades'])->name('getLocalidades');

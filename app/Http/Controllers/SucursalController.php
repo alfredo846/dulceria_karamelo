@@ -9,6 +9,7 @@ use App\Models\Localidad;
 use Illuminate\Http\Request;
 use App\Http\Requests\Sucursales\CreateSucursalRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;  
 
 class SucursalController extends Controller
 {
@@ -21,6 +22,28 @@ class SucursalController extends Controller
     {
         $sucursales   = Sucursal::orderBy('sucursal_id','DESC')->where('deleted_at', '=', NULL)->get();
         return view('sucursales.index', compact('sucursales'));
+    }
+
+    public function getMunicipios(Request $request)
+    {
+        $municipios = \DB::table('municipios')
+            ->where('estado_id', $request->estado_id)
+            ->get();
+        
+        if (count($municipios) > 0) {
+            return response()->json($municipios);
+        }
+    }
+
+   public function getLocalidades(Request $request)
+    {
+        $localidades = \DB::table('localidads')
+            ->where('municipio_id', $request->municipio_id)
+            ->get();
+        
+        if (count($localidades) > 0) {
+            return response()->json($localidades);
+        }
     }
 
     /**

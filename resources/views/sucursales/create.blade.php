@@ -2,6 +2,12 @@
 @section('title', 'Agregar sucursal')
 
 @section('head')
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <!--Switchery [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
 
@@ -149,18 +155,12 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Estado:</label>
                                     <div class="col-sm-8">
 
-                                        <select class="selectpicker" data-live-search="true" data-width="100%"
-                                            name="estado_id">
-                                            <option value="">-- Seleccione un estado --</option>
-                                            @foreach ($estados as $estado)
-                                                @if(old('estado_id') == $estado->estado_id)
-                                                     <option value="{{ $estado->estado_id }}" selected>{{ $estado->nombre }}
-                                                @else 
-                                                    <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                          <select class="form-select form-select-lg mb-3" id="estado">
+                                                <option selected disabled>Select estado</option>
+                                                @foreach ($estados as $estado)
+                                                <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}</option>
+                                                @endforeach
+                                         </select>
 
                                         @if ($errors->first('estado_id'))
                                             <i class="text-danger">El campo estado es obligatorio</i>
@@ -173,18 +173,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Municipio:</label>
                                     <div class="col-sm-8">
 
-                                        <select class="selectpicker" data-live-search="true" data-width="100%"
-                                            name="municipio_id">
-                                            <option value="">-- Seleccione un municipio --</option>
-                                             @foreach ($municipios as $municipio)
-                                                @if(old('municipio_id') == $municipio->municipio_id)
-                                                     <option value="{{ $municipio->municipio_id }}" selected>{{ $municipio->nombre }}
-                                                @else 
-                                                    <option value="{{ $municipio->municipio_id }}">{{ $municipio->nombre }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                        <select class="form-select form-select-lg mb-3" id="municipio"></select>
 
                                         @if ($errors->first('municipio_id'))
                                             <i class="text-danger">El campo municipio es obligatorio</i>
@@ -197,18 +186,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Localidad:</label>
                                     <div class="col-sm-8">
 
-                                        <select data-placeholder="-- Seleccione una localidad --" id="demo-chosen-select"
-                                            tabindex="2" style="width:330px" name="localidad_id">
-                                            <option value="">-- Seleccione una localidad --</option>
-                                             @foreach ($localidades as $localidad)
-                                                @if(old('localidad_id') == $localidad->localidad_id)
-                                                     <option value="{{ $localidad->localidad_id }}" selected>{{ $localidad->nombre }}
-                                                @else 
-                                                    <option value="{{ $localidad->localidad_id }}">{{ $localidad->nombre }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                        <select class="form-select form-select-lg mb-3" id="localidad"></select>
 
                                         @if ($errors->first('localidad_id'))
                                             <i class="text-danger">El campo localidad es obligatorio</i>
@@ -253,6 +231,44 @@
 @endsection
 
 @section('script')
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#estado').on('change', function () {
+                var estadoId = this.value;
+                $('#municipio').html('');
+                $.ajax({
+                    url: '{{ route('getMunicipios') }}?estado_id='+estadoId,
+                    type: 'get',
+                    success: function (res) {
+                        $('#municipio').html('<option value="">Select Municipio</option>');
+                        $.each(res, function (key, value) {
+                            $('#municipio').append('<option value="' + value
+                                .municipio_id + '">' + value.nombre + '</option>');
+                        });
+                        $('#localidad').html('<option value="">Select Localidades</option>');
+                    }
+                });
+            });
+
+             $('#municipio').on('change', function () {
+                var municipioId = this.value;
+                $('#localidad').html('');
+                $.ajax({
+                    url: '{{ route('getLocalidades') }}?municipio_id='+municipioId,
+                    type: 'get',
+                    success: function (res) {
+                        $('#localidad').html('<option value="">Select Localidad</option>');
+                        $.each(res, function (key, value) {
+                            $('#localidad').append('<option value="' + value
+                                .localidad_id + '">' + value.nombre + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
     <!--Switchery [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
 

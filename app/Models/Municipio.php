@@ -17,4 +17,9 @@ class Municipio extends Model
         'nombre',
         'estado_id',
     ];
+
+    public static function municipios ($estado_id){
+        return Municipio::where('estado_id', '=', 'estado_id')
+        ->get();
+    }
 }

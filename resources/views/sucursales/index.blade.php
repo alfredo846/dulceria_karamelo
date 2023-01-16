@@ -52,7 +52,7 @@
 					        <table id="sucursales" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
 					                <tr>
-					                    <th>Número de sucursal</th>
+					                    <th># Sucursal</th>
 					                    <th>Imagen</th>
 					                    <th>Nombre</th>
 					                    <th>Teléfono</th>
