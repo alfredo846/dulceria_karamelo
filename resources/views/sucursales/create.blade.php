@@ -3,11 +3,6 @@
 
 @section('head')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
     <!--Switchery [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
 
@@ -42,6 +37,9 @@
     <!--Dropzone [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\dropzone\dropzone.min.css') }}" rel="stylesheet">
 
+
+
+
 @endsection
 
 @section('content')
@@ -75,12 +73,14 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Número de Sucursal:</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Número
+                                        de Sucursal:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="numero_sucursal" maxlength="3" value ="{{ old('numero_sucursal') }}"
+                                        <input type="text" name="numero_sucursal" maxlength="3"
+                                            value="{{ old('numero_sucursal') }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Número de sucursal" autocomplete="off"
-                                            class="form-control" id="demo-is-inputnormal">
+                                            placeholder="Número de sucursal" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('numero_sucursal'))
                                             <i class="text-danger">{{ $errors->first('numero_sucursal') }}</i>
                                         @endif
@@ -91,8 +91,9 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="nombre" placeholder="Nombre de la sucursal" value ="{{ old('nombre') }}"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                        <input type="text" name="nombre" placeholder="Nombre de la sucursal"
+                                            value="{{ old('nombre') }}" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('nombre'))
                                             <i class="text-danger">{{ $errors->first('nombre') }}</i>
                                         @endif
@@ -103,7 +104,8 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold text-left">Teléfono:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="telefono" placeholder="Teléfono" value ="{{ old('telefono') }}" maxlength="10"
+                                        <input type="text" name="telefono" placeholder="Teléfono"
+                                            value="{{ old('telefono') }}" maxlength="10"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                         @if ($errors->first('telefono'))
@@ -129,10 +131,9 @@
                                     </div>
                                 </div>
 
-                                 <div class="panel-footer text-left">
+                                <div class="panel-footer text-left">
                                     <a href="{{ route('sucursales.index') }}" class="text-right fs-6 text-secundario"><img
-                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30"
-                                            height="30"></a>
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                                 </div>
 
                             </div>
@@ -155,13 +156,14 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Estado:</label>
                                     <div class="col-sm-8">
 
-                                          <select class="form-select form-select-lg mb-3" id="estado">
-                                                <option selected disabled>Select estado</option>
+                                            <select style="width:100%" name="estado_id" id="estado" 
+                                            class="selectpicker" data-live-search="true" data-width="80%">
+                                                <option selected disabled>--Seleccione un estado--</option>
                                                 @foreach ($estados as $estado)
-                                                <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}</option>
+                                                    <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}
+                                                    </option>
                                                 @endforeach
-                                         </select>
-
+                                            </select><br>
                                         @if ($errors->first('estado_id'))
                                             <i class="text-danger">El campo estado es obligatorio</i>
                                         @endif
@@ -172,9 +174,9 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Municipio:</label>
                                     <div class="col-sm-8">
-
-                                        <select class="form-select form-select-lg mb-3" id="municipio"></select>
-
+                                        <div class="select">
+                                            <select style="width:100%" id="municipio" name="municipio_id"></select>
+                                        </div>
                                         @if ($errors->first('municipio_id'))
                                             <i class="text-danger">El campo municipio es obligatorio</i>
                                         @endif
@@ -185,24 +187,24 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Localidad:</label>
                                     <div class="col-sm-8">
-
-                                        <select class="form-select form-select-lg mb-3" id="localidad"></select>
-
+                                        <div class="select">
+                                            <select style="width:100%" id="localidad" name="localidad_id"></select>
+                                        </div>
                                         @if ($errors->first('localidad_id'))
                                             <i class="text-danger">El campo localidad es obligatorio</i>
                                         @endif
                                     </div>
                                 </div>
 
-                               
+
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Email:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="email" value ="{{ old('email') }}"
-                                            placeholder="Correo electrónico"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                        <input type="text" name="email" value="{{ old('email') }}"
+                                            placeholder="Correo electrónico" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('email'))
                                             <i class="text-danger">{{ $errors->first('email') }}</i>
                                         @endif
@@ -214,10 +216,9 @@
                                 <div class="row">
                                     <div class="col-sm-9 col-sm-offset-4">
                                         <button class="btn btn-success" type="submit">Guardar</button>
-                                        {{-- <button class="btn btn-primary" type="reset">Reniciar</button> --}}
                                     </div>
                                 </div>
-                               
+
                             </div>
                 </form>
             </div>
@@ -232,34 +233,38 @@
 
 @section('script')
 
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('#estado').on('change', function () {
+    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#estado').on('change', function() {
                 var estadoId = this.value;
                 $('#municipio').html('');
                 $.ajax({
-                    url: '{{ route('getMunicipios') }}?estado_id='+estadoId,
+                    url: '{{ route('getMunicipios') }}?estado_id=' + estadoId,
                     type: 'get',
-                    success: function (res) {
-                        $('#municipio').html('<option value="">Select Municipio</option>');
-                        $.each(res, function (key, value) {
+                    success: function(res) {
+                        $('#municipio').html(
+                            '<option value="">--Seleccione un municipio--</option>');
+                        $.each(res, function(key, value) {
                             $('#municipio').append('<option value="' + value
-                                .municipio_id + '">' + value.nombre + '</option>');
+                                .municipio_id + '" >' + value.nombre + '</option>');
                         });
-                        $('#localidad').html('<option value="">Select Localidades</option>');
+                        $('#localidad').html(
+                            '<option value="">--Seleccione una ocalidad--</option>');
                     }
                 });
             });
 
-             $('#municipio').on('change', function () {
+            $('#municipio').on('change', function() {
                 var municipioId = this.value;
                 $('#localidad').html('');
                 $.ajax({
-                    url: '{{ route('getLocalidades') }}?municipio_id='+municipioId,
+                    url: '{{ route('getLocalidades') }}?municipio_id=' + municipioId,
                     type: 'get',
-                    success: function (res) {
-                        $('#localidad').html('<option value="">Select Localidad</option>');
-                        $.each(res, function (key, value) {
+                    success: function(res) {
+                        $('#localidad').html(
+                            '<option value="">-- Seleccione una localidad--    </option>');
+                        $.each(res, function(key, value) {
                             $('#localidad').append('<option value="' + value
                                 .localidad_id + '">' + value.nombre + '</option>');
                         });
@@ -312,6 +317,8 @@
     <script src="{{ asset('assets\js\demo\form-file-upload.js') }}"></script>
 
     <script src="{{ asset('assets\js\demo\nifty-demo.min.js') }}"></script>
+
+    <script src="{{ asset('assets\js\select.js') }}"></script>
 
     {{-- Mostrar la imagén --}}
     <script>
