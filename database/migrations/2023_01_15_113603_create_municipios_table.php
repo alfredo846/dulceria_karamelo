@@ -15,9 +15,10 @@ class CreateMunicipiosTable extends Migration
     {
         Schema::create('municipios', function (Blueprint $table) {
             $table->bigIncrements('municipio_id');
-            $table->string('nombre');
             $table->unsignedBigInteger('estado_id');
-            $table->timestamps();
+            $table->string('clave');
+            $table->string('nombre');
+            $table->string('activo');
             $table->foreign('estado_id')->references('estado_id')->on('estados');
         });
     }

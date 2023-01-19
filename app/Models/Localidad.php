@@ -14,10 +14,7 @@ class Localidad extends Model
     protected $primaryKey = 'localidad_id';
 
     protected $fillable = [
-        'nombre',
-        'ciudad',
         'municipio_id',
-        'asentamiento',
-        'codigo_postal',
+        'nombre',
     ];
 }
