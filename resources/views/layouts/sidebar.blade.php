@@ -8,7 +8,7 @@
 									<!--Menu list item-->
 						            <li>
 						                <a href="{{ route('bienvenido') }}">
-						                    <i class="demo-pli-home"></i>
+						                    <i class="fa fa-home fa-lg"></i>
 						                    <span class="menu-title text-bold text-semibold">
 												Inicio
 											</span>
@@ -20,7 +20,7 @@
 						            <!--Menu list item-->
 						            <li>
 						                <a href="#">
-						                    <i class="demo-pli-split-vertical-2"></i>
+						                    <i class="fa fa-server"></i>
 						                    <span class="menu-title text-bold text-semibold">Catálogos</span>
 											<i class="arrow"></i>
 						                </a>
@@ -39,7 +39,7 @@
 						            <!--Menu list item-->
 						            <li>
 						                <a href="#">
-						                    <i class="demo-pli-split-vertical-2"></i>
+						                    <i class="fa fa-star fa-lg"></i>
 						                    <span class="menu-title text-bold">Productos</span>
 											<i class="arrow"></i>
 						                </a>
@@ -54,7 +54,7 @@
 									  <!--Menu list item-->
 						            <li>
 						                <a href="#">
-						                    <i class="demo-pli-split-vertical-2"></i>
+						                    <i class="fa fa-institution"></i>
 						                    <span class="menu-title text-bold">Sucursales</span>
 											<i class="arrow"></i>
 						                </a>
@@ -62,6 +62,24 @@
 						                <!--Submenu-->
 						                <ul class="collapse text-semibold">
 						                    <li><a href="{{ route('sucursales.index') }}">Sucursales</a></li>	
+						                </ul>
+						            </li>
+									<li class="list-divider"></li>
+
+									  <!--Menu list item-->
+						            <li>
+						                <a href="#">
+						                    <i class="fa fa-user-circle-o fa-lg"></i>
+						                    <span class="menu-title text-bold">Usuarios</span>
+											<i class="arrow"></i>
+						                </a>
+						
+						                <!--Submenu-->
+						                <ul class="collapse text-semibold">
+						                    <li><a href="{{ route('sucursales.index') }}">Usuarios</a></li>	
+						                </ul>
+						                <ul class="collapse text-semibold">
+						                    <li><a href="{{ route('roles.index') }}">Roles</a></li>	
 						                </ul>
 						            </li>
 									<li class="list-divider"></li>
