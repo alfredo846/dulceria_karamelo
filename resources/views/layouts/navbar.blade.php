@@ -5,7 +5,7 @@
                 <!--Brand logo & name-->
                 <div class="navbar-header">
                     <a href="{{ route('bienvenido') }}" class="navbar-brand">
-                       <img src="{{ asset('assets\img\logo2.png') }}" alt="Dulcería Karamelo" height="58" width="230">
+                       {{-- <img src="{{ asset('assets\img\logo2.png') }}" alt="Dulcería Karamelo" height="58" width="230"> --}}
                     </a>
                 </div>
                 <!--End brand logo & name-->

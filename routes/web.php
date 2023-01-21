@@ -21,6 +21,7 @@ use App\Http\Controllers\RolController;
 */
 
 Route::view('/', 'bienvenido')->name('bienvenido');
+Route::view('login', 'login')->name('login');
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('categoria_papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');
