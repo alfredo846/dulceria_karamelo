@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
   @section('title', 'Temporada papelera')
 
     @section('head')

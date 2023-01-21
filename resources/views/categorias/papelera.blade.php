@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
   @section('title', 'Categoría papelera')
 
     @section('head')
