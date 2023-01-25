@@ -20,8 +20,9 @@ use App\Http\Controllers\RolController;
 |
 */
 
-Route::view('/', 'bienvenido')->name('bienvenido');
-Route::view('login', 'login')->name('login');
+Route::view('/bienvenido', 'bienvenido')->name('bienvenido');
+Route::view('/', 'auth/login')->name('login');
+// Route::view('/', 'login')->name('login');
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('categoria_papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');
@@ -67,3 +68,6 @@ Route::get('rol_papelera',[RolController::class, 'papelera'])->name('roles.papel
 Route::delete('rol_borrar/{rol_id}',[RolController::class, 'borrar'])->name('roles.borrar');
 Route::delete('rol_activar/{rol_id}',[RolController::class, 'activar'])->name('roles.activar');
 Route::get('rol_export',[RolController::class, 'export'])->name('roles.export');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

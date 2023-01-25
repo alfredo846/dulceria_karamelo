@@ -1,5 +1,5 @@
 $("#login-button").click(function(event){
-	 $('h1.name').html("<b>Iniciando</b><br>"+ $('#user').val());
+	 $('h1.name').html("<b>Iniciando</b><br>"+ $('#email').val());
 
    event.preventDefault();
 		 $('form').fadeOut(500);
