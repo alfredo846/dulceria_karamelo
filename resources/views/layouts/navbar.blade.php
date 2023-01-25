@@ -31,7 +31,7 @@
                         <span class="ic-user pull-right menu-title">
                             <img class="img-circle img-sm" src="{{ asset('assets\img\profile-photos\1.png') }}"
                                 alt="Profile Picture">
-                            <small> {{ Auth::user()->name }}</small>
+                            <small> {{ Auth::user()->username }}</small>
                             <i class="fa fa-caret-right"></i>
                         </span>
                     </a>

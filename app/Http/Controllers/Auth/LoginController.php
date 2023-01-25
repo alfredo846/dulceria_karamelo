@@ -43,6 +43,12 @@ class LoginController extends Controller
         if(Auth::user()->rol_id == 1){ 
             return '/bienvenido';
         }
+        if(Auth::user()->rol_id == 2){ 
+            return '/bienvenido';
+        }
+        if(Auth::user()->rol_id == 3){ 
+            return '/bienvenido';
+        }
         return '/home';
     }
 }
