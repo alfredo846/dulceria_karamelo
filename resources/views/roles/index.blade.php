@@ -37,23 +37,25 @@
 
 					   	<div class="panel-heading demo-icon"> 
 						<br>&nbsp;	
-						<a href="{{ route('roles.papelera') }}">
+						{{-- <a href="{{ route('roles.papelera') }}">
 							<button id="deleteItem" type="submit" class="btn btn-circle btn-danger btn-icon add-tooltip"
 							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Papelera"><i class="demo-psi-recycling icon-lg"></i></button>
-						</a>
-						<a href="{{ route('roles.export') }}">
+						</a> --}}
+
+						{{-- <a href="{{ route('roles.export') }}">
 						<button id="deleteItem" type="submit" class="btn btn-circle btn-success btn-icon add-tooltip"
 							data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Exportar"><i class="fa fa-file-excel-o fa-lg"></i></button>
-						</a>
-							<a href="{{ route('roles.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nuevo rol</button></a>
-					    </div><br>
+						</a> --}}
+
+							{{-- <a href="{{ route('roles.create') }}"> <button class="btn btn-success"><i class="ion-plus-circled lg"></i> Agregar nuevo rol</button></a> --}}
+					    </div>
 					    <div class="panel-body">
 					        <table id="roles" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					            <thead>
 					                <tr>
 					                    <th>Nombre</th>
 					                    <th class="min-tablet">Estado</th>
-					                    <th class="min-tablet">Acciones</th>
+					                    <th class="min-tablet">Detalle</th>
 					                </tr>
 					            </thead>
 					            <tbody>
@@ -69,18 +71,18 @@
 											</button>
 										    </a>
 											
-											<a href="{{ route('roles.edit',$rol) }}">
+											{{-- <a href="{{ route('roles.edit',$rol) }}">
 												<button class="btn btn-sm btn-primary btn-icon add-tooltip"
 												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Actalizar"><i class="demo-psi-pen-5 icon-sm"></i></button>
-											</a>
+											</a> --}}
 											
 											
-											<form action="{{ route('roles.destroy', $rol) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
+											{{-- <form action="{{ route('roles.destroy', $rol) }}" method="POST" style="display: inline-block" class="formulario-eliminar" >
 												@csrf
 												@method('DELETE')
 												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
 												data-toggle="tooltip" data-container="body" data-placement="top" data-original-title="Eliminar"><i class="demo-psi-recycling icon-sm"></i></button>
-											</form>
+											</form> --}}
 
 									    </td>
 					                </tr>

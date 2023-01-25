@@ -72,9 +72,10 @@ Route::get('get-localidades', [SucursalController::class, 'getLocalidades'])->na
 
 Route::resource('roles', RolController::class);
 Route::get('rol_papelera',[RolController::class, 'papelera'])->name('roles.papelera');
-Route::delete('rol_borrar/{rol_id}',[RolController::class, 'borrar'])->name('roles.borrar');
-Route::delete('rol_activar/{rol_id}',[RolController::class, 'activar'])->name('roles.activar');
-Route::get('rol_export',[RolController::class, 'export'])->name('roles.export');
+// Route::delete('rol_borrar/{rol_id}',[RolController::class, 'borrar'])->name('roles.borrar');
+// Route::delete('rol_activar/{rol_id}',[RolController::class, 'activar'])->name('roles.activar');
+// Route::get('rol_export',[RolController::class, 'export'])->name('roles.export');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

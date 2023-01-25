@@ -24,23 +24,23 @@ class RolController extends Controller
         ->with(['roles' => $roles]);
     }
 
-      public function papelera()
-    {
-        $roles   = Rol::onlyTrashed()->get();
+    //   public function papelera()
+    // {
+    //     $roles   = Rol::onlyTrashed()->get();
 
-        return view('roles.papelera')
-        ->with(['roles'     => $roles]);
-    }
+    //     return view('roles.papelera')
+    //     ->with(['roles'     => $roles]);
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('roles.create');
-    }
+    // public function create()
+    // {
+    //     return view('roles.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -48,13 +48,13 @@ class RolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRolRequest $request)
-    {
-         Rol::create($request->all());
+    // public function store(CreateRolRequest $request)
+    // {
+    //      Rol::create($request->all());
 
-         return redirect()->route('roles.index')
-        ->with('message', 'Rol creado exitosamente');
-    }
+    //      return redirect()->route('roles.index')
+    //     ->with('message', 'Rol creado exitosamente');
+    // }
 
     /**
      * Display the specified resource.
@@ -73,10 +73,10 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $role)
-    {
-         return view('roles.edit', compact('role'));
-    }
+    // public function edit(Rol $role)
+    // {
+    //      return view('roles.edit', compact('role'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -85,12 +85,12 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRolRequest $request, Rol $role)
-    {
-            $role->update($request->all());
+    // public function update(EditRolRequest $request, Rol $role)
+    // {
+    //         $role->update($request->all());
 
-           return redirect()->route('roles.index')->with('message', 'Rol actualizado exitosamente');
-    }
+    //        return redirect()->route('roles.index')->with('message', 'Rol actualizado exitosamente');
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -98,29 +98,29 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $role)
-    {
-         $role->delete();
+    // public function destroy(Rol $role)
+    // {
+    //      $role->delete();
 
-        return redirect()->route('roles.index')->with('eliminar','ok');
-    }
+    //     return redirect()->route('roles.index')->with('eliminar','ok');
+    // }
 
-     public function activar($rol_id)
-    {
-        $roles = Rol::withTrashed()->where('rol_id', $rol_id)->restore();
+    //  public function activar($rol_id)
+    // {
+    //     $roles = Rol::withTrashed()->where('rol_id', $rol_id)->restore();
 
-        return redirect()->route('roles.papelera')->with('activar','ok');
-    }
+    //     return redirect()->route('roles.papelera')->with('activar','ok');
+    // }
 
-     public function borrar($rol_id)
-    {
-        $roles = Rol::withTrashed()->where('rol_id', $rol_id)->forcedelete();
+    //  public function borrar($rol_id)
+    // {
+    //     $roles = Rol::withTrashed()->where('rol_id', $rol_id)->forcedelete();
 
-        return redirect()->route('roles.papelera')->with('borrar','ok');
-    }
+    //     return redirect()->route('roles.papelera')->with('borrar','ok');
+    // }
 
-    public function export()
-    {
-       return Excel::download(new RolesExport, 'roles.xlsx');
-    }
+    // public function export()
+    // {
+    //    return Excel::download(new RolesExport, 'roles.xlsx');
+    // }
 }
