@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->text('foto');
             $table->unsignedBigInteger('rol_id');
-            $table->unsignedBigInteger('sucursal_id');
+            $table->unsignedBigInteger('sucursal_id')->nullable();
             $table->date('ultimo_login')->nullable();
             $table->rememberToken();
             $table->softDeletes();

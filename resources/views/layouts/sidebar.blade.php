@@ -76,7 +76,7 @@
 						
 						                <!--Submenu-->
 						                <ul class="collapse text-semibold">
-						                    <li><a href="{{ route('sucursales.index') }}">Usuarios</a></li>	
+						                    <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>	
 						                </ul>
 						                <ul class="collapse text-semibold">
 						                    <li><a href="{{ route('roles.index') }}">Roles</a></li>	

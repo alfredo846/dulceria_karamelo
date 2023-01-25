@@ -60,6 +60,11 @@ return [
             'root' => public_path('imagenes/sucursales'),
         ],
 
+        'usuario-imagenes' => [
+            'driver' => 'local',
+            'root' => public_path('imagenes/usuarios'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

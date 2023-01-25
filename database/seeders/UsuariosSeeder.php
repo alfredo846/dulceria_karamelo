@@ -15,7 +15,7 @@ class UsuariosSeeder extends Seeder
      */
     public function run()
     {
-    $superadministrador=User::create([
+    $superadmin=User::create([
         'nombre'             => 'Alfredo',
         'apellido_paterno'   => 'Heraz',
         'apellido_materno'   => 'Pérez',
@@ -26,7 +26,6 @@ class UsuariosSeeder extends Seeder
         'password'           =>  Hash::make('superadmin'),
         'foto'               => 'shadow.jpg',
         'rol_id'             => '1',
-        'sucursal_id'        => '1',
         'ultimo_login'       => '2023-01-02 18:19:52',
     ]);
 
@@ -40,7 +39,7 @@ class UsuariosSeeder extends Seeder
         'email'              => 'admin@gmail.com',
         'password'           =>  Hash::make('admin'),
         'foto'               => 'shadow.jpg',
-        'rol_id'             => '1',
+        'rol_id'             => '2',
         'sucursal_id'        => '1',
         'ultimo_login'       => '2023-01-02 18:19:52',
     ]);
@@ -55,7 +54,7 @@ class UsuariosSeeder extends Seeder
         'email'              => 'vendedor@gmail.com',
         'password'           =>  Hash::make('vendedor'),
         'foto'               => 'shadow.jpg',
-        'rol_id'             => '1',
+        'rol_id'             => '3',
         'sucursal_id'        => '1',
         'ultimo_login'       => '2023-01-02 18:19:52',
     ]);

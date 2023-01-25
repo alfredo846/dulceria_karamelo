@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpaqueController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,12 @@ use App\Http\Controllers\RolController;
 Route::view('/bienvenido', 'bienvenido')->name('bienvenido');
 Route::view('/', 'auth/login')->name('login');
 // Route::view('/', 'login')->name('login');
+
+Route::resource('usuarios', UsuarioController::class);
+Route::get('usuario_papelera',[UsuarioController::class, 'papelera'])->name('usuarios.papelera');
+Route::delete('usuario_borrar/{id}',[UsuarioController::class, 'borrar'])->name('usuarios.borrar');
+Route::delete('usuario_activar/{id}',[UsuarioController::class, 'activar'])->name('usuarios.activar');
+Route::get('usuario_export',[UsuarioController::class, 'export'])->name('usuarios.export');
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('categoria_papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');
