@@ -61,6 +61,7 @@
                         <div class="panel-heading"><br>
                             <h4 class="text-main text-bold mar-no text-center">Categoría</h4>
                         </div>
+                        <section id="content">
                         <form action="{{ route('categorias.store') }}" method="post" enctype="multipart/form-data"
                             class="form-horizontal">
                             @csrf
@@ -116,7 +117,7 @@
                                         src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                             </div>
                         </form>
-
+                    </section>
 
                     </div>
                 </div>
@@ -129,6 +130,7 @@
 @endsection
 
 @section('script')
+
     <!--Switchery [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
 
