@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Rol;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
+use App\Http\Requests\Usuarios\CreateUsuarioRequest;
 use Illuminate\Support\Facades\Storage;
 
 class UsuarioController extends Controller
@@ -19,14 +20,12 @@ class UsuarioController extends Controller
     {
         $usuarios    = User::orderBy('id','DESC')->where('deleted_at', '=', NULL)->get();
         $roles       = Rol::all();
-        $rolesd      = Rol::onlyTrashed()->get();
         $sucursales  = Sucursal::all();
         $sucursalesd = Sucursal::onlyTrashed()->get();
        
         return view('usuarios.index')
         ->with(['usuarios'        => $usuarios])
         ->with(['roles'           => $roles])
-        ->with(['rolesd'          => $rolesd])
         ->with(['sucursales'      => $sucursales])    
         ->with(['sucursalesd'      => $sucursalesd]);  
     }
@@ -38,7 +37,11 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $roles       = Rol::all();
+        $sucursales  = Sucursal::all();
+        $sucursalesd = Sucursal::onlyTrashed()->get();
+
+        return view('usuarios.create',compact('roles','sucursales','sucursalesd'));
     }
 
     /**
@@ -47,9 +50,29 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUsuarioRequest $request)
     {
-        //
+        if (($request->rol_id == '2') || ($request->rol_id == '3')) {
+             $this->validate($request, [
+            'sucursal_id' => 'required',
+        ]);
+        }
+
+        $foto2 = "shadow.jpg";
+        $newUsuario = User::create($request->all());
+
+        if ($request->hasFile('foto')) {
+          $newUsuario->foto = Storage::disk('usuario-imagenes')->putFile('', $request->file('foto'));
+        }else{    
+          $newUsuario->foto = ($foto2);
+        }
+
+        $newUsuario->password = bcrypt($request->password);
+            
+        $newUsuario->save();
+
+         return redirect()->route('usuarios.index')
+        ->with('message', 'Usuario creado exitosamente');
     }
 
     /**

@@ -80,11 +80,6 @@
                                             <td>{{ $rol->nombre }}</td>
                                         @endif
                                     @endforeach
-                                    @foreach ($rolesd as $rol)
-                                        @if ($rol->rol_id == $usuario->rol_id)
-                                            <td>{{ $rol->nombre }}</td>
-                                        @endif
-                                    @endforeach
 
                                     @foreach ($sucursales as $sucursal)
                                         @if ($sucursal->sucursal_id == $usuario->sucursal_id)
