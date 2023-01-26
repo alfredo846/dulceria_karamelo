@@ -18,7 +18,7 @@
     <div id="content-container">
         <br>
         <div class="col-md-12">
-            <div class="panel panel-info panel-colorful media middle pad-all" style="background-color:#783449">
+            <div class="panel panel-primary panel-colorful media middle pad-all">
                 <div class="media-body">
                     <p class="text-2x mar-no text-semibold">Usuarios | Listado</p>
                     <p></p>

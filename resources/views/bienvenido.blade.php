@@ -8,6 +8,15 @@
     @section('content')
       <!--CONTENT CONTAINER-->
             <div id="content-container">
+                <br>
+				     <div class="col-md-12">
+					     <div class="panel panel-primary panel-colorful media middle pad-all">
+					     <div class="media-body">
+					         <p class="text-2x mar-no text-semibold">Bienvenido</p><p></p>
+					     </div>
+					 </div>
+		   </div>
+		   <br><br><br>
                
 
                 <!--Page content-->
@@ -651,4 +660,5 @@
             <!--END CONTENT CONTAINER-->
     
     @endsection
+
     
