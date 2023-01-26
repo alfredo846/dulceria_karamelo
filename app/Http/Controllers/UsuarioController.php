@@ -95,9 +95,19 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $usuario)
     {
-        //
+        $usuarios    = User::orderBy('id','DESC')->where('deleted_at', '=', NULL)->get();
+        $roles       = Rol::all();
+        $sucursales  = Sucursal::all();
+        $sucursalesd = Sucursal::onlyTrashed()->get();
+       
+        return view('usuarios.show')
+        ->with(['usuario'        => $usuario])
+        ->with(['usuarios'        => $usuarios])
+        ->with(['roles'           => $roles])
+        ->with(['sucursales'      => $sucursales])    
+        ->with(['sucursalesd'     => $sucursalesd]); 
     }
 
     /**
