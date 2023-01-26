@@ -59,6 +59,18 @@
     height: 140px;
     
 }
+
+.fotoperfiluser {
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+    box-shadow: 0 0 15px 15px #1266e4;
+    -webkit-box-shadow: 0 0 5px 5px #783449;
+    width: 120px;
+    height: 100px;
+    
+}
+
+
 .text-foto {
     font-size: 1.1rem;
     color: #4d627b;

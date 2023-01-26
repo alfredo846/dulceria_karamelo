@@ -27,7 +27,21 @@ class UsuarioController extends Controller
         ->with(['usuarios'        => $usuarios])
         ->with(['roles'           => $roles])
         ->with(['sucursales'      => $sucursales])    
-        ->with(['sucursalesd'      => $sucursalesd]);  
+        ->with(['sucursalesd'     => $sucursalesd]);  
+    }
+
+     public function papelera()
+    {
+        $usuarios    = User::onlyTrashed()->get();
+        $roles       = Rol::all();
+        $sucursales  = Sucursal::all();
+        $sucursalesd = Sucursal::onlyTrashed()->get();
+
+        return view('usuarios.papelera')
+        ->with(['usuarios'        => $usuarios])
+        ->with(['roles'           => $roles])
+        ->with(['sucursales'      => $sucursales])    
+        ->with(['sucursalesd'     => $sucursalesd]); 
     }
 
     /**
@@ -115,8 +129,34 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $usuario)
     {
-        //
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index')->with('eliminar','ok');
+    }
+
+    public function activar($id)
+    {
+        $usuarios = User::withTrashed()->where('id', $id)->restore();
+
+        return redirect()->route('usuarios.papelera')->with('activar','ok');
+    }
+
+    public function borrar($id)
+    {
+        $usuario = User::withTrashed()->where('id', $id)->find($id);
+
+        if (Storage::disk('usuario-imagenes')->exists("$usuario->foto")) {
+            if($usuario->foto == "shadow.jpg"){
+                    
+                } else {
+                    Storage::disk('usuario-imagenes')->delete("$usuario->foto");
+                }
+        }
+        
+        $usuarios = User::withTrashed()->where('id', $id)->forcedelete();
+
+        return redirect()->route('usuarios.papelera')->with('borrar','ok');
     }
 }

@@ -344,7 +344,7 @@
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        $('#imagePreview').html("<img class='fotoperfil' src='" + e.target.result + "'/>");
+                        $('#imagePreview').html("<img class='fotoperfiluser' src='" + e.target.result + "'/>");
                     }
                     reader.readAsDataURL(input.files[0]);
                 }
