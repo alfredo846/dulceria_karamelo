@@ -65,21 +65,24 @@
                                     <td>{{ $sucursal->telefono }}</td>
                                     <td>{{ $sucursal->email }}</td>
                                     <td><span class="label label-danger">Inactivo</span></td>
-                                   <td>
+                                    <td>
 
-										<form action="{{ route('sucursales.activar', $sucursal) }}" method="POST"  style="display: inline-block" class="formulario-activar" >
-											@csrf
-											@method('DELETE')
-												<button type="submit" class="btn btn-sm btn-success btn-icon">Activar</button>
-											</form>
+                                        <form action="{{ route('sucursales.activar', $sucursal) }}" method="POST"
+                                            style="display: inline-block" class="formulario-activar">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-mint btn-icon">Activar</button>
+                                        </form>
 
-											<form action="{{ route('sucursales.borrar', $sucursal) }}" method="POST" style="display: inline-block" class="formulario-borrar" >
-												@csrf
-												@method('DELETE')
-												<button id="deleteItem" type="submit" class="btn btn-sm btn-danger btn-icon">Borrar</button>
-											</form>
+                                        <form action="{{ route('sucursales.borrar', $sucursal) }}" method="POST"
+                                            style="display: inline-block" class="formulario-borrar">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button id="deleteItem" type="submit"
+                                                class="btn btn-sm btn-danger btn-icon">Borrar</button>
+                                        </form>
 
-									    </td>
+                                    </td>
                                 </tr>
                             @endforeach
 
@@ -114,35 +117,35 @@
     <script src="{{ asset('assets\js\demo\icons.js') }}"></script>
     <script src="{{ asset('assets\js\sweetalert2@11.js') }}"></script>
 
-    @if(session('eliminar') == 'ok')
-	<script>
-		Swal.fire(
-		'¡Eliminado!',
-		'El registro se elimino exitosamente.',
-		'success'
-				)
-	</script>
-	@endif
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El registro se elimino exitosamente.',
+                'success'
+            )
+        </script>
+    @endif
 
-	@if(session('activar') == 'ok')
-	<script>
-		Swal.fire(
-		'¡Activado!',
-		'El registro se ha activado exitosamente.',
-		'success'
-				)
-	</script>
-	@endif
+    @if (session('activar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Activado!',
+                'El registro se ha activado exitosamente.',
+                'success'
+            )
+        </script>
+    @endif
 
-	@if(session('borrar') == 'ok')
-	<script>
-		Swal.fire(
-		'¡Eliminado!',
-		'El registro se ha eliminado exitosamente.',
-		'success'
-				)
-	</script>
-	@endif
+    @if (session('borrar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El registro se ha eliminado exitosamente.',
+                'success'
+            )
+        </script>
+    @endif
 
 
     <script type="text/javascript">
@@ -162,7 +165,7 @@
                 text: "¡Este registro se eliminará!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3f7a4a',
+                confirmButtonColor: '#26a69a',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '¡Si, eliminar!',
                 cancelButtonText: 'Cancelar'
@@ -207,45 +210,45 @@
     </script>
 
     <script>
-			$('.formulario-borrar').submit(function(e){
-				e.preventDefault();
+        $('.formulario-borrar').submit(function(e) {
+            e.preventDefault();
 
-			Swal.fire({
-			title: '¿Estás seguro?',
-			text: "¡Este registro se eliminará permanentemente!",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: '¡Si, eliminar!',
-			cancelButtonText: 'Cancelar'
-			}).then((result) => {
-			if (result.isConfirmed) {
-				
-				this.submit();
-			}
-			})
-			});
-		</script>
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡Este registro se eliminará de forma permanente!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#26a69a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
-		<script>
-			$('.formulario-activar').submit(function(e){
-				e.preventDefault();
+                    this.submit();
+                }
+            })
+        });
+    </script>
 
-			Swal.fire({
-			title: '¿Estás seguro que deseas activar el registro?',
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: '¡Si, activar!',
-			cancelButtonText: 'Cancelar'
-			}).then((result) => {
-			if (result.isConfirmed) {
-				
-				this.submit();
-			}
-			})
-			});
-		</script>
+    <script>
+        $('.formulario-activar').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                text: '¿Está seguro de que desea activar el registro?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#26a69a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, activar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    this.submit();
+                }
+            })
+        });
+    </script>
 @endsection

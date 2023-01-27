@@ -176,7 +176,7 @@
 			text: "¡Este registro se eliminará permanentemente!",
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
+			confirmButtonColor: '#26a69a',
 			cancelButtonColor: '#d33',
 			confirmButtonText: '¡Si, eliminar!',
 			cancelButtonText: 'Cancelar'
@@ -197,7 +197,7 @@
 			title: '¿Estás seguro que deseas activar el registro?',
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
+			confirmButtonColor: '#26a69a',
 			cancelButtonColor: '#d33',
 			confirmButtonText: '¡Si, activar!',
 			cancelButtonText: 'Cancelar'

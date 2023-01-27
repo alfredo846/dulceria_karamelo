@@ -181,7 +181,7 @@
                 text: "¡Este registro se eliminará!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3f7a4a',
+                confirmButtonColor: '#26a69a',
                 cancelButtonColor: '#d33',
                 confirmButtonText: '¡Si, eliminar!',
                 cancelButtonText: 'Cancelar'

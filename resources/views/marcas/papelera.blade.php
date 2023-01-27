@@ -59,7 +59,7 @@
 										<form action="{{ route('marcas.activar', $marca) }}" method="POST"  style="display: inline-block" class="formulario-activar" >
 											@csrf
 											@method('DELETE')
-												<button type="submit" class="btn btn-sm btn-success btn-icon">Activar</button>
+												<button type="submit" class="btn btn-sm btn-mint btn-icon">Activar</button>
 											</form>
 
 											<form action="{{ route('marcas.borrar', $marca) }}" method="POST" style="display: inline-block" class="formulario-borrar" >
@@ -175,10 +175,10 @@
 
 			Swal.fire({
 			title: '¿Estás seguro?',
-			text: "¡Este registro se eliminará permanentemente!",
+			text: "¡Este registro se eliminará de forma permanente!",
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
+			confirmButtonColor: '#26a69a',
 			cancelButtonColor: '#d33',
 			confirmButtonText: '¡Si, eliminar!',
 			cancelButtonText: 'Cancelar'
@@ -196,10 +196,10 @@
 				e.preventDefault();
 
 			Swal.fire({
-			title: '¿Estás seguro que deseas activar el registro?',
+			text: '¿Está seguro de que desea activar el registro?',
 			icon: 'warning',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
+			confirmButtonColor: '#26a69a',
 			cancelButtonColor: '#d33',
 			confirmButtonText: '¡Si, activar!',
 			cancelButtonText: 'Cancelar'
