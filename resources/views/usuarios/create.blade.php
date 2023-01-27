@@ -2,39 +2,14 @@
 @section('title', 'Agregar usuario')
 
 @section('head')
-    <!--Switchery [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
-
-
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.css') }}" rel="stylesheet">
-
 
     <!--Chosen [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\chosen\chosen.min.css') }}" rel="stylesheet">
 
-
     <!--noUiSlider [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\noUiSlider\nouislider.min.css') }}" rel="stylesheet">
-
-
-    <!--Select2 [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\select2\css\select2.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.css') }}" rel="stylesheet">
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\dropzone\dropzone.min.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -71,7 +46,7 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="nombre" placeholder="Nombre del usuario"
+                                        <input type="text" name="nombre" placeholder="Nombre del usuario" maxlength="25"
                                             value="{{ old('nombre') }}" autocomplete="off" class="form-control"
                                             id="nombre" onkeyup="myFunction();">
                                         @if ($errors->first('nombre'))
@@ -85,10 +60,10 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Apellido
                                         Paterno:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="apellido_paterno"
-                                            placeholder="Apellido paterno del usuario"
-                                            value="{{ old('apellido_paterno') }}" autocomplete="off" class="form-control"
-                                            id="apellido_paterno" onkeyup="myFunction();">
+                                        <input type="text" name="apellido_paterno" maxlength="25"
+                                            placeholder="Apellido paterno del usuario" value="{{ old('apellido_paterno') }}"
+                                            autocomplete="off" class="form-control" id="apellido_paterno"
+                                            onkeyup="myFunction();">
                                         @if ($errors->first('apellido_paterno'))
                                             <i class="text-danger">{{ $errors->first('apellido_paterno') }}</i>
                                         @endif
@@ -100,10 +75,10 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Apellido
                                         Materno:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="apellido_materno"
-                                            placeholder="Apellido materno del usuario"
-                                            value="{{ old('apellido_materno') }}" autocomplete="off" class="form-control"
-                                            id="apellido_materno" onkeyup="myFunction();">
+                                        <input type="text" name="apellido_materno" maxlength="25"
+                                            placeholder="Apellido materno del usuario" value="{{ old('apellido_materno') }}"
+                                            autocomplete="off" class="form-control" id="apellido_materno"
+                                            onkeyup="myFunction();">
                                         @if ($errors->first('apellido_materno'))
                                             <i class="text-danger">{{ $errors->first('apellido_materno') }}</i>
                                         @endif
@@ -130,7 +105,7 @@
                                 <div class="panel-footer text-left">
                                     <a href="{{ route('usuarios.index') }}" class="text-right fs-6 text-secundario"><img
                                             src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
-                                </div>
+                                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
 
                             </div>
                         </div>
@@ -153,12 +128,14 @@
                                     <div class="col-sm-8">
                                         <div class="radio">
 
-                                            <input type="radio" name="genero" Value="masculino" {{ (old('genero') == "masculino") ? 'checked' : '' }}
-                                            id="demo-form-radio-1" class="magic-radio">
+                                            <input type="radio" name="genero" Value="masculino"
+                                                {{ old('genero') == 'masculino' ? 'checked' : '' }} id="demo-form-radio-1"
+                                                class="magic-radio">
                                             <label for="demo-form-radio-1">Maculino</label>
 
-                                            <input type="radio" name="genero" Value="femenino" {{ (old('genero') == "femenino") ? 'checked' : '' }}
-                                            id="demo-form-radio-2" class="magic-radio">
+                                            <input type="radio" name="genero" Value="femenino"
+                                                {{ old('genero') == 'femenino' ? 'checked' : '' }} id="demo-form-radio-2"
+                                                class="magic-radio">
                                             <label for="demo-form-radio-2">Femenino</label>
 
                                         </div>
@@ -242,7 +219,8 @@
 
                                         @if ($errors->first('rol_id'))
                                             <i class="text-danger">El campo rol es obligatorio</i>
-                                        @endif<br>
+                                        @endif
+                                        <br>
 
                                         @if ($errors->first('sucursal_id'))
                                             <i class="text-danger">El campo sucursal es obligatorio</i>
@@ -250,13 +228,12 @@
                                     </div>
                                 </div>
 
-
                                 <div class="form-group" id="sucursales" style="display:none;">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold is-required text-left">Sucursal:</label>
                                     <div class="col-sm-8">
 
-                                         <select class="selectpicker" data-live-search="true" data-width="100%"
+                                        <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="sucursal_id">
                                             <option value="">-- Seleccione una sucursal --</option>
                                             @foreach ($sucursales as $sucursal)
@@ -271,71 +248,37 @@
                                         </select>
                                     </div>
                                 </div>
-                               
+
 
                             </div>
 
                             <div class="panel-footer">
                                 <div class="row">
-                                    <div class="col-sm-9 col-sm-offset-4">
-                                        <button class="btn btn-success" type="submit">Guardar</button>
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <button class="buttonp" type="submit">Guardar</button>
                                     </div>
                                 </div>
-
+                            </div><br>&nbsp;<br>&nbsp;
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
-  
 
 @endsection
 
 @section('script')
-    <!--Switchery [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
-
-
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
-
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.js') }}"></script>
-
 
     <!--Chosen [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\chosen\chosen.jquery.min.js') }}"></script>
 
-
     <!--noUiSlider [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\noUiSlider\nouislider.min.js') }}"></script>
 
-
-    <!--Select2 [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\select2\js\select2.min.js') }}"></script>
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.js') }}"></script>
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.js') }}"></script>
-
-
     <!--Form Component [ SAMPLE ]-->
     <script src="{{ asset('assets\js\demo\form-component.js') }}"></script>
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\dropzone\dropzone.min.js') }}"></script>
-
-
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="{{ asset('assets\js\demo\form-file-upload.js') }}"></script>
-
-    <script src="{{ asset('assets\js\demo\nifty-demo.min.js') }}"></script>
 
     {{-- Mostrar la imagén --}}
     <script>
@@ -355,51 +298,55 @@
         })();
     </script>
 
+    {{-- Username --}}
     <script type="text/JavaScript">
         function myFunction() {
-            var nombre = document.getElementById("nombre").value;
-            var apellido_paterno = document.getElementById("apellido_paterno").value;
-            var apellido_materno = document.getElementById("apellido_materno").value;
-            var datos;
-            datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
-            document.formulario_01.username.value = datos;
-            // alert(datos);
-            // document.getElementById("aux").innerHTML = datos;
-           }
-            </script>
+                    var nombre = document.getElementById("nombre").value;
+                    var apellido_paterno = document.getElementById("apellido_paterno").value;
+                    var apellido_materno = document.getElementById("apellido_materno").value;
+                    var datos;
+                    datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
+                    document.formulario_01.username.value = datos;
+                    // alert(datos);
+                    // document.getElementById("aux").innerHTML = datos;
+                   }
+        </script>
 
+    {{-- Validar input nombre --}}
     <script type="text/JavaScript">
         $('input[name=nombre]').bind('keypress', function(event) {
-            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-            if (!regex.test(key)) {
-            event.preventDefault();
-            return false;
-            }
-            });
-            </script>
+                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                    if (!regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                    }
+                    });
+        </script>
 
+    {{-- Validar input apellido paterno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_paterno]').bind('keypress', function(event) {
-            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-            if (!regex.test(key)) {
-            event.preventDefault();
-            return false;
-            }
-            });
-            </script>
+                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                    if (!regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                    }
+                    });
+                    </script>
 
+    {{-- Validar input apellido mateno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_materno]').bind('keypress', function(event) {
-            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-            if (!regex.test(key)) {
-            event.preventDefault();
-            return false;
-            }
-            });
-            </script>
+                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                    if (!regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                    }
+                    });
+        </script>
 
     {{-- ocultar y mostrar inputs
          <script type="text/JavaScript">
@@ -415,23 +362,22 @@
             });
         </script> --}}
 
+    {{-- mostrar u ocultar el select sucursales --}}
     <script>
-    function seleccionado(){
-    var opt = $('#rol_id').val();
-    
-   // alert(opt);
-    if(opt=="1"){
-          $('#sucursales').hide();
-    }else{
-        if(opt=="2"){
-            $('#sucursales').show();
-        }else{
-            $('#sucursales').show();
+        function seleccionado() {
+            var opt = $('#rol_id').val();
+
+            // alert(opt);
+            if (opt == "1") {
+                $('#sucursales').hide();
+            } else {
+                if (opt == "2") {
+                    $('#sucursales').show();
+                } else {
+                    $('#sucursales').show();
+                }
+            }
         }
-    }
-}
     </script>
-
-
 
 @endsection
