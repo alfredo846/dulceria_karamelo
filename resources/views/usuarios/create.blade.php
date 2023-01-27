@@ -103,9 +103,12 @@
                                 </div>
 
                                 <div class="panel-footer text-left">
-                                    <a href="{{ route('usuarios.index') }}" class="text-right fs-6 text-secundario"><img
-                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
-                                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                                    <a href="{{ route('usuarios.index') }}"
+                                        class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Regresar"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
+                                </div>
+                                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
 
                             </div>
                         </div>
@@ -302,52 +305,52 @@
     {{-- Username --}}
     <script type="text/JavaScript">
         function myFunction() {
-                    var nombre = document.getElementById("nombre").value;
-                    var apellido_paterno = document.getElementById("apellido_paterno").value;
-                    var apellido_materno = document.getElementById("apellido_materno").value;
-                    var datos;
-                    datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
-                    document.formulario_01.username.value = datos;
-                    // alert(datos);
-                    // document.getElementById("aux").innerHTML = datos;
-                   }
-        </script>
+                        var nombre = document.getElementById("nombre").value;
+                        var apellido_paterno = document.getElementById("apellido_paterno").value;
+                        var apellido_materno = document.getElementById("apellido_materno").value;
+                        var datos;
+                        datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
+                        document.formulario_01.username.value = datos;
+                        // alert(datos);
+                        // document.getElementById("aux").innerHTML = datos;
+                       }
+            </script>
 
     {{-- Validar input nombre --}}
     <script type="text/JavaScript">
         $('input[name=nombre]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-        </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+            </script>
 
     {{-- Validar input apellido paterno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_paterno]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-                    </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+                        </script>
 
     {{-- Validar input apellido mateno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_materno]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-        </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+            </script>
 
     {{-- ocultar y mostrar inputs
          <script type="text/JavaScript">

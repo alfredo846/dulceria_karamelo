@@ -104,9 +104,12 @@
                                 </div>
 
                                 <div class="panel-footer text-left">
-                                    <a href="{{ route('sucursales.index') }}" class="text-right fs-6 text-secundario"><img
-                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
-                                </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                                    <a href="{{ route('sucursales.index') }}"
+                                        class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Regresar"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
+                                </div>
+                                <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
 
                             </div>
                         </div>
@@ -245,7 +248,7 @@
         });
     </script>
 
-   <!--Bootstrap Select [ OPTIONAL ]-->
+    <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 
     <!--Chosen [ OPTIONAL ]-->

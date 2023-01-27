@@ -110,8 +110,10 @@
                                 </div>
 
                                 <div class="panel-footer text-left">
-                                    <a href="{{ route('sucursales.index') }}" class="text-right fs-6 text-secundario"><img
-                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
+                                    <a href="{{ route('sucursales.index') }}"
+                                        class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Regresar"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
                                 </div>
 
                             </div>

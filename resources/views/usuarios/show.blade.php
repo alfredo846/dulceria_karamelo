@@ -3,14 +3,14 @@
 
 @section('head')
 
-        <!--Bootstrap Select [ OPTIONAL ]-->
-        <link href="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.css') }}" rel="stylesheet">
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.css') }}" rel="stylesheet">
 
-        <!--Chosen [ OPTIONAL ]-->
-        <link href="{{ asset('assets\plugins\chosen\chosen.min.css') }}" rel="stylesheet">
+    <!--Chosen [ OPTIONAL ]-->
+    <link href="{{ asset('assets\plugins\chosen\chosen.min.css') }}" rel="stylesheet">
 
-        <!--noUiSlider [ OPTIONAL ]-->
-        <link href="{{ asset('assets\plugins\noUiSlider\nouislider.min.css') }}" rel="stylesheet">
+    <!--noUiSlider [ OPTIONAL ]-->
+    <link href="{{ asset('assets\plugins\noUiSlider\nouislider.min.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -45,7 +45,8 @@
                                         class="col-sm-4 control-label text-bold text-semibold text-left"></label>
                                     <div class="col-sm-8">
                                         <div id="imagePreview"></div>
-                                        <img class='profile-image-show' src="{{ asset('imagenes/usuarios/' . $usuario->foto) }}" alt="foto">
+                                        <img class='profile-image-show'
+                                            src="{{ asset('imagenes/usuarios/' . $usuario->foto) }}" alt="foto">
                                     </div>
                                 </div>
 
@@ -62,7 +63,8 @@
                                         class="col-sm-4 control-label text-bold text-semibold  text-left">Apellido
                                         Paterno:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value="{{ $usuario->apellido_paterno }}" class="form-control" disabled>
+                                        <input type="text" value="{{ $usuario->apellido_paterno }}" class="form-control"
+                                            disabled>
                                     </div>
                                 </div>
 
@@ -71,13 +73,16 @@
                                         class="col-sm-4 control-label text-bold text-semibold  text-left">Apellido
                                         Materno:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value="{{ $usuario->apellido_materno }}" class="form-control" disabled>
+                                        <input type="text" value="{{ $usuario->apellido_materno }}" class="form-control"
+                                            disabled>
                                     </div>
                                 </div>
 
                                 <div class="panel-footer text-left">
-                                    <a href="{{ route('usuarios.index') }}" class="text-right fs-6 text-secundario"><img
-                                    src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
+                                    <a href="{{ route('usuarios.index') }}"
+                                        class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Regresar"><img
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
                                 </div>
 
                             </div>
@@ -99,13 +104,13 @@
                                         <div class="radio">
 
                                             <input type="radio" name="genero" Value="masculino"
-                                              @if($usuario->genero == 'masculino') checked @endif
-                                                id="demo-form-radio-1" class="magic-radio" disabled>
+                                                @if ($usuario->genero == 'masculino') checked @endif id="demo-form-radio-1"
+                                                class="magic-radio" disabled>
                                             <label for="demo-form-radio-1">Maculino</label>
 
                                             <input type="radio" name="genero" Value="femenino"
-                                                @if($usuario->genero == 'femenino') checked @endif
-                                                id="demo-form-radio-2" class="magic-radio" disabled>
+                                                @if ($usuario->genero == 'femenino') checked @endif id="demo-form-radio-2"
+                                                class="magic-radio" disabled>
                                             <label for="demo-form-radio-2">Femenino</label>
 
                                         </div>
@@ -115,27 +120,30 @@
                                     </div>
                                 </div><br>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold  text-left">Teléfono:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value="{{ $usuario->telefono }}" class="form-control" disabled>
+                                        <input type="text" value="{{ $usuario->telefono }}" class="form-control"
+                                            disabled>
                                     </div>
                                 </div><br>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold  text-left">Username:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value="{{ $usuario->username }}" class="form-control" disabled>
+                                        <input type="text" value="{{ $usuario->username }}" class="form-control"
+                                            disabled>
                                     </div>
                                 </div><br>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold  text-left">Email:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" value="{{ $usuario->email }}" class="form-control" disabled>
+                                        <input type="text" value="{{ $usuario->email }}" class="form-control"
+                                            disabled>
                                     </div>
                                 </div><br>
 
@@ -154,27 +162,28 @@
                                     </div>
                                 </div><br>
 
-                                @if($usuario->sucursal_id != "")
-                                <div class="form-group">
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold  text-left">Sucursal:</label>
-                                    <div class="col-sm-8">
-                                        <select class="selectpicker" data-live-search="true" data-width="100%" disabled>
-                                            @foreach ($sucursales as $sucursal)
-                                                @if ($usuario->sucursal_id == $sucursal->sucursal_id)
-                                                    <option value="{{ $sucursal->sucursal_id }}" selected>
-                                                        {{ $sucursal->nombre }}
-                                                @endif
-                                            @endforeach
-                                            @foreach ($sucursalesd as $sucursal)
-                                                @if ($usuario->sucursal_id == $sucursal->sucursal_id)
-                                                    <option value="{{ $sucursal->sucursal_id }}" selected>
-                                                        {{ $sucursal->nombre }}
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                @if ($usuario->sucursal_id != '')
+                                    <div class="form-group">
+                                        <label for="demo-is-inputnormal"
+                                            class="col-sm-3 control-label text-bold text-semibold  text-left">Sucursal:</label>
+                                        <div class="col-sm-8">
+                                            <select class="selectpicker" data-live-search="true" data-width="100%"
+                                                disabled>
+                                                @foreach ($sucursales as $sucursal)
+                                                    @if ($usuario->sucursal_id == $sucursal->sucursal_id)
+                                                        <option value="{{ $sucursal->sucursal_id }}" selected>
+                                                            {{ $sucursal->nombre }}
+                                                    @endif
+                                                @endforeach
+                                                @foreach ($sucursalesd as $sucursal)
+                                                    @if ($usuario->sucursal_id == $sucursal->sucursal_id)
+                                                        <option value="{{ $sucursal->sucursal_id }}" selected>
+                                                            {{ $sucursal->nombre }}
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                                 <br>&nbsp;<br>&nbsp;
                             </div>
@@ -191,16 +200,16 @@
 
 @section('script')
 
-        <!--Bootstrap Select [ OPTIONAL ]-->
-        <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 
-        <!--Chosen [ OPTIONAL ]-->
-        <script src="{{ asset('assets\plugins\chosen\chosen.jquery.min.js') }}"></script>
+    <!--Chosen [ OPTIONAL ]-->
+    <script src="{{ asset('assets\plugins\chosen\chosen.jquery.min.js') }}"></script>
 
-        <!--noUiSlider [ OPTIONAL ]-->
-        <script src="{{ asset('assets\plugins\noUiSlider\nouislider.min.js') }}"></script>
+    <!--noUiSlider [ OPTIONAL ]-->
+    <script src="{{ asset('assets\plugins\noUiSlider\nouislider.min.js') }}"></script>
 
-        <!--Form Component [ SAMPLE ]-->
-        <script src="{{ asset('assets\js\demo\form-component.js') }}"></script>
-        
+    <!--Form Component [ SAMPLE ]-->
+    <script src="{{ asset('assets\js\demo\form-component.js') }}"></script>
+
 @endsection
