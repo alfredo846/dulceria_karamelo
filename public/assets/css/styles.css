@@ -63,7 +63,7 @@
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #032452;
+    -webkit-box-shadow: 0 0 5px 5px #01e8ff;
     width: 100px;
     height: 100px;
     
@@ -92,7 +92,7 @@ padding: 2px 0px 5px 0;
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #032452;
+    -webkit-box-shadow: 0 0 3px 3px #01e8ff;
 }
 
 /* input file de categorias */
