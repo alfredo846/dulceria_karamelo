@@ -38,19 +38,27 @@
                 </div>
 
                 <div class="panel-heading demo-icon">
-                    <br>&nbsp;
-                    <a href="{{ route('usuarios.papelera') }}">
-                        <button id="deleteItem" type="submit" class="btn btn-circle btn-danger btn-icon add-tooltip"
-                            data-toggle="tooltip" data-container="body" data-placement="top"
-                            data-original-title="Papelera"><i class="demo-psi-recycling icon-lg"></i></button>
-                    </a>
-                    <a href="{{ route('usuarios.export') }}">
-                        <button id="deleteItem" type="submit" class="btn btn-circle btn-success btn-icon add-tooltip"
-                            data-toggle="tooltip" data-container="body" data-placement="top"
-                            data-original-title="Exportar"><i class="fa fa-file-excel-o fa-lg"></i></button>
-                    </a>
-                    <a href="{{ route('usuarios.create') }}"> <button class="btn btn-success"><i
-                                class="ion-plus-circled lg"></i> Agregar nueva usuario</button></a>
+                    <div class="col-md-12">
+                        <div class="col-md-9">
+                            <a href="{{ route('usuarios.papelera') }}">
+                                <button id="deleteItem" type="submit"
+                                    class="btn btn-circle btn-danger btn-icon add-tooltip" data-toggle="tooltip"
+                                    data-container="body" data-placement="top" data-original-title="Papelera"><i
+                                        class="demo-psi-recycling icon-lg"></i></button>
+                            </a>
+
+                            <a href="{{ route('usuarios.export') }}">
+                                <button id="deleteItem" type="submit" class="btn btn-circle btn-mint btn-icon add-tooltip"
+                                    data-toggle="tooltip" data-container="body" data-placement="top"
+                                    data-original-title="Exportar"><i class="fa fa-file-excel-o fa-lg"></i></button>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ route('usuarios.create') }}"> <button class="button"><i
+                                        class="ion-plus-circled lg"></i> Agregar nuevo usuario</button></a>
+
+                        </div>
+                    </div>
                 </div><br>
 
                 <div class="panel-body">
@@ -96,7 +104,7 @@
                                         <td>Sucursales</td>
                                     @endif
 
-                                    <td><span class="label label-success">Activo</span></td>
+                                    <td><span class="label label-mint">Activo</span></td>
                                     <td width="140">
                                         <a href="{{ route('usuarios.show', $usuario) }}">
                                             <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"

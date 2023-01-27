@@ -78,7 +78,7 @@
                                     <td>{{ $marca->nombre }}</td>
                                     <td><img class='profile-image' src="{{ asset('imagenes/marcas/' . $marca->imagen) }}"
                                             alt="foto"></td>
-                                    <td><span class="label label-success">Activo</span></td>
+                                    <td><span class="label label-mint">Activo</span></td>
                                     <td>
                                         <a href="{{ route('marcas.show', $marca) }}">
                                             <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
