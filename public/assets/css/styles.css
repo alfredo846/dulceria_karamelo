@@ -10,26 +10,26 @@
     margin: 0;
     padding: 0;
     opacity: .9;
-    color: #1c3550 !important;
+    color: #032452 !important;
 }
 
 #mainnav-menu>.active {
-    background-color: #f1d7f1 !important;
-    opacity: .8;
+    background-color: #ecf5f5 !important;
+    /* opacity: .8; */
 }
 
 #mainnav-menu ul a:hover,
 .menu-popover .sub-menu ul a:hover {
-    color: #783449 !important
+    color: #0088ff !important
 }
 
 #mainnav-menu>li>a:hover,
 #mainnav-menu>li>a:active {
-    color: #783449 !important
+    color: #0088ff !important
 }
 
 #mainnav-menu .active:not(.active-sub)>a {
-    color: #783449;
+    color: #032452;
 }
 
 /* estilos  instrucciones * */
@@ -54,7 +54,7 @@
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #783449;
+    -webkit-box-shadow: 0 0 5px 5px #032452;
     width: 180px;
     height: 140px;
     
@@ -64,7 +64,7 @@
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #783449;
+    -webkit-box-shadow: 0 0 5px 5px #032452;
     width: 100px;
     height: 100px;
     
@@ -93,7 +93,7 @@ padding: 10px 0px 15px 0;
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #783449;
+    -webkit-box-shadow: 0 0 5px 5px #032452;
 }
 
 /* input file de categorias */
@@ -109,7 +109,7 @@ padding: 10px 0px 15px 0;
 
 ::-webkit-file-upload-button{
     color: white;
-    background: #783449;
+    background: #032452;
     padding: 7px;
     border: none;
     border-radius: 8px;
@@ -136,7 +136,7 @@ table tr {
 }
 
 #container .table.dataTable tbody tr.selected {
-    background-color: #783449 !important;
+    background-color: #032452 !important;
     color: rgb(255, 255, 255) !important;
 }
 
@@ -152,7 +152,7 @@ select {
     flex: 1;
     padding: 0 1em;
     color: #fff;
-    background-color: #783449;
+    background-color: #032452;
     background-image: none;
     cursor: pointer;
     
@@ -181,7 +181,7 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 10px;
-    background-color: #783449;
+    background-color: #032452;
     transition: .25s all ease;
     pointer-events: none;
 }
@@ -215,7 +215,7 @@ select::-ms-expand {
     cursor: pointer;
     float: left;
     font: 15px Helvetica, Arial, sans-serif;
-    height: 30px;
+    height: 26px;
     margin: 10px 0 15px 35px;
     position: absolute;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);

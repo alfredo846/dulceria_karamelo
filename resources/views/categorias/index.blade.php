@@ -40,7 +40,6 @@
                 <div class="panel-heading demo-icon">
                     <div class="col-md-12">
                         <div class="col-md-9">
-                            <br>&nbsp;
                             <a href="{{ route('categorias.papelera') }}">
                                 <button id="deleteItem" type="submit"
                                     class="btn btn-circle btn-danger btn-icon add-tooltip" data-toggle="tooltip"
