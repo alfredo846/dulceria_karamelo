@@ -268,6 +268,7 @@
 @endsection
 
 @section('script')
+
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 

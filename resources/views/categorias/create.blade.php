@@ -41,7 +41,7 @@
                                         <div class="col-sm-7">
                                             <input type="text" name="nombre" placeholder="Nombre categoría"
                                                 value="{{ old('nombre') }}" autocomplete="off" class="form-control"
-                                                id="demo-is-inputnormal">
+                                                id="demo-is-inputnormal" maxlength="40">
                                             @if ($errors->first('nombre'))
                                                 <i class="text-danger">{{ $errors->first('nombre') }}</i>
                                             @endif

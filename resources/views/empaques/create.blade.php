@@ -39,7 +39,7 @@
                                         <label for="demo-is-inputnormal"
                                             class="col-sm-3 control-label text-bold text-semibold is-required">Nombre:</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="nombre" placeholder="Nombre empaque"
+                                            <input type="text" name="nombre" placeholder="Nombre empaque" maxlength="40"
                                                 value="{{ old('nombre') }}" autocomplete="off" class="form-control"
                                                 id="demo-is-inputnormal">
                                             @if ($errors->first('nombre'))

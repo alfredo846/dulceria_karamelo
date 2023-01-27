@@ -3,42 +3,14 @@
 
 @section('head')
 
-    <!--Switchery [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
-
-
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.css') }}" rel="stylesheet">
-
 
     <!--Chosen [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\chosen\chosen.min.css') }}" rel="stylesheet">
 
-
     <!--noUiSlider [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\noUiSlider\nouislider.min.css') }}" rel="stylesheet">
-
-
-    <!--Select2 [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\select2\css\select2.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.css') }}" rel="stylesheet">
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\dropzone\dropzone.min.css') }}" rel="stylesheet">
-
-
-
 
 @endsection
 
@@ -165,10 +137,10 @@
                                         <select style="width:100%" name="estado_id" id="estado" class="selectpicker"
                                             data-live-search="true" data-width="80%">
                                             <option selected disabled>--Seleccione un estado--</option>
-                                                @foreach ($estados as $estado)
-                                                    <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}
-                                                    </option>
-                                                @endforeach
+                                            @foreach ($estados as $estado)
+                                                <option value="{{ $estado->estado_id }}">{{ $estado->nombre }}
+                                                </option>
+                                            @endforeach
 
                                         </select><br>
                                         @if ($errors->first('estado_id'))
@@ -183,7 +155,7 @@
                                     <div class="col-sm-8">
                                         <div class="select">
                                             <select style="width:100%" id="municipio" name="municipio_id"></select>
-                                            
+
                                         </div>
                                         @if ($errors->first('municipio_id'))
                                             <i class="text-danger">El campo municipio es obligatorio</i>
@@ -222,12 +194,11 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="row">
-                                    <div class="col-sm-9 col-sm-offset-4">
-                                        <button class="btn btn-success" type="submit">Actualizar</button>
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <button class="buttonp" type="submit">Actualizar</button>
                                     </div>
                                 </div>
-
-                            </div>
+                            </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
                 </form>
             </div>
         </div>
@@ -322,51 +293,17 @@
         });
     </script>
 
-    <!--Switchery [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
-
-
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
-
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.js') }}"></script>
-
 
     <!--Chosen [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\chosen\chosen.jquery.min.js') }}"></script>
 
-
     <!--noUiSlider [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\noUiSlider\nouislider.min.js') }}"></script>
 
-
-    <!--Select2 [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\select2\js\select2.min.js') }}"></script>
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.js') }}"></script>
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.js') }}"></script>
-
-
     <!--Form Component [ SAMPLE ]-->
     <script src="{{ asset('assets\js\demo\form-component.js') }}"></script>
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\dropzone\dropzone.min.js') }}"></script>
-
-
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="{{ asset('assets\js\demo\form-file-upload.js') }}"></script>
-
-    <script src="{{ asset('assets\js\demo\nifty-demo.min.js') }}"></script>
-
-    <script src="{{ asset('assets\js\select.js') }}"></script>
 
     {{-- Mostrar la imagén --}}
     <script>

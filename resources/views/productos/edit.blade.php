@@ -2,39 +2,15 @@
 @section('title', 'Actualizar producto')
 
 @section('head')
-    <!--Switchery [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
-
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.css') }}" rel="stylesheet">
 
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.css') }}" rel="stylesheet">
-
-
     <!--Chosen [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\chosen\chosen.min.css') }}" rel="stylesheet">
 
-
     <!--noUiSlider [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\noUiSlider\nouislider.min.css') }}" rel="stylesheet">
-
-
-    <!--Select2 [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\select2\css\select2.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.css') }}" rel="stylesheet">
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.css') }}" rel="stylesheet">
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\dropzone\dropzone.min.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -55,7 +31,7 @@
         <!--Page content-->
         <div id="page-content">
             <div class="row">
-                <form action="{{ route('productos.update',$producto) }}" method="post" enctype="multipart/form-data"
+                <form action="{{ route('productos.update', $producto) }}" method="post" enctype="multipart/form-data"
                     class="form-horizontal">
                     @csrf
                     @method('PUT')
@@ -69,12 +45,14 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código de barras:</label>
+                                        class="col-sm-4 control-label text-bold text-semibold is-required text-left">Código
+                                        de barras:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="codigo_barras" maxlength="14" value="{{ $producto->codigo_barras}}"
+                                        <input type="text" name="codigo_barras" maxlength="14"
+                                            value="{{ $producto->codigo_barras }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Código de barras" autocomplete="off"
-                                            class="form-control" id="demo-is-inputnormal">
+                                            placeholder="Código de barras" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('codigo_barras'))
                                             <i class="text-danger">{{ $errors->first('codigo_barras') }}</i>
                                         @endif
@@ -85,8 +63,9 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="nombre" placeholder="Nombre del producto" value="{{ $producto->nombre}}"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                        <input type="text" name="nombre" placeholder="Nombre del producto"
+                                            value="{{ $producto->nombre }}" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('nombre'))
                                             <i class="text-danger">{{ $errors->first('nombre') }}</i>
                                         @endif
@@ -97,8 +76,9 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Descripción:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="descripcion" placeholder="Descripción" value="{{ $producto->descripcion}}"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                        <input type="text" name="descripcion" placeholder="Descripción"
+                                            value="{{ $producto->descripcion }}" autocomplete="off" class="form-control"
+                                            id="demo-is-inputnormal">
                                         @if ($errors->first('descripcion'))
                                             <i class="text-danger">{{ $errors->first('descripcion') }}</i>
                                         @endif
@@ -111,12 +91,13 @@
                                     <div class="col-sm-8">
 
                                         <div id="imagePreview">
-                                            <img class='fotoperfil' src="{{ asset('imagenes/productos/' . $producto->imagen) }}"
-                                                alt="" width="200px">
+                                            <img class='fotoperfil'
+                                                src="{{ asset('imagenes/productos/' . $producto->imagen) }}" alt=""
+                                                width="200px">
                                         </div>
 
                                         <input type="file" placeholder="Coloque su fotografía" id="imagen"
-                                            class="upload-box" name="imagen" 
+                                            class="upload-box" name="imagen"
                                             accept="image/png,image/jpeg,image/jpg,image/jfif">
                                         @if ($errors->first('imagen'))
                                             <br>
@@ -128,10 +109,9 @@
                                     </div>
                                 </div>
 
-                                 <div class="panel-footer text-left">
+                                <div class="panel-footer text-left">
                                     <a href="{{ route('productos.index') }}" class="text-right fs-6 text-secundario"><img
-                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30"
-                                            height="30"></a>
+                                            src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
                                 </div>
 
                             </div>
@@ -155,21 +135,24 @@
                                     <div class="col-sm-8">
                                         <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="categoria_id">
-                                             <option value="">-- Seleccione una categoria --</option>
-                                              @foreach ($categorias as $categoria)
-                                                @if($producto->categoria_id == $categoria->categoria_id)
-                                                     <option value={{ $categoria->categoria_id }} selected>{{ $categoria->nombre }}</option>
+                                            <option value="">-- Seleccione una categoria --</option>
+                                            @foreach ($categorias as $categoria)
+                                                @if ($producto->categoria_id == $categoria->categoria_id)
+                                                    <option value={{ $categoria->categoria_id }} selected>
+                                                        {{ $categoria->nombre }}</option>
                                                 @endif
-                                                @if($producto->categoria_id != $categoria->categoria_id)
-                                                     <option value={{ $categoria->categoria_id }}>{{ $categoria->nombre }}</option>
+                                                @if ($producto->categoria_id != $categoria->categoria_id)
+                                                    <option value={{ $categoria->categoria_id }}>{{ $categoria->nombre }}
+                                                    </option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
 
-                                               @foreach ($categoriasd as $categoria)
-                                                @if($producto->categoria_id == $categoria->categoria_id)
-                                                     <option value={{ $categoria->categoria_id }} selected>{{ $categoria->nombre }}</option>
+                                            @foreach ($categoriasd as $categoria)
+                                                @if ($producto->categoria_id == $categoria->categoria_id)
+                                                    <option value={{ $categoria->categoria_id }} selected>
+                                                        {{ $categoria->nombre }}</option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
 
                                         </select>
                                         @if ($errors->first('categoria_id'))
@@ -185,20 +168,22 @@
                                         <select class="selectpicker" data-live-search="true" data-width="100%"
                                             name="marca_id">
                                             <option value="">-- Seleccione una marca --</option>
-                                             @foreach ($marcas as $marca)
-                                                @if($producto->marca_id == $marca->marca_id)
-                                                     <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}</option>
+                                            @foreach ($marcas as $marca)
+                                                @if ($producto->marca_id == $marca->marca_id)
+                                                    <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}
+                                                    </option>
                                                 @endif
-                                                @if($producto->marca_id != $marca->marca_id)
-                                                     <option value={{ $marca->marca_id }}>{{ $marca->nombre }}</option>
+                                                @if ($producto->marca_id != $marca->marca_id)
+                                                    <option value={{ $marca->marca_id }}>{{ $marca->nombre }}</option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
 
-                                               @foreach ($marcasd as $marca)
-                                                @if($producto->marca_id == $marca->marca_id)
-                                                     <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}</option>
+                                            @foreach ($marcasd as $marca)
+                                                @if ($producto->marca_id == $marca->marca_id)
+                                                    <option value={{ $marca->marca_id }} selected>{{ $marca->nombre }}
+                                                    </option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
                                         </select>
                                         @if ($errors->first('marca_id'))
                                             <i class="text-danger">El campo categoría es obligatorio</i>
@@ -214,19 +199,22 @@
                                             tabindex="2" style="width:330px" name="temporada_id">
                                             <option value="">-- Seleccione una temporada --</option>
                                             @foreach ($temporadas as $temporada)
-                                                @if($producto->temporada_id == $temporada->temporada_id)
-                                                     <option value={{ $temporada->temporada_id }} selected>{{ $temporada->nombre }}</option>
+                                                @if ($producto->temporada_id == $temporada->temporada_id)
+                                                    <option value={{ $temporada->temporada_id }} selected>
+                                                        {{ $temporada->nombre }}</option>
                                                 @endif
-                                                @if($producto->temporada_id != $temporada->temporada_id)
-                                                     <option value={{ $temporada->temporada_id }}>{{ $temporada->nombre }}</option>
+                                                @if ($producto->temporada_id != $temporada->temporada_id)
+                                                    <option value={{ $temporada->temporada_id }}>{{ $temporada->nombre }}
+                                                    </option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
 
-                                               @foreach ($temporadasd as $temporada)
-                                                @if($producto->temporada_id == $temporada->temporada_id)
-                                                     <option value={{ $temporada->temporada_id }} selected>{{ $temporada->nombre }}</option>
+                                            @foreach ($temporadasd as $temporada)
+                                                @if ($producto->temporada_id == $temporada->temporada_id)
+                                                    <option value={{ $temporada->temporada_id }} selected>
+                                                        {{ $temporada->nombre }}</option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
                                         </select>
                                         @if ($errors->first('temporada_id'))
                                             <i class="text-danger">El campo temporada es obligatorio</i>
@@ -242,21 +230,25 @@
                                             class="selectpicker" name="empaque_id">
                                             <option value="">-- Seleccione una empaque --</option>
                                             @foreach ($empaques as $empaque)
-                                                @if($producto->empaque_id == $empaque->empaque_id)
-                                                     <option value={{ $empaque->empaque_id }} selected>{{ $empaque->nombre }}</option>
+                                                @if ($producto->empaque_id == $empaque->empaque_id)
+                                                    <option value={{ $empaque->empaque_id }} selected>
+                                                        {{ $empaque->nombre }}</option>
                                                 @endif
-                                                @if($producto->empaque_id != $empaque->empaque_id)
-                                                     <option value={{ $empaque->empaque_id }}>{{ $empaque->nombre }}</option>
+                                                @if ($producto->empaque_id != $empaque->empaque_id)
+                                                    <option value={{ $empaque->empaque_id }}>{{ $empaque->nombre }}
+                                                    </option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
 
-                                               @foreach ($empaquesd as $empaque)
-                                                @if($producto->empaque_id == $empaque->empaque_id)
-                                                     <option value={{ $empaque->empaque_id }} selected>{{ $empaque->nombre }}</option>
+                                            @foreach ($empaquesd as $empaque)
+                                                @if ($producto->empaque_id == $empaque->empaque_id)
+                                                    <option value={{ $empaque->empaque_id }} selected>
+                                                        {{ $empaque->nombre }}</option>
                                                 @endif
-                                              @endforeach
+                                            @endforeach
                                         </select>
-                                        @if ($errors->first('empaque_id'))<br>
+                                        @if ($errors->first('empaque_id'))
+                                            <br>
                                             <i class="text-danger">El campo empaque es obligatorio</i>
                                         @endif
                                     </div>
@@ -267,7 +259,8 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Piezas
                                         por empaque:</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="piezas_por_empaque" value ="{{ $producto->piezas_por_empaque }}"
+                                        <input type="text" name="piezas_por_empaque"
+                                            value="{{ $producto->piezas_por_empaque }}"
                                             placeholder="Número de piezas que trae el empaque" maxlength="3"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
@@ -276,16 +269,16 @@
                                         @endif
                                     </div>
                                 </div>
-
-                            </div><br>&nbsp;
+                            </div>
 
                             <div class="panel-footer">
                                 <div class="row">
-                                    <div class="col-sm-9 col-sm-offset-4">
-                                        <button class="btn btn-success" type="submit">Guardar</button><br>&nbsp;
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <button class="buttonp" type="submit">Actualizar</button>
                                     </div>
                                 </div>
-                            </div><br>&nbsp;<br>&nbsp;
+                            </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                        </div>
                 </form>
             </div>
         </div>
@@ -298,49 +291,18 @@
 @endsection
 
 @section('script')
-    <!--Switchery [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
-
 
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 
-
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-tagsinput\bootstrap-tagsinput.min.js') }}"></script>
-
-
     <!--Chosen [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\chosen\chosen.jquery.min.js') }}"></script>
-
 
     <!--noUiSlider [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\noUiSlider\nouislider.min.js') }}"></script>
 
-
-    <!--Select2 [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\select2\js\select2.min.js') }}"></script>
-
-
-    <!--Bootstrap Timepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-timepicker\bootstrap-timepicker.min.js') }}"></script>
-
-
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\bootstrap-datepicker\bootstrap-datepicker.min.js') }}"></script>
-
-
     <!--Form Component [ SAMPLE ]-->
     <script src="{{ asset('assets\js\demo\form-component.js') }}"></script>
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\dropzone\dropzone.min.js') }}"></script>
-
-
-    <!--Form File Upload [ SAMPLE ]-->
-    <script src="{{ asset('assets\js\demo\form-file-upload.js') }}"></script>
-
-    <script src="{{ asset('assets\js\demo\nifty-demo.min.js') }}"></script>
 
     {{-- Mostrar la imagén --}}
     <script>
