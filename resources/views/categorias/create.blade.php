@@ -62,62 +62,65 @@
                             <h4 class="text-main text-bold mar-no text-center">Categoría</h4>
                         </div>
                         <section id="content">
-                        <form action="{{ route('categorias.store') }}" method="post" enctype="multipart/form-data"
-                            class="form-horizontal">
-                            @csrf
-                            @method('POST')
-                            <div class="panel-body">
+                            <form action="{{ route('categorias.store') }}" method="post" enctype="multipart/form-data"
+                                class="form-horizontal">
+                                @csrf
+                                @method('POST')
+                                <div class="panel-body">
 
-                                <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <label for="demo-is-inputnormal"
+                                            class="col-sm-9 control-label text-bold text-semibold is-instruccion">Los campos
+                                            indicados con * son obligatorios.</label>
                                     </div>
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-9 control-label text-bold text-semibold is-instruccion">Los campos indicados con * son obligatorios.</label>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold is-required">Nombre:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" name="nombre" placeholder="Nombre categoría"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
-                                        @if ($errors->first('nombre'))
-                                            <i class="text-danger">{{ $errors->first('nombre') }}</i>
-                                        @endif
+                                    <div class="form-group">
+                                        <label for="demo-is-inputnormal"
+                                            class="col-sm-3 control-label text-bold text-semibold is-required">Nombre:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="nombre" placeholder="Nombre categoría" value ="{{ old('nombre') }}"
+                                                autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            @if ($errors->first('nombre'))
+                                                <i class="text-danger">{{ $errors->first('nombre') }}</i>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold">Imagén:</label>
-                                    <div class="col-sm-9">
-                                        <div id="imagePreview"></div>
-                                        <input type="file" placeholder="Coloque su fotografía" id="imagen" class="upload-box"
-                                            name="imagen" accept="image/png,image/jpeg,image/jpg,image/jfif">
-                                            @if ($errors->first('imagen'))<br>
-                                            <i class="text-danger">{{ $errors->first('imagen') }}
-                                           <label> La imagén no debe exceder los 2 Mb y solo acepta
-                                        imágenes con extensiones 'jpeg, jpg, png, jfif</label></i>
-                                        @endif
-                                    </div>
-                                </div>
-                                
-                            </div>
-
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-sm-9 col-sm-offset-4">
-                                        <button class="btn btn-success" type="submit">Guardar</button>
-                                        <button class="btn btn-primary" type="reset">Reniciar</button>
+                                    <div class="form-group">
+                                        <label for="demo-is-inputnormal"
+                                            class="col-sm-3 control-label text-bold text-semibold">Imagén:</label>
+                                        <div class="col-sm-9">
+                                            <div id="imagePreview"></div>
+                                            <input type="file" placeholder="Coloque su fotografía" id="imagen"
+                                                class="upload-box" name="imagen"
+                                                accept="image/png,image/jpeg,image/jpg,image/jfif">
+                                            @if ($errors->first('imagen'))
+                                                <br>
+                                                <i class="text-danger">{{ $errors->first('imagen') }}
+                                                    <label> La imagén no debe exceder los 2 Mb y solo acepta
+                                                        imágenes con extensiones 'jpeg, jpg, png, jfif</label></i>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel-footer text-left">
-                                <a href="{{ route('categorias.index') }}" class="text-right fs-6 text-secundario"><img
-                                        src="{{ asset('assets/img/regresar.jpg') }}" width="30" height="30"></a>
-                            </div>
-                        </form>
-                    </section>
+
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-5">
+                                            <button type="submit">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-left">
+                                    <a href="{{ route('categorias.index') }}"
+                                        class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Regresar"><img
+                                        src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
+                                </div>
+                            </form>
+                        </section>
 
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <!-- Alerts -->
 <div class="alert-container">
     @if (session('message'))
-    <div class="alert alert-success">
+    <div class="alert alert-mint">
         <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
         <strong>{{session("message")}} </strong>
 	</div>
