@@ -43,11 +43,16 @@
                                 <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i>Mí perfil</a>
                             </li>
                             <li>
-                                <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Cambiar
-                                    Foto</a>
+                                <button type="button" class="btn d-block btn-light w-100" data-toggle="modal" data-target="#editPhoto">
+                                    <i class="demo-pli-computer-secure icon-lg icon-fw"></i> Cambiar foto
+                                </button>
+                                
                             </li>
                             <li>
-                                <a href="#"><i class="demo-pli-gear icon-lg icon-fw"></i> Cambiar contraseña</a>
+                                <button type="button" class="btn d-block btn-light w-100" data-bs-toggle="modal"
+                                    data-bs-target="#editPassword">
+                                    <i class="demo-pli-gear icon-lg icon-fw"></i> Cambiar contraseña
+                                </button>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -70,5 +75,8 @@
         <!--End Navbar Dropdown-->
 
     </div>
+    @include('layouts.partials.change-password')
+    @include('layouts.partials.change-image')
 </header>
 <!--END NAVBAR-->
+

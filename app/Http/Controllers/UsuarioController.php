@@ -8,6 +8,7 @@ use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\Usuarios\CreateUsuarioRequest;
 use App\Http\Requests\Usuarios\EditUsuarioRequest;
+use App\Http\Requests\Usuarios\UsuarioFotoRequest;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 
@@ -221,5 +222,23 @@ class UsuarioController extends Controller
         $usuarios = User::withTrashed()->where('id', $id)->forcedelete();
 
         return redirect()->route('usuarios.papelera')->with('borrar','ok');
+    }
+
+       public function updatefoto(UsuarioFotoRequest $request, $id){
+
+        $usuario = User::find($id);
+        if ($request->hasFile('foto')) {
+            if (Storage::disk('usuario-imagenes')->exists("$usuario->foto")) {
+                if($usuario->foto == "shadow.jpg"){
+                $usuario->foto = "shadow.jpg";
+                } else {
+                 Storage::disk('usuario-imagenes')->delete("$usuario->foto");
+                }
+            }
+            $usuario->foto = Storage::disk('usuario-imagenes')->putFile('', $request->file('foto'));
+        }
+        $usuario->save();
+        return redirect()->route('bienvenido')->with('message', '¡Fotografía actualizada exitosamente!');
+       
     }
 }

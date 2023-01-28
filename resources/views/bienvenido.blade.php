@@ -1,302 +1,208 @@
 @extends('layouts.main')
-  @section('title', 'Bienvenido')
+@section('title', 'Bienvenido')
 
-    @section('head')
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+@section('head')
+    <!--DataTables [ OPTIONAL ]-->
+    <link href="{{ asset('assets\plugins\datatables\media\css\dataTables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets\plugins\datatables\extensions\Responsive\css\responsive.dataTables.min.css') }}"
+        rel="stylesheet">
 
-    @endsection
+    <!--Ion Icons [ OPTIONAL ]-->
+    <link href="{{ asset('assets\plugins\ionicons\css\ionicons.min.css') }}" rel="stylesheet">
 
-    @section('content')
-      <!--CONTENT CONTAINER-->
-            <div id="content-container">
-                <br>
-				     <div class="col-md-12">
-					     <div class="panel panel-primary panel-colorful media middle pad-all">
-					     <div class="media-body">
-					         <p class="text-3x mar-no text-semibold">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-								&nbsp; &nbsp;  Bienvenido </p><p><h4 style="color:white">!HOLA {{ Auth::user()->username }}!</h4></p> 
-					     </div>
-					 </div>
-		   </div>
-		   <br><br><br>
-                <!--Page content-->
-                <div id="page-content">
-					
-					    <div class="row">
-							 <div class="col-md-3">
-					            <div class="panel panel-info panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-file-zip icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Productos</p>
-					                </div>
-					            </div>
-					        </div>
 
-					        <div class="col-md-3">
-					            <div class="panel panel-mint panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-file-word icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Sucursales</p>
-					                </div>
-					            </div>
-					        </div>
-					       
-					        <div class="col-md-3">
-					            <div class="panel panel-white panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-camera-2 icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Usuarios</p>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="col-md-3">
-					            <div class="panel panel-primary panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-video icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Ventas</p>
-					                </div>
-					            </div>
-					        </div>
-					
-					    </div>
-					    <div class="row">
-							 <div class="col-md-3">
-					            <div class="panel panel-info panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-file-zip icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Categorías</p>
-					                </div>
-					            </div>
-					        </div>
+@endsection
 
-					        <div class="col-md-3">
-					            <div class="panel panel-mint panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-file-word icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Marcas</p>
-					                </div>
-					            </div>
-					        </div>
-					       
-					        <div class="col-md-3">
-					            <div class="panel panel-white panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-camera-2 icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Temporadas</p>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="col-md-3">
-					            <div class="panel panel-primary panel-colorful media middle pad-all">
-					                <div class="media-left">
-					                    <div class="pad-hor">
-					                        <i class="demo-pli-video icon-3x"></i>
-					                    </div>
-					                </div>
-					                <div class="media-body">
-					                    <p class="text-2x mar-no text-semibold">241</p>
-					                    <p class="mar-no">Empaques</p>
-					                </div>
-					            </div>
-					        </div>
-					
-					    </div>
-
-						<div class="row">
-					        <div class="col-lg-12">
-					
-					            <!--Network Line Chart-->
-					            <!--===================================================-->
-					            <div id="demo-panel-network" class="panel">
-					                <div class="panel-heading">
-					                    <div class="panel-control">
-					                        <button id="demo-panel-network-refresh" class="btn btn-default btn-active-primary" data-toggle="panel-overlay" data-target="#demo-panel-network"><i class="demo-psi-repeat-2"></i></button>
-					                        <div class="dropdown">
-					                            <button class="dropdown-toggle btn btn-default btn-active-primary" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></button>
-					                            <ul class="dropdown-menu dropdown-menu-right">
-					                                <li><a href="#">Action</a></li>
-					                                <li><a href="#">Another action</a></li>
-					                                <li><a href="#">Something else here</a></li>
-					                                <li class="divider"></li>
-					                                <li><a href="#">Separated link</a></li>
-					                            </ul>
-					                        </div>
-					                    </div>
-					                    <h3 class="panel-title">Network</h3>
-					                </div>
-					
-					
-					                <!--chart placeholder-->
-					                <div class="pad-all">
-					                    <div id="demo-chart-network" style="height: 255px"></div>
-					                </div>
-					
-					
-					                <!--Chart information-->
-					                <div class="panel-body">
-					
-					                    <div class="row">
-					                        <div class="col-lg-8">
-					                            <p class="text-semibold text-uppercase text-main">CPU Temperature</p>
-					                            <div class="row">
-					                                <div class="col-xs-5">
-					                                    <div class="media">
-					                                        <div class="media-left">
-					                                            <span class="text-3x text-thin text-main">43.7</span>
-					                                        </div>
-					                                        <div class="media-body">
-					                                            <p class="mar-no">°C</p>
-					                                        </div>
-					                                    </div>
-					                                </div>
-					                                <div class="col-xs-7 text-sm">
-					                                    <p>
-					                                        <span>Min Values</span>
-					                                        <span class="pad-lft text-semibold">
-					                                        <span class="text-lg">27°</span>
-					                                        <span class="labellabel-success mar-lft">
-					                                            <i class="pci-caret-down text-success"></i>
-					                                            <smal>- 20</smal>
-					                                        </span>
-					                                        </span>
-					                                    </p>
-					                                    <p>
-					                                        <span>Max Values</span>
-					                                        <span class="pad-lft text-semibold">
-					                                        <span class="text-lg">69°</span>
-					                                        <span class="labellabel-danger mar-lft">
-					                                            <i class="pci-caret-up text-danger"></i>
-					                                            <smal>+ 57</smal>
-					                                        </span>
-					                                        </span>
-					                                    </p>
-					                                </div>
-					                            </div>
-					
-					                            <hr>
-					
-					                            <div class="pad-rgt">
-					                                <p class="text-semibold text-uppercase text-main">Today Tips</p>
-					                                <p class="text-muted mar-top">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-					                            </div>
-					                        </div>
-					
-					                        <div class="col-lg-4">
-					                            <p class="text-uppercase text-semibold text-main">Bandwidth Usage</p>
-					                            <ul class="list-unstyled">
-					                                <li>
-					                                    <div class="media pad-btm">
-					                                        <div class="media-left">
-					                                            <span class="text-2x text-thin text-main">754.9</span>
-					                                        </div>
-					                                        <div class="media-body">
-					                                            <p class="mar-no">Mbps</p>
-					                                        </div>
-					                                    </div>
-					                                </li>
-					                                <li class="pad-btm">
-					                                    <div class="clearfix">
-					                                        <p class="pull-left mar-no">Income</p>
-					                                        <p class="pull-right mar-no">70%</p>
-					                                    </div>
-					                                    <div class="progress progress-sm">
-					                                        <div class="progress-bar progress-bar-info" style="width: 70%;">
-					                                            <span class="sr-only">70% Complete</span>
-					                                        </div>
-					                                    </div>
-					                                </li>
-					                                <li>
-					                                    <div class="clearfix">
-					                                        <p class="pull-left mar-no">Outcome</p>
-					                                        <p class="pull-right mar-no">10%</p>
-					                                    </div>
-					                                    <div class="progress progress-sm">
-					                                        <div class="progress-bar progress-bar-primary" style="width: 10%;">
-					                                            <span class="sr-only">10% Complete</span>
-					                                        </div>
-					                                    </div>
-					                                </li>
-					                            </ul>
-					                        </div>
-					                    </div>
-					                </div>
-					
-					
-					            </div>
-					            <!--===================================================-->
-					            <!--End network line chart-->
-					
-					        </div>
-					        
-					    </div>
-					
-					   
-					
-					   
-					
-					
-					    
+@section('content')
+    <!--CONTENT CONTAINER-->
+    <div id="content-container">
+        <br>
+        <div class="col-md-12">
+            <div class="panel panel-primary panel-colorful media middle pad-all">
+                <div class="media-body">
+                    <p class="text-2x mar-no text-semibold">Bienvenido</p>
+                    <p></p>
                 </div>
-                <!--===================================================-->
-                <!--End page content-->
+            </div>
+        </div>
+        <br><br><br>
 
+        <!--Page content-->
+        <div id="page-content">
+
+            <!-- Basic Data Tables -->
+            <div class="panel">
+
+                <div class="content">
+                    @include('layouts.partials.alerts')
+                </div>
+
+                <div class="panel-heading demo-icon">
+                    <div class="col-md-12">
+                        <div class="col-md-9">
+                            <a href="">
+                                <button id="deleteItem" type="submit"
+                                    class="btn btn-circle btn-danger btn-icon add-tooltip" data-toggle="tooltip"
+                                    data-container="body" data-placement="top" data-original-title="Papelera"><i
+                                        class="demo-psi-recycling icon-lg"></i></button>
+                            </a>
+
+                            <a href="">
+                                <button id="deleteItem" type="submit"
+                                    class="btn btn-circle btn-mint btn-icon add-tooltip" data-toggle="tooltip"
+                                    data-container="body" data-placement="top" data-original-title="Exportar"><i
+                                        class="fa fa-file-excel-o fa-lg"></i></button>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href=""> <button class="button"><i
+                                        class="ion-plus-circled lg"></i> Agregar nueva categoría</button></a>
+
+                        </div>
+                    </div>
+                </div><br>
+                <div class="panel-body">
+                    <table id="categorias" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Imagén</th>
+                                <th class="min-tablet">Estado</th>
+                                <th class="min-tablet">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>www</td>
+                                    <td>rrrr</td>
+                                    <td><span class="label label-mint">Activo</span></td>
+                                    <td>
+                                        <a href="">
+                                            <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
+                                                data-toggle="tooltip" data-container="body" data-placement="top"
+                                                data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
+                                            </button>
+                                        </a>
+
+                                        <a href="">
+                                            <button class="btn btn-sm btn-primary btn-icon add-tooltip"
+                                                data-toggle="tooltip" data-container="body" data-placement="top"
+                                                data-original-title="Actalizar"><i
+                                                    class="demo-psi-pen-5 icon-sm"></i></button>
+                                        </a>
+
+
+                                        <form action="" method="POST"
+                                            style="display: inline-block" class="formulario-eliminar">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button id="deleteItem" type="submit"
+                                                class="btn btn-sm btn-danger btn-icon add-tooltip" data-toggle="tooltip"
+                                                data-container="body" data-placement="top" data-original-title="Eliminar"><i
+                                                    class="demo-psi-recycling icon-sm"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!--===================================================-->
-            <!--END CONTENT CONTAINER-->
-    
-    @endsection
+            <!-- End Striped Table -->
 
-    @section('scrpt')
-	<!--Demo script [ DEMONSTRATION ]-->
-    <script src="{{ asset('assets\js\demo\nifty-demo.min.js') }}"></script>
+        </div>
+        <!--End page content-->
 
-    
-    <!--Flot Chart [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\flot-charts\jquery.flot.min.js') }}"></script>
-	<script src="{{ asset('assets\plugins\flot-charts\jquery.flot.resize.min.js') }}"></script>
-	<script src="{{ asset('assets\plugins\flot-charts\jquery.flot.tooltip.min.js') }}"></script>
+    </div>
+    <!--END CONTENT CONTAINER-->
+@endsection
 
 
-    <!--Sparkline [ OPTIONAL ]-->
-    <script src="{{ asset('assets\plugins\sparkline\jquery.sparkline.min.js') }}"></script>
+@section('script')
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="{{ asset('assets\plugins\datatables\media\js\jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets\plugins\datatables\media\js\dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets\plugins\datatables\extensions\Responsive\js\dataTables.responsive.min.js') }}"></script>
 
 
-    <!--Specify page [ SAMPLE ]-->
-    <script src="{{ asset('assets\js\demo\dashboard.js') }}"></script>
-	@endsection
+    <!--DataTables Sample [ SAMPLE ]-->
+    <script src="{{ asset('assets\js\demo\tables-datatables.js') }}"></script>
+    <script src="{{ asset('assets\js\demo\ui-buttons.js') }}"></script>
+
+    <!--Icons [ SAMPLE ]-->
+    <script src="{{ asset('assets\js\demo\icons.js') }}"></script>
+    <script src="{{ asset('assets\js\sweetalert2@11.js') }}"></script>
+
+
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El registro se elimino exitosamente.',
+                'success'
+            )
+        </script>
+    @endif
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#demo-dt-basic').DataTable({
+                language: {
+                    url: "{{ asset('assets/js/spanish.json') }}"
+                }
+            });
+        });
+
+
+        $(document).ready(function() {
+            $('#categorias').DataTable({
+                order: [
+                    [1, 'desc']
+                ],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado - disculpa",
+                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                    'search': 'Buscar:',
+                    'paginate': {
+                        'next': 'Siguiente',
+                        'previous': 'Anterior'
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".content").fadeOut(1500);
+            }, 3000);
+        });
+    </script>
+
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡Este registro se eliminará!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#26a69a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    this.submit();
+                }
+            })
+        });
+    </script>
+@endsection
