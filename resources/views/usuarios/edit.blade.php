@@ -164,7 +164,7 @@
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                             autocomplete="off" class="form-control" id="demo-is-inputnormal">
                                         @if ($errors->first('telefono'))
-                                            <i class="text-danger">El campo teléfono es obligatorio</i>
+                                            <i class="text-danger">{{ $errors->first('telefono') }}</i>
                                         @endif
                                     </div>
                                 </div>

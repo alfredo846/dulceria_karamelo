@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Usuarios\CreateUsuarioRequest;
 use App\Http\Requests\Usuarios\EditUsuarioRequest;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class UsuarioController extends Controller
 {
@@ -148,7 +149,11 @@ class UsuarioController extends Controller
         ]);
         }
 
+        if(Auth::user()->id == $usuario->id){
+         $usuario->update($request->except(['id', 'foto', 'password', 'rol_id', 'sucursal_id']));
+        }else{
          $usuario->update($request->except(['id', 'foto', 'password']));
+        }
 
          if ($request->hasFile('foto')) {
             if (Storage::disk('usuario-imagenes')->exists("$usuario->foto")) {
@@ -165,11 +170,16 @@ class UsuarioController extends Controller
             $usuario->password = bcrypt($request->password);
         }
 
-       
 
-        $usuario->save();
+        if(Auth::user()->id == $usuario->id){
+            $usuario->save();
+            return redirect()->route('usuarios.index')->with('message', '¡Usuario actualizado exitosamente!
+            Si desea cambiar el "Rol" del usuario, cierre sesión e inicie sesión con otra cuenta superadmin');
+        }else{
+            $usuario->save();
+            return redirect()->route('usuarios.index')->with('message', 'Usuario actualizado exitosamente');
+        }
 
-        return redirect()->route('usuarios.index')->with('message', 'Usuario actualizado exitosamente');
     }
 
     /**
@@ -180,9 +190,13 @@ class UsuarioController extends Controller
      */
     public function destroy(User $usuario)
     {
+        if(Auth::user()->id == $usuario->id){
+          return redirect()->route('usuarios.index')->with('error', '¡El registro no se puede eliminar ya que usted se encuentra logeado con está cuenta!');
+        }else{
         $usuario->delete();
 
         return redirect()->route('usuarios.index')->with('eliminar','ok');
+        }
     }
 
     public function activar($id)

@@ -29,7 +29,7 @@ class CreateUsuarioRequest extends FormRequest
             'apellido_materno'    => 'required|max:60|regex:/^[a-z,\s,A-Z,á,Á,é,É,í,Í,ó,Ó,ü,ú,Ú,ñ,Ñ,0-9]+$/',
             'foto'                => ['image', 'max:2048'],
             'genero'              => 'required',
-            'telefono'            => 'required|max:10',
+            'telefono'            => 'digits:10|required',
             'username'            => 'required|unique:users,username|max:60',
             'email'               => 'required|email|unique:users,email|max:60',
             'password'            => 'required',
