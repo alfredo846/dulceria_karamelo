@@ -8,7 +8,6 @@ use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\Usuarios\CreateUsuarioRequest;
 use App\Http\Requests\Usuarios\EditUsuarioRequest;
-use App\Http\Requests\Usuarios\UsuarioFotoRequest;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 
@@ -223,8 +222,18 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuarios.papelera')->with('borrar','ok');
     }
+    
 
-       public function updatefoto(UsuarioFotoRequest $request, $id){
+       public function updatefoto(Request $request, $id){
+
+        $foto = \Validator::make($request->all(), [
+           'foto'=> ['image', 'required', 'max:2048'],
+        ]);
+
+        if ($foto->fails())
+        {
+           return redirect()->route('bienvenido')->with('fotoincorrecto','ok');
+        }
 
         $usuario = User::find($id);
         if ($request->hasFile('foto')) {
@@ -238,7 +247,25 @@ class UsuarioController extends Controller
             $usuario->foto = Storage::disk('usuario-imagenes')->putFile('', $request->file('foto'));
         }
         $usuario->save();
-        return redirect()->route('bienvenido')->with('message', '¡Fotografía actualizada exitosamente!');
+        return redirect()->route('bienvenido')->with('foto','ok');
        
+    }
+
+       public function updatepassword(Request $request, $id){
+        
+        $contraseña = \Validator::make($request->all(), [
+            'password' => 'required|confirmed'
+        ]);
+
+        if ($contraseña->fails())
+        {
+           return redirect()->route('bienvenido')->with('passwordincorrecto','ok');
+        }
+
+         $usuario = User::find($id);
+         $usuario->password = bcrypt($request->password);
+         $usuario->save();
+
+        return redirect()->route('bienvenido')->with('password','ok');
     }
 }

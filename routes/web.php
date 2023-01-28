@@ -31,6 +31,8 @@ Route::delete('usuario_borrar/{id}',[UsuarioController::class, 'borrar'])->name(
 Route::delete('usuario_activar/{id}',[UsuarioController::class, 'activar'])->name('usuarios.activar');
 Route::get('usuario_export',[UsuarioController::class, 'export'])->name('usuarios.export');
 Route::put('updatefoto/{id}', [UsuarioController::class, 'updatefoto'])->name('updatefoto');
+Route::put('updatepassword/{id}', [UsuarioController::class, 'updatepassword'])->name('updatepassword');
+
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('categoria_papelera',[CategoriaController::class, 'papelera'])->name('categorias.papelera');

@@ -49,8 +49,7 @@
                                 
                             </li>
                             <li>
-                                <button type="button" class="btn d-block btn-light w-100" data-bs-toggle="modal"
-                                    data-bs-target="#editPassword">
+                                <button type="button" class="btn d-block btn-light w-100" data-toggle="modal" data-target="#editPassword">
                                     <i class="demo-pli-gear icon-lg icon-fw"></i> Cambiar contraseña
                                 </button>
                             </li>

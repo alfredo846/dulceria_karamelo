@@ -205,4 +205,42 @@
             })
         });
     </script>
+
+     @if (session('password') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Actualizado!',
+                'La contraseña ha sido actualizada exitosamente.',
+                'success',
+            )
+        </script>
+    @endif
+
+    @if (session('passwordincorrecto') == 'ok')
+        <script>
+            Swal.fire({
+            icon: 'error',
+            text: '¡El campo contraseña es obligatorio y/o la confirmación de contraseña no coinciden!',
+            })
+        </script>
+    @endif
+
+    @if (session('foto') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Actualizado!',
+                'La fotografía ha sido actualizada exitosamente.',
+                'success',
+            )
+        </script>
+    @endif
+
+    @if (session('fotoincorrecto') == 'ok')
+        <script>
+            Swal.fire({
+            icon: 'error',
+            text: '¡La imagén no debe exceder los 2 Mb y solo acepta imágenes con extensiones jpeg, jpg, png, jfif !',
+            })
+        </script>
+    @endif
 @endsection
