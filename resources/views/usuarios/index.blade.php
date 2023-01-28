@@ -90,17 +90,17 @@
                                     @endforeach
 
                                     @foreach ($sucursales as $sucursal)
-                                        @if ($sucursal->sucursal_id == $usuario->sucursal_id)
+                                        @if (($sucursal->sucursal_id == $usuario->sucursal_id) && ($usuario->rol_id != '1'))
                                             <td>{{ $sucursal->nombre }}</td>
                                         @endif
                                     @endforeach
                                     @foreach ($sucursalesd as $sucursal)
-                                        @if ($sucursal->sucursal_id == $usuario->sucursal_id)
+                                       @if (($sucursal->sucursal_id == $usuario->sucursal_id) && ($usuario->rol_id != '1'))
                                             <td>{{ $sucursal->nombre }}</td>
                                         @endif
                                     @endforeach
 
-                                    @if ($usuario->sucursal_id == '')
+                                    @if ($usuario->rol_id == '1')
                                         <td>Sucursales</td>
                                     @endif
 

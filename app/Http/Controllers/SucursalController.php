@@ -6,6 +6,7 @@ use App\Models\Sucursal;
 use App\Models\Estado;
 use App\Models\Municipio;
 use App\Models\Localidad;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Sucursales\CreateSucursalRequest;
 use App\Http\Requests\Sucursales\EditSucursalRequest;
@@ -182,6 +183,19 @@ class SucursalController extends Controller
     public function borrar($sucursal_id)
     {
         $sucursal = Sucursal::withTrashed()->where('sucursal_id', $sucursal_id)->find($sucursal_id);
+
+        $buscausuarios   = User::where('sucursal_id',$sucursal_id)->get(); 
+        $buscausuariosd  = User::withTrashed()->where('sucursal_id', $sucursal_id)->get();
+
+        $cuantos = count($buscausuarios); 
+        $cuantosd = count($buscausuariosd);
+        
+       if($cuantosd>=1) {
+           return redirect()->route('sucursales.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Usuarios');
+        }
+       if($cuantos>=1) {
+           return redirect()->route('sucursales.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Usuarios');
+        }
 
         if (Storage::disk('sucursal-imagenes')->exists("$sucursal->imagen")) {
             if($sucursal->imagen == "shadow.jpg"){

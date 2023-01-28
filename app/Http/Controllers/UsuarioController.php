@@ -7,6 +7,7 @@ use App\Models\Rol;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\Usuarios\CreateUsuarioRequest;
+use App\Http\Requests\Usuarios\EditUsuarioRequest;
 use Illuminate\Support\Facades\Storage;
 
 class UsuarioController extends Controller
@@ -138,9 +139,37 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUsuarioRequest $request, User $usuario)
     {
-        //
+
+        if (($request->rol_id == '2') || ($request->rol_id == '3')) {
+             $this->validate($request, [
+            'sucursal_id' => 'required',
+        ]);
+        }
+
+         $usuario->update($request->except(['id', 'foto', 'password']));
+
+         if ($request->hasFile('foto')) {
+            if (Storage::disk('usuario-imagenes')->exists("$usuario->foto")) {
+                if($usuario->foto == "shadow.jpg"){
+                     $usuario->foto = "shadow.jpg";
+                } else {
+                 Storage::disk('usuario-imagenes')->delete("$usuario->foto");
+                }
+            }
+            $usuario->foto = Storage::disk('usuario-imagenes')->putFile('', $request->file('foto'));
+        }
+
+        if($request->password){
+            $usuario->password = bcrypt($request->password);
+        }
+
+       
+
+        $usuario->save();
+
+        return redirect()->route('usuarios.index')->with('message', 'Usuario actualizado exitosamente');
     }
 
     /**

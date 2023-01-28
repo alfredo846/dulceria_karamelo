@@ -162,7 +162,7 @@
                                     </div>
                                 </div><br>
 
-                                @if ($usuario->sucursal_id != '')
+                                @if (($usuario->sucursal_id != '') && ($usuario->rol_id != '1'))
                                     <div class="form-group">
                                         <label for="demo-is-inputnormal"
                                             class="col-sm-3 control-label text-bold text-semibold  text-left">Sucursal:</label>

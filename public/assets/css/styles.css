@@ -54,7 +54,7 @@
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 3px 3px #01e8ff;
+    -webkit-box-shadow: 0 0 3px 3px #032451;
     width: 180px;
     height: 140px;
 }
@@ -63,7 +63,7 @@
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 5px 5px #01e8ff;
+    -webkit-box-shadow: 0 0 5px 5px #032451;
     width: 100px;
     height: 100px;
     
@@ -80,19 +80,19 @@ padding: 2px 0px 5px 0;
 }
 
 .profile-image {
-    width: 53px;
-    height: 40px;
+    width: 50px;
+    height: 43px;
     border-radius: 5px;
 }
 
 .profile-image-show {
-    width: 160px;
-    height: 110px;
+    width: 150px;
+    height: 130px;
     border-radius: 5px;
     border-radius: 0%;
     -webkit-border-radius: 0%;
     box-shadow: 0 0 15px 15px #1266e4;
-    -webkit-box-shadow: 0 0 3px 3px #01e8ff;
+    -webkit-box-shadow: 0 0 3px 3px #032451;
 }
 
 /* input file de categorias */

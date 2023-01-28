@@ -92,7 +92,7 @@
                                     <div class="col-sm-8">
 
                                         <div id="imagePreview">
-                                            <img class='fotoperfiluser'
+                                            <img class='fotoperfil'
                                                 src="{{ asset('imagenes/usuarios/' . $usuario->foto) }}" alt=""
                                                 width="200px">
                                         </div>
@@ -197,10 +197,10 @@
 
                                 <div class="form-group">
                                     <label for="demo-is-inputnormal"
-                                        class="col-sm-3 control-label text-bold text-semibold is-required text-left">Password:</label>
+                                        class="col-sm-3 control-label text-bold text-semibold text-left">Password:</label>
                                     <div class="col-sm-8">
-                                        <input type="password" placeholder="Password" id="demo-hor-inputpass"
-                                            class="form-control" name="password" value="{{ $usuario->password }}">
+                                        <input type="password" placeholder="¡Anote si desea cambiar el password existnte!" id="demo-hor-inputpass"
+                                            class="form-control" name="password">
 
                                         @if ($errors->first('password'))
                                             <i class="text-danger">{{ $errors->first('password') }}</i>
@@ -248,7 +248,7 @@
                                             name="sucursal_id">
                                             <option value="">-- Seleccione una sucursal --</option>
                                             @foreach ($sucursales as $sucursal)
-                                                @if (old('sucursal_id') == $sucursal->sucursal_id)
+                                                @if ($usuario->sucursal_id == $sucursal->sucursal_id)
                                                     <option value="{{ $sucursal->sucursal_id }}" selected>
                                                         {{ $sucursal->nombre }}
                                                     @else
@@ -264,7 +264,7 @@
                                 <div class="panel-footer">
                                     <div class="row">
                                         <div class="col-sm-4 col-sm-offset-4">
-                                            <button class="buttonp" type="submit">Guardar</button>
+                                            <button class="buttonp" type="submit">Actualizar</button>
                                         </div>
                                     </div>
                                 </div><br>&nbsp;
@@ -299,7 +299,7 @@
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        $('#imagePreview').html("<img class='fotoperfiluser' src='" + e.target.result + "'/>");
+                        $('#imagePreview').html("<img class='fotoperfil' src='" + e.target.result + "'/>");
                     }
                     reader.readAsDataURL(input.files[0]);
                 }

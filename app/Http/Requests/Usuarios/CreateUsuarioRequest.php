@@ -34,7 +34,6 @@ class CreateUsuarioRequest extends FormRequest
             'email'               => 'required|email|unique:users,email|max:60',
             'password'            => 'required',
             'rol_id'              => 'required',
-            // 'sucursal_id'         => 'required',
         ];
     }
 }

@@ -29,8 +29,9 @@
                 <li id="dropdown-user" class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                         <span class="ic-user pull-right menu-title">
-                            <img class="img-circle img-sm" src="{{ asset('assets\img\profile-photos\1.png') }}"
+                            <img class="img-circle img-sm" src="{{ asset('imagenes/usuarios/' . Auth::user()->foto) }}"
                                 alt="Profile Picture">
+
                             <small> {{ Auth::user()->username }}</small>
                             <i class="fa fa-caret-right"></i>
                         </span>
