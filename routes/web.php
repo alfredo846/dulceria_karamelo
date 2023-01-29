@@ -21,7 +21,7 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-Route::view('/bienvenido', 'bienvenido')->name('bienvenido');
+Route::get('bienvenido',[UsuarioController::class, 'bienvenido'])->name('bienvenido');
 Route::view('/', 'auth/login')->name('login');
 // Route::view('/', 'login')->name('login');
 

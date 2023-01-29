@@ -26,7 +26,6 @@ class UsuariosSeeder extends Seeder
         'password'           =>  Hash::make('superadmin'),
         'foto'               => 'shadow.jpg',
         'rol_id'             => '1',
-        'ultimo_login'       => '2023-01-02 18:19:52',
     ]);
 
     $administrador=User::create([
@@ -41,7 +40,6 @@ class UsuariosSeeder extends Seeder
         'foto'               => 'shadow.jpg',
         'rol_id'             => '2',
         'sucursal_id'        => '1',
-        'ultimo_login'       => '2023-01-02 18:19:52',
     ]);
 
     $avendedor=User::create([
@@ -56,7 +54,6 @@ class UsuariosSeeder extends Seeder
         'foto'               => 'shadow.jpg',
         'rol_id'             => '3',
         'sucursal_id'        => '1',
-        'ultimo_login'       => '2023-01-02 18:19:52',
     ]);
     }
 }

@@ -2,15 +2,14 @@
 @section('title', 'Perfil')
 
 @section('head')
-    <!--DataTables [ OPTIONAL ]-->
-    <link href="{{ asset('assets\plugins\datatables\media\css\dataTables.bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets\plugins\datatables\extensions\Responsive\css\responsive.dataTables.min.css') }}"
-        rel="stylesheet">
 
     <!--Ion Icons [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\ionicons\css\ionicons.min.css') }}" rel="stylesheet">
 
+@endsection
 
+@section('body')
+ onload="startTime()"
 @endsection
 
 @section('content')

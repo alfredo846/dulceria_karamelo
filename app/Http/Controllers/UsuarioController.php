@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Temporada;
+use App\Models\Marca;
+use App\Models\Empaque;
+use App\Models\Producto;
 use App\Models\User;
 use App\Models\Rol;
 use App\Models\Sucursal;
@@ -31,6 +36,17 @@ class UsuarioController extends Controller
         ->with(['sucursales'      => $sucursales])    
         ->with(['sucursalesd'     => $sucursalesd]);  
     }
+
+     public function bienvenido(){
+        $categoria = Categoria::count();
+        $temporada = Temporada::count();
+        $marca     = Marca::count();
+        $empaque   = Empaque::count();
+        $producto  = Producto::count();
+        $usuario   = User::count();
+        $sucursal  = Sucursal::count();
+        return view('bienvenido', compact('categoria','temporada','marca','empaque','producto','usuario','sucursal'));
+     }
 
      public function papelera()
     {
