@@ -78,8 +78,9 @@
                             <div class="panel panel-bordered panel-primary">
                                 <div class="panel-heading">
                                     <div class="text-right">
-                                        <button class="btn btn-sm btn-primary">Editar Perfil</button>
-                                        <button class="btn btn-sm btn-mint">Descargar CV</button>
+										<a href="{{ route('usuarios.edit', $usuario) }}">
+                                        <button class="btn btn-sm btn-mint">Editar Perfil</button>
+										</a>
                                     </div>
                                 </div>
                                 <div class="panel-body">

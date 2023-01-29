@@ -110,8 +110,8 @@
                                     </div>
                                 </div>
 
-                               <div class="panel-footer text-left">
-                                    <a href="{{ route('usuarios.index') }}"
+                                <div class="panel-footer text-left">
+                                    <a  id="back-link"
                                         class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
                                         data-container="body" data-placement="top" data-original-title="Regresar"><img
                                             src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
@@ -199,8 +199,8 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold text-left">Password:</label>
                                     <div class="col-sm-8">
-                                        <input type="password" placeholder="¡Anote si desea cambiar el password existnte!" id="demo-hor-inputpass"
-                                            class="form-control" name="password">
+                                        <input type="password" placeholder="¡Anote si desea cambiar el password existnte!"
+                                            id="demo-hor-inputpass" class="form-control" name="password">
 
                                         @if ($errors->first('password'))
                                             <i class="text-danger">{{ $errors->first('password') }}</i>
@@ -257,6 +257,7 @@
                                                 @endif
                                             @endforeach
                                         </select>
+
                                     </div>
                                 </div>
 
@@ -280,7 +281,7 @@
 
 @section('script')
 
-     <!--Bootstrap Select [ OPTIONAL ]-->
+    <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 
     <!--Chosen [ OPTIONAL ]-->
@@ -312,49 +313,49 @@
 
     <script type="text/JavaScript">
         function myFunction() {
-                    var nombre = document.getElementById("nombre").value;
-                    var apellido_paterno = document.getElementById("apellido_paterno").value;
-                    var apellido_materno = document.getElementById("apellido_materno").value;
-                    var datos;
-                    datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
-                    document.formulario_01.username.value = datos;
-                    // alert(datos);
-                    // document.getElementById("aux").innerHTML = datos;
-                   }
-                    </script>
+                        var nombre = document.getElementById("nombre").value;
+                        var apellido_paterno = document.getElementById("apellido_paterno").value;
+                        var apellido_materno = document.getElementById("apellido_materno").value;
+                        var datos;
+                        datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
+                        document.formulario_01.username.value = datos;
+                        // alert(datos);
+                        // document.getElementById("aux").innerHTML = datos;
+                       }
+                        </script>
 
     <script type="text/JavaScript">
         $('input[name=nombre]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-                    </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+                        </script>
 
     <script type="text/JavaScript">
         $('input[name=apellido_paterno]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-                    </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+                        </script>
 
     <script type="text/JavaScript">
         $('input[name=apellido_materno]').bind('keypress', function(event) {
-                    var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                    if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                    }
-                    });
-                    </script>
+                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                        if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                        }
+                        });
+                        </script>
 
     {{-- ocultar y mostrar inputs
          <script type="text/JavaScript">
@@ -384,6 +385,26 @@
                     $('#sucursales').show();
                 }
             }
+        }
+    </script>
+
+    <script>
+        var element = document.getElementById('back-link');
+
+        // Provide a standard href to facilitate standard browser features such as 
+        //  - Hover to see link
+        //  - Right click and copy link
+        //  - Right click and open in new tab
+        element.setAttribute('href', document.referrer);
+
+        // We can't let the browser use the above href for navigation. If it does, 
+        // the browser will think that it is a regular link, and place the current 
+        // page on the browser history, so that if the user clicks "back" again,
+        // it'll actually return to this page. We need to perform a native back to
+        // integrate properly into the browser's history behavior
+        element.onclick = function() {
+            history.back();
+            return false;
         }
     </script>
 
