@@ -32,6 +32,21 @@ class ArticuloController extends Controller
         return view("articulos.index", compact('articulos','productos','productosd','usuariologeado','sucursales','sucursalesd'));
     }
 
+     public function papelera()
+    {
+        $articulos       = Articulo::onlyTrashed()->where ('sucursal_id', '=', Auth::user()->sucursal_id)->get();
+
+        $productos       = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $productosd      = Producto::onlyTrashed()->get();
+
+        $sucursales      = Sucursal::orderBy('sucursal_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $sucursalesd     = Sucursal::onlyTrashed()->get();
+
+        $usuariologeado  = User::find(Auth::id());
+
+        return view("articulos.papelera", compact('articulos','productos','productosd','usuariologeado','sucursales','sucursalesd'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -95,6 +110,39 @@ class ArticuloController extends Controller
      */
     public function destroy(Articulo $articulo)
     {
-        //
+        $articulo->delete();
+
+        return redirect()->route('articulos.index')->with('eliminar','ok');
+    }
+
+    public function activar($articulo_id)
+    {
+        $articuloss = Articulo::withTrashed()->where('articulo_id', $articulo_id)->restore();
+
+        return redirect()->route('articulos.papelera')->with('activar','ok');
+    }
+
+    public function borrar($articulo_id)
+    {
+        $articulo = Articulo::withTrashed()->where('articulo_id', $articulo_id)->find($articulo_id);
+
+        // $buscaarticulos   = Articulo::where('articulo_id',$articulo_id)->get(); 
+        // $buscaarticulosd  = Articulo::withTrashed()->where('articulo_id', $articulo_id)->get();
+
+        // $cuantos  = count($buscaarticulos); 
+        // $cuantosd = count($buscaarticulosd);
+
+
+        // if($cuantos>=1) {
+        //    return redirect()->route('articulos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+        // }
+
+        // if($cuantosd>=1) {
+        //    return redirect()->route('articulos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+        // }
+
+        $articulos = Articulo::withTrashed()->where('articulo_id', $articulo_id)->forcedelete();
+
+        return redirect()->route('articulos.papelera')->with('borrar','ok');
     }
 }
