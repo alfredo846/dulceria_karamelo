@@ -247,7 +247,7 @@ class UsuarioController extends Controller
             $usuario->foto = Storage::disk('usuario-imagenes')->putFile('', $request->file('foto'));
         }
         $usuario->save();
-        return redirect()->route('bienvenido')->with('foto','ok');
+        return redirect()->route('perfil')->with('foto','ok');
        
     }
 
@@ -266,6 +266,13 @@ class UsuarioController extends Controller
          $usuario->password = bcrypt($request->password);
          $usuario->save();
 
-        return redirect()->route('bienvenido')->with('password','ok');
+        return redirect()->route('perfil')->with('password','ok');
+    }
+
+    public function perfil(){
+        $roles        = Rol::all();
+        $sucursales   = Sucursal::all();
+        $usuario      = User::find(Auth::id());
+        return view('usuarios.perfil', compact('usuario','roles','sucursales'));
     }
 }

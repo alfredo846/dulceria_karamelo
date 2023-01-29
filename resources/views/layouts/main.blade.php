@@ -5,7 +5,7 @@
 
 @yield('head')
 
-<body>
+<body onload="startTime()">
     <div id="container" class="effect aside-float aside-bright mainnav-lg">
         
         @include('layouts.navbar')

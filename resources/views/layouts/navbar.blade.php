@@ -40,7 +40,7 @@
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                         <ul class="head-list">
                             <li>
-                                <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i>Mí perfil</a>
+                                <a href="{{ route('perfil') }}"><i class="demo-pli-male icon-lg icon-fw"></i>Mí perfil</a>
                             </li>
                             <li>
                                 <button type="button" class="btn d-block btn-light w-100" data-toggle="modal" data-target="#editPhoto">
