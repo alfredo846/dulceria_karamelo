@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ArticuloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,12 @@ Route::get('rol_papelera',[RolController::class, 'papelera'])->name('roles.papel
 // Route::delete('rol_borrar/{rol_id}',[RolController::class, 'borrar'])->name('roles.borrar');
 // Route::delete('rol_activar/{rol_id}',[RolController::class, 'activar'])->name('roles.activar');
 // Route::get('rol_export',[RolController::class, 'export'])->name('roles.export');
+
+Route::resource('articulos', ArticuloController::class);
+Route::get('articulo_papelera',[ArticuloController::class, 'papelera'])->name('articulos.papelera');
+Route::delete('articulo_borrar/{articulo_id}',[ArticuloController::class, 'borrar'])->name('articulos.borrar');
+Route::delete('articulo_activar/{articulo_id}',[ArticuloController::class, 'activar'])->name('articulos.activar');
+Route::get('articulo_export',[ArticuloController::class, 'export'])->name('articulos.export');
 
 Auth::routes();
 

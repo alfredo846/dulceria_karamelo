@@ -29,17 +29,31 @@ class UsuariosSeeder extends Seeder
     ]);
 
     $administrador=User::create([
-        'nombre'             => 'Jesús',
-        'apellido_paterno'   => 'Heraz',
-        'apellido_materno'   => 'Pérez',
-        'genero'             => 'masculino',
+        'nombre'             => 'Vianey',
+        'apellido_paterno'   => 'Reyes',
+        'apellido_materno'   => 'Reyes',
+        'genero'             => 'femenino',
         'telefono'           => '7291234567',
-        'username'           => 'Jesús Heraz Pérez',
+        'username'           => 'Vianey Reyes Reyes',
         'email'              => 'admin@gmail.com',
         'password'           =>  Hash::make('admin'),
         'foto'               => 'shadow.jpg',
         'rol_id'             => '2',
         'sucursal_id'        => '1',
+    ]);
+
+    $administrador=User::create([
+        'nombre'             => 'Lucía',
+        'apellido_paterno'   => 'Salazar',
+        'apellido_materno'   => 'Flores',
+        'genero'             => 'femenino',
+        'telefono'           => '7296548745',
+        'username'           => 'Lucía Salazar Flores',
+        'email'              => 'admin2@gmail.com',
+        'password'           =>  Hash::make('admin2'),
+        'foto'               => 'shadow.jpg',
+        'rol_id'             => '2',
+        'sucursal_id'        => '2',
     ]);
 
     $avendedor=User::create([

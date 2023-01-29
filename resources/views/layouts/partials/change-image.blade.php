@@ -33,8 +33,8 @@
                         </div>
                     </div><br>&nbsp;<br>&nbsp;<br>&nbsp;
                     <div class="row">
-                        <div class="col-sm-4 col-sm-offset-4">
-                            <button class="buttonp" type="submit">Cambiar foto</button>
+                        <div class="col-sm-3 col-sm-offset-3">
+                         <button class="button">Cambiar foto</button>
                         </div>
                     </div><br>&nbsp;<br>&nbsp;
                 </form>

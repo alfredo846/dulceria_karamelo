@@ -7,6 +7,7 @@ use App\Models\Categoria;
 use App\Models\Marca;
 use App\Models\Temporada;
 use App\Models\Empaque;
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 use App\Http\Requests\Productos\CreateProductoRequest;
 use App\Http\Requests\Productos\EditProductoRequest;
@@ -175,6 +176,21 @@ class ProductoController extends Controller
     public function borrar($producto_id)
     {
         $producto = Producto::withTrashed()->where('producto_id', $producto_id)->find($producto_id);
+
+        $buscaarticulos   = Articulo::where('producto_id',$producto_id)->get(); 
+        $buscaarticulosd  = Articulo::withTrashed()->where('producto_id', $producto_id)->get();
+
+        $cuantos  = count($buscaarticulos); 
+        $cuantosd = count($buscaarticulosd);
+
+
+        if($cuantos>=1) {
+           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+        }
+
+        if($cuantosd>=1) {
+           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+        }
 
         if (Storage::disk('producto-imagenes')->exists("$producto->imagen")) {
             if($producto->imagen == "shadow.jpg"){

@@ -10,7 +10,7 @@
 
     <!--Ion Icons [ OPTIONAL ]-->
     <link href="{{ asset('assets\plugins\ionicons\css\ionicons.min.css') }}" rel="stylesheet">
-    
+
 @endsection
 
 @section('content')
@@ -20,9 +20,21 @@
         <div class="col-md-12">
             <div class="panel panel-primary panel-colorful media middle pad-all">
                 <div class="media-body">
-                    <p class="text-2x text-center mar-no text-semibold">Bienvenido</p>
-                         <p class="text-1x"> ¡Hola {{ Auth::user()->username }} !</p>
-                    <p></p>
+                    <p class="text-2x text-center mar-no text-semibold">Bienvenido a tu sucursal - 
+                        @if ($usuariologeado->id != '1')
+                            @foreach ($sucursales as $sucursale)
+                                @if ($sucursale->sucursal_id == $usuariologeado->sucursal_id)
+                                    {{ $sucursale->nombre }}
+                                @endif
+                            @endforeach
+                            @foreach ($sucursalesd as $sucursale)
+                                @if ($sucursale->sucursal_id == $usuariologeado->sucursal_id)
+                                    {{ $sucursale->nombre }}
+                                @endif
+                            @endforeach
+                        @endif
+                    </p>
+                    <p class="text-1x mar-no text-semibold"> ¡Hola {{ Auth::user()->username }} !</p>
                 </div>
             </div>
         </div>

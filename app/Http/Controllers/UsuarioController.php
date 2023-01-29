@@ -38,14 +38,17 @@ class UsuarioController extends Controller
     }
 
      public function bienvenido(){
-        $categoria = Categoria::count();
-        $temporada = Temporada::count();
-        $marca     = Marca::count();
-        $empaque   = Empaque::count();
-        $producto  = Producto::count();
-        $usuario   = User::count();
-        $sucursal  = Sucursal::count();
-        return view('bienvenido', compact('categoria','temporada','marca','empaque','producto','usuario','sucursal'));
+        $categoria      = Categoria::count();
+        $temporada      = Temporada::count();
+        $marca          = Marca::count();
+        $empaque        = Empaque::count();
+        $producto       = Producto::count();
+        $usuario        = User::count();
+        $sucursal       = Sucursal::count();
+        $usuariologeado = User::find(Auth::id());
+        $sucursales     = Sucursal::all();
+        $sucursalesd    = Sucursal::onlyTrashed()->get();
+        return view('bienvenido', compact('categoria','temporada','marca','empaque','producto','usuario','sucursal','usuariologeado','sucursales','sucursalesd'));
      }
 
      public function papelera()
