@@ -155,9 +155,9 @@
                                         <input type="text" name="telefono" placeholder="Teléfono"
                                             value="{{ old('telefono') }}" maxlength="10"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control">
                                         @if ($errors->first('telefono'))
-                                           <i class="text-danger">{{ $errors->first('telefono') }}</i>
+                                            <i class="text-danger">{{ $errors->first('telefono') }}</i>
                                         @endif
                                     </div>
                                 </div>
@@ -180,8 +180,7 @@
                                         class="col-sm-3 control-label text-bold text-semibold is-required text-left">Email:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="email" value="{{ old('email') }}"
-                                            placeholder="Correo electrónico" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Correo electrónico" autocomplete="off" class="form-control">
                                         @if ($errors->first('email'))
                                             <i class="text-danger">{{ $errors->first('email') }}</i>
                                         @endif
@@ -192,7 +191,7 @@
                                     <label for="demo-is-inputnormal"
                                         class="col-sm-3 control-label text-bold text-semibold is-required text-left">Password:</label>
                                     <div class="col-sm-8">
-                                        <input type="password" placeholder="Password" id="demo-hor-inputpass"
+                                        <input type="password" placeholder="Password" 
                                             class="form-control" name="password">
 
                                         @if ($errors->first('password'))
@@ -305,52 +304,52 @@
     {{-- Username --}}
     <script type="text/JavaScript">
         function myFunction() {
-                        var nombre = document.getElementById("nombre").value;
-                        var apellido_paterno = document.getElementById("apellido_paterno").value;
-                        var apellido_materno = document.getElementById("apellido_materno").value;
-                        var datos;
-                        datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
-                        document.formulario_01.username.value = datos;
-                        // alert(datos);
-                        // document.getElementById("aux").innerHTML = datos;
-                       }
-            </script>
+                            var nombre = document.getElementById("nombre").value;
+                            var apellido_paterno = document.getElementById("apellido_paterno").value;
+                            var apellido_materno = document.getElementById("apellido_materno").value;
+                            var datos;
+                            datos = nombre + " " + apellido_paterno + " "+ apellido_materno;
+                            document.formulario_01.username.value = datos;
+                            // alert(datos);
+                            // document.getElementById("aux").innerHTML = datos;
+                           }
+                </script>
 
     {{-- Validar input nombre --}}
     <script type="text/JavaScript">
         $('input[name=nombre]').bind('keypress', function(event) {
-                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                        if (!regex.test(key)) {
-                        event.preventDefault();
-                        return false;
-                        }
-                        });
-            </script>
+                            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                            if (!regex.test(key)) {
+                            event.preventDefault();
+                            return false;
+                            }
+                            });
+                </script>
 
     {{-- Validar input apellido paterno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_paterno]').bind('keypress', function(event) {
-                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                        if (!regex.test(key)) {
-                        event.preventDefault();
-                        return false;
-                        }
-                        });
-                        </script>
+                            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                            if (!regex.test(key)) {
+                            event.preventDefault();
+                            return false;
+                            }
+                            });
+                            </script>
 
     {{-- Validar input apellido mateno --}}
     <script type="text/JavaScript">
         $('input[name=apellido_materno]').bind('keypress', function(event) {
-                        var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
-                        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                        if (!regex.test(key)) {
-                        event.preventDefault();
-                        return false;
-                        }
-                        });
-            </script>
+                            var regex = new RegExp("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
+                            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                            if (!regex.test(key)) {
+                            event.preventDefault();
+                            return false;
+                            }
+                            });
+                </script>
 
     {{-- ocultar y mostrar inputs
          <script type="text/JavaScript">

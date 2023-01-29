@@ -58,8 +58,7 @@
                                         <input type="text" name="numero_sucursal" maxlength="3" disabled
                                             value="{{ $sucursale->numero_sucursal }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Número de sucursal" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Número de sucursal" autocomplete="off" class="form-control">
                                     </div>
                                 </div>
 
@@ -68,8 +67,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold text-left">Nombre:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="nombre" placeholder="Nombre de la sucursal" disabled
-                                            value="{{ $sucursale->nombre }}" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            value="{{ $sucursale->nombre }}" autocomplete="off" class="form-control">
                                     </div>
                                 </div>
 
@@ -80,11 +78,11 @@
                                         <input type="text" name="telefono" placeholder="Teléfono" disabled
                                             value="{{ $sucursale->telefono }}" maxlength="10"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control">
                                     </div>
                                 </div>
 
-                               <div class="panel-footer text-left">
+                                <div class="panel-footer text-left">
                                     <a href="{{ route('sucursales.index') }}"
                                         class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
                                         data-container="body" data-placement="top" data-original-title="Regresar"><img
@@ -157,8 +155,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold text-left">Email:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="email" value="{{ $sucursale->email }}" disabled
-                                            placeholder="Correo electrónico" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Correo electrónico" autocomplete="off" class="form-control">
                                         @if ($errors->first('email'))
                                             <i class="text-danger">{{ $errors->first('email') }}</i>
                                         @endif

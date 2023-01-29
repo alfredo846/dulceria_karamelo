@@ -95,7 +95,7 @@
                                             style="display: inline-block" class="formulario-eliminar">
                                             @csrf
                                             @method('DELETE')
-                                            <button id="deleteItem" type="submit"
+                                            <button type="submit"
                                                 class="btn btn-sm btn-danger btn-icon add-tooltip" data-toggle="tooltip"
                                                 data-container="body" data-placement="top" data-original-title="Eliminar"><i
                                                     class="demo-psi-recycling icon-sm"></i></button>

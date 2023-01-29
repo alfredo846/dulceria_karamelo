@@ -51,8 +51,7 @@
                                         <input type="text" name="numero_sucursal" maxlength="3"
                                             value="{{ old('numero_sucursal') }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Número de sucursal" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Número de sucursal" autocomplete="off" class="form-control">
                                         @if ($errors->first('numero_sucursal'))
                                             <i class="text-danger">{{ $errors->first('numero_sucursal') }}</i>
                                         @endif
@@ -65,7 +64,7 @@
                                     <div class="col-sm-8">
                                         <input type="text" name="nombre" placeholder="Nombre de la sucursal"
                                             maxlength="20" value="{{ old('nombre') }}" autocomplete="off"
-                                            class="form-control" id="demo-is-inputnormal">
+                                            class="form-control">
                                         @if ($errors->first('nombre'))
                                             <i class="text-danger">{{ $errors->first('nombre') }}</i>
                                         @endif
@@ -79,7 +78,7 @@
                                         <input type="text" name="telefono" placeholder="Teléfono"
                                             value="{{ old('telefono') }}" maxlength="10"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control">
                                         @if ($errors->first('telefono'))
                                             <i class="text-danger">{{ $errors->first('telefono') }}</i>
                                         @endif
@@ -178,8 +177,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Email:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="email" value="{{ old('email') }}"
-                                            placeholder="Correo electrónico" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Correo electrónico" autocomplete="off" class="form-control">
                                         @if ($errors->first('email'))
                                             <i class="text-danger">{{ $errors->first('email') }}</i>
                                         @endif

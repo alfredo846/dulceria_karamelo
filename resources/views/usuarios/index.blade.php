@@ -41,14 +41,14 @@
                     <div class="col-md-12">
                         <div class="col-md-9">
                             <a href="{{ route('usuarios.papelera') }}">
-                                <button id="deleteItem" type="submit"
+                                <button type="submit"
                                     class="btn btn-circle btn-danger btn-icon add-tooltip" data-toggle="tooltip"
                                     data-container="body" data-placement="top" data-original-title="Papelera"><i
                                         class="demo-psi-recycling icon-lg"></i></button>
                             </a>
 
                             <a href="{{ route('usuarios.export') }}">
-                                <button id="deleteItem" type="submit" class="btn btn-circle btn-mint btn-icon add-tooltip"
+                                <button type="submit" class="btn btn-circle btn-mint btn-icon add-tooltip"
                                     data-toggle="tooltip" data-container="body" data-placement="top"
                                     data-original-title="Exportar"><i class="fa fa-file-excel-o fa-lg"></i></button>
                             </a>
@@ -124,7 +124,7 @@
                                             style="display: inline-block" class="formulario-eliminar">
                                             @csrf
                                             @method('DELETE')
-                                            <button id="deleteItem" type="submit"
+                                            <button type="submit"
                                                 class="btn btn-sm btn-danger btn-icon add-tooltip" data-toggle="tooltip"
                                                 data-container="body" data-placement="top" data-original-title="Eliminar"><i
                                                     class="demo-psi-recycling icon-sm"></i></button>

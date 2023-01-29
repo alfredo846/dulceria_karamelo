@@ -162,7 +162,7 @@
                                         <input type="text" name="telefono" placeholder="Teléfono"
                                             value="{{ $usuario->telefono }}" maxlength="10"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control">
                                         @if ($errors->first('telefono'))
                                             <i class="text-danger">{{ $errors->first('telefono') }}</i>
                                         @endif
@@ -200,7 +200,7 @@
                                         class="col-sm-3 control-label text-bold text-semibold text-left">Password:</label>
                                     <div class="col-sm-8">
                                         <input type="password" placeholder="¡Anote si desea cambiar el password existnte!"
-                                            id="demo-hor-inputpass" class="form-control" name="password">
+                                        class="form-control" name="password">
 
                                         @if ($errors->first('password'))
                                             <i class="text-danger">{{ $errors->first('password') }}</i>

@@ -31,7 +31,7 @@
         <!--Page content-->
         <div id="page-content">
             <div class="row">
-                
+
                 <form action="{{ route('productos.store') }}" method="post" enctype="multipart/form-data"
                     class="form-horizontal">
                     @csrf
@@ -52,8 +52,7 @@
                                         <input type="text" name="codigo_barras" maxlength="14"
                                             value="{{ old('codigo_barras') }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            placeholder="Código de barras" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            placeholder="Código de barras" autocomplete="off" class="form-control">
                                         @if ($errors->first('codigo_barras'))
                                             <i class="text-danger">{{ $errors->first('codigo_barras') }}</i>
                                         @endif
@@ -65,8 +64,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Nombre:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="nombre" placeholder="Nombre del producto"
-                                            value="{{ old('nombre') }}" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            value="{{ old('nombre') }}" autocomplete="off" class="form-control">
                                         @if ($errors->first('nombre'))
                                             <i class="text-danger">{{ $errors->first('nombre') }}</i>
                                         @endif
@@ -78,8 +76,7 @@
                                         class="col-sm-4 control-label text-bold text-semibold is-required text-left">Descripción:</label>
                                     <div class="col-sm-8">
                                         <input type="text" name="descripcion" placeholder="Descripción"
-                                            value="{{ old('descripcion') }}" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal">
+                                            value="{{ old('descripcion') }}" autocomplete="off" class="form-control">
                                         @if ($errors->first('descripcion'))
                                             <i class="text-danger">{{ $errors->first('descripcion') }}</i>
                                         @endif
@@ -237,13 +234,13 @@
                                             value="{{ old('piezas_por_empaque') }}"
                                             placeholder="Número de piezas que trae el empaque" maxlength="3"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control">
                                         @if ($errors->first('piezas_por_empaque'))
                                             <i class="text-danger">{{ $errors->first('piezas_por_empaque') }}</i>
                                         @endif
                                     </div>
                                 </div>
-                                
+
                                 <div class="panel-footer">
                                     <div class="row">
                                         <div class="col-sm-4 col-sm-offset-4">
@@ -252,7 +249,7 @@
                                     </div>
                                 </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
                             </div>
-                            
+
                 </form>
             </div>
         </div>
@@ -265,7 +262,7 @@
 @endsection
 
 @section('script')
-  
+
     <!--Bootstrap Select [ OPTIONAL ]-->
     <script src="{{ asset('assets\plugins\bootstrap-select\bootstrap-select.min.js') }}"></script>
 

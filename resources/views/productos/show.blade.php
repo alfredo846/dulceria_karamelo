@@ -59,7 +59,7 @@
                                             value="{{ $producto->codigo_barras }}"
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                             placeholder="Código de barras" autocomplete="off" disabled class="form-control"
-                                            id="demo-is-inputnormal">
+                                            >
 
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                     <div class="col-sm-8">
                                         <input type="text" name="nombre" placeholder="Nombre del producto"
                                             value="{{ $producto->nombre }}" autocomplete="off" class="form-control"
-                                            id="demo-is-inputnormal" disabled>
+                                             disabled>
                                     </div>
                                 </div>
 
@@ -80,7 +80,7 @@
                                     <div class="col-sm-8">
                                         <input type="text" name="descripcion"
                                             placeholder="Descripción"value="{{ $producto->descripcion }}" autocomplete="off"
-                                            class="form-control" id="demo-is-inputnormal" disabled>
+                                            class="form-control"  disabled>
                                         @if ($errors->first('descripcion'))
                                             <i class="text-danger">{{ $errors->first('descripcion') }}</i>
                                         @endif
@@ -204,7 +204,7 @@
                                             value="{{ $producto->piezas_por_empaque }}"
                                             placeholder="Número de piezas que trae el empaque" maxlength="3" disabled
                                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
-                                            autocomplete="off" class="form-control" id="demo-is-inputnormal">
+                                            autocomplete="off" class="form-control" >
                                     </div>
                                 </div><br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
                             </div>

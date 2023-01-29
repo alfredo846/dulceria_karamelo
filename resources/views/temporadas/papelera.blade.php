@@ -73,7 +73,7 @@
                                             style="display: inline-block" class="formulario-borrar">
                                             @csrf
                                             @method('DELETE')
-                                            <button id="deleteItem" type="submit"
+                                            <button type="submit"
                                                 class="btn btn-sm btn-danger btn-icon">Borrar</button>
                                         </form>
 
