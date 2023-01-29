@@ -177,9 +177,9 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
-                                                        <label class="control-label">Último login:</label>
+                                                        <label class="control-label">Última actualización:</label>
                                                         <input type="email" class="form-control"
-                                                            value="{{ $usuario->ultimo_login }}" readonly>
+                                                            value="{{ $usuario->updated_at }}" readonly>
                                                     </div>
                                                 </div>
                                             </div>
