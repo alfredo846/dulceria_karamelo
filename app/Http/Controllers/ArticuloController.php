@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Articulo;
+use App\Models\Categoria;
+use App\Models\Marca;
+use App\Models\Temporada;
+use App\Models\Empaque;
 use App\Models\User;
 use App\Models\Sucursal;
 use App\Models\Producto;
@@ -54,7 +58,31 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        return view('articulos.create');
+        $usuariologeado = User::find(Auth::id());
+        $sucursales     = Sucursal::all();
+        $sucursalesd    = Sucursal::onlyTrashed()->get();
+        $productos       = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+
+        return view('articulos.create',compact('usuariologeado','sucursales','sucursalesd','productos'));
+    }
+
+    public function datos1(Request $request){
+        $productos       = Producto::all();
+        $categorias      = Categoria::all();
+        $marcas          = Marca::all();
+        $temporadas      = Temporada::all();
+        $empaques        = Empaque::all();
+        $id              = $request->get('id');
+        $usuariologeado  = User::find(Auth::id());
+
+        return view("articulos/datos01")
+        ->with(['productos'       => $productos])
+        ->with(['categorias'      => $categorias])
+        ->with(['marcas'          => $marcas])
+        ->with(['temporadas'      => $temporadas])
+        ->with(['empaques'        => $empaques])
+        ->with(['usuariologeado'  => $usuariologeado])
+        ->with(['id'              => $id]);
     }
 
     /**

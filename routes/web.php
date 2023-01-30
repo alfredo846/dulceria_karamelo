@@ -87,6 +87,7 @@ Route::get('articulo_papelera',[ArticuloController::class, 'papelera'])->name('a
 Route::delete('articulo_borrar/{articulo_id}',[ArticuloController::class, 'borrar'])->name('articulos.borrar');
 Route::delete('articulo_activar/{articulo_id}',[ArticuloController::class, 'activar'])->name('articulos.activar');
 Route::get('articulo_export',[ArticuloController::class, 'export'])->name('articulos.export');
+Route::get('/datos1', [ArticuloController::class, 'datos1'])->name('datos1');
 
 Auth::routes();
 

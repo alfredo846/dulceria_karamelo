@@ -18,11 +18,13 @@ class Articulo extends Model
     protected $fillable = [
         'producto_id',
         'sucursal_id',
-        'precio_compra',
-        'precio_venta',
+        'precio_compra_empaque',
+        'precio_venta_empaque',
+        'precio_compra_unidad',
+        'precio_venta_unidad',
         'stock_minimo',
         'stock_maximo',
-        'stock_empaque',
-        'stock_unidad',
+        'inventario_inicial_empaque',
+        'inventario_inicial_unidad',
     ];
 }

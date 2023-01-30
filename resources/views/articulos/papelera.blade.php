@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="panel panel-primary panel-colorful media middle pad-all">
                 <div class="media-body">
-                    <p class="text-2x mar-no text-semibold text-center">Articulos | Papelera </p>
+                    <p class="text-2x mar-no text-semibold text-center">Inventario | Papelera </p>
                     <p class="text-2x mar-no text-semibold text-left">
                         @if ($usuariologeado->id != '1')
                             @foreach ($sucursales as $sucursale)
@@ -62,8 +62,8 @@
                                 <th>Código barras</th>
                                 <th>Imagen</th>
                                 <th>Producto</th>
-                                <th>Stock empaque</th>
-                                <th>Stock unidad</th>
+                                <th>Inventario empaque</th>
+                                <th>Inventario unidad</th>
                                 <th>Status</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
@@ -80,43 +80,43 @@
                                                     alt="foto">
                                             </td>
                                             <td width="180">{{ $producto->nombre }}</td>
-                                            <td>{{ $articulo->stock_empaque }}</td>
-                                            <td>{{ $articulo->stock_unidad }}</td>
+                                            <td>{{ $articulo->inventario_inicial_empaque }}</td>
+                                            <td>{{ $articulo->inventario_inicial_unidad }}</td>
                                             <td width="180">
 
-                                                @if ($articulo->stock_empaque == 0)
+                                                @if ($articulo->inventario_inicial_empaque == 0)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-danger">
                                                             <strong class="text-1x"> Agotado
-                                                                ({{ $articulo->stock_empaque }})
+                                                                ({{ $articulo->inventario_inicial_empaque }})
                                                                 <strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque > 0 && $articulo->stock_empaque <= $articulo->stock_minimo)
+                                                @if ($articulo->inventario_inicial_empaque > 0 && $articulo->inventario_inicial_empaque <= $articulo->stock_minimo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-warning">
                                                             <strong class="text-1x"> Casi sin existencia
-                                                                ({{ $articulo->stock_empaque }})<strong>
+                                                                ({{ $articulo->inventario_inicial_empaque }})<strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque > $articulo->stock_minimo && $articulo->stock_empaque < $articulo->stock_maximo)
+                                                @if ($articulo->inventario_inicial_empaque > $articulo->stock_minimo && $articulo->inventario_inicial_empaque < $articulo->stock_maximo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-primary">
                                                             <strong class="text-1x"> Stock suficiente
-                                                                ({{ $articulo->stock_empaque }})</strong>
+                                                                ({{ $articulo->inventario_inicial_empaque }})</strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque >= $articulo->stock_maximo)
+                                                @if ($articulo->inventario_inicial_empaque >= $articulo->stock_maximo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-mint">
                                                             Hay sobre existencia
-                                                            ({{ $articulo->stock_empaque }})</div>
+                                                            ({{ $articulo->inventario_inicial_empaque }})</div>
                                                     </div>
                                                 @endif
                                             </td>
@@ -155,43 +155,43 @@
                                                     alt="foto">
                                             </td>
                                             <td width="180">{{ $producto->nombre }}</td>
-                                            <td>{{ $articulo->stock_empaque }}</td>
-                                            <td>{{ $articulo->stock_unidad }}</td>
+                                            <td>{{ $articulo->inventario_inicial_empaque }}</td>
+                                            <td>{{ $articulo->inventario_inicial_unidad }}</td>
                                             <td width="180">
 
-                                                @if ($articulo->stock_empaque == 0)
+                                                @if ($articulo->inventario_inicial_empaque == 0)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-danger">
                                                             <strong class="text-1x"> Agotado
-                                                                ({{ $articulo->stock_empaque }})
+                                                                ({{ $articulo->inventario_inicial_empaque }})
                                                                 <strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque > 0 && $articulo->stock_empaque <= $articulo->stock_minimo)
+                                                @if ($articulo->inventario_inicial_empaque > 0 && $articulo->inventario_inicial_empaque <= $articulo->stock_minimo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-warning">
                                                             <strong class="text-1x"> Casi sin existencia
-                                                                ({{ $articulo->stock_empaque }})<strong>
+                                                                ({{ $articulo->inventario_inicial_empaque }})<strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque > $articulo->stock_minimo && $articulo->stock_empaque < $articulo->stock_maximo)
+                                                @if ($articulo->inventario_inicial_empaque > $articulo->stock_minimo && $articulo->inventario_inicial_empaque < $articulo->stock_maximo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-primary">
                                                             <strong class="text-1x"> Stock suficiente
-                                                                ({{ $articulo->stock_empaque }})</strong>
+                                                                ({{ $articulo->inventario_inicial_empaque }})</strong>
                                                         </div>
                                                     </div>
                                                 @endif
 
-                                                @if ($articulo->stock_empaque >= $articulo->stock_maximo)
+                                                @if ($articulo->inventario_inicial_empaque >= $articulo->stock_maximo)
                                                     <div class="progress progress-striped active progress-lg">
                                                         <div style="width: 100%;" class="progress-bar progress-bar-mint">
                                                             Hay sobre existencia
-                                                            ({{ $articulo->stock_empaque }})</div>
+                                                            ({{ $articulo->inventario_inicial_empaque }})</div>
                                                     </div>
                                                 @endif
                                             </td>

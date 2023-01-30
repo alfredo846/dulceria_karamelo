@@ -24,9 +24,9 @@ class ProductosSeeder extends Seeder
             'marca_id'             => '2',
             'temporada_id'         => '3',
             'empaque_id'           => '1',
-            'piezas_por_empaque'   => '25',
-            'created_at' => '2023-01-02 18:19:52',
-            'updated_at' => '2023-01-02 18:19:52'
+            'piezas_por_empaque'   => '10',
+            'created_at'           => '2023-01-02 18:19:52',
+            'updated_at'           => '2023-01-02 18:19:52'
         ],
         [
             'codigo_barras'        => '3552731',
@@ -38,8 +38,8 @@ class ProductosSeeder extends Seeder
             'temporada_id'         => '4',
             'empaque_id'           => '2',
             'piezas_por_empaque'   => '25',
-            'created_at' => '2023-01-02 18:19:52',
-            'updated_at' => '2023-01-02 18:19:52'
+            'created_at'           => '2023-01-02 18:19:52',
+            'updated_at'           => '2023-01-02 18:19:52'
         ],
         [
             'codigo_barras'        => '854765218',

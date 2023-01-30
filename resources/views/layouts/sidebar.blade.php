@@ -87,14 +87,14 @@
 									 <!--Menu list item-->
 						            <li>
 						                <a href="#">
-						                   <i class="fa fa-adn"></i>
-						                    <span class="menu-title text-bold">Articulos</span>
+						                   <i class="fa fa-book fa-lg"></i>
+						                    <span class="menu-title text-bold">Inventario</span>
 											<i class="arrow"></i>
 						                </a>
 						
 						                <!--Submenu-->
 						                <ul class="collapse text-semibold">
-						                    <li><a href="{{ route('articulos.index') }}">Articulos</a></li>	
+						                    <li><a href="{{ route('articulos.index') }}">Inventario</a></li>	
 						                </ul>
 						            </li>
 									<li class="list-divider"></li>
