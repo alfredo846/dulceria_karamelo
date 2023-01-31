@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Agregar articulo')
+@section('title', 'Agregar producto')
 
 @section('head')
 

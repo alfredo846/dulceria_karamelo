@@ -119,7 +119,25 @@ class ArticuloController extends Controller
      */
     public function show(Articulo $articulo)
     {
-        //
+        $usuariologeado = User::find(Auth::id());
+        $sucursales     = Sucursal::all();
+        $sucursalesd    = Sucursal::onlyTrashed()->get();
+        $categorias     = Categoria::all();
+        $categoriasd    = Categoria::onlyTrashed()->get();
+        $marcas         = Marca::all();
+        $marcasd        = Marca::onlyTrashed()->get();
+        $temporadas     = Temporada::all();
+        $temporadasd    = Temporada::onlyTrashed()->get();
+        $empaques       = Empaque::all();
+        $empaquesd      = Empaque::onlyTrashed()->get();
+        $productos      = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $productosd     = Producto::onlyTrashed()->get();
+        $articulos      = Articulo::orderBy('articulo_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $articulosd     = Articulo::onlyTrashed()->get();
+        
+        return view('articulos.show',compact('articulo','usuariologeado','sucursales','sucursalesd','categorias','categoriasd',
+        'marcas','marcasd','temporadas','temporadasd','empaques','empaquesd','productos','productosd','articulos','articulosd'));
+
     }
 
     /**
