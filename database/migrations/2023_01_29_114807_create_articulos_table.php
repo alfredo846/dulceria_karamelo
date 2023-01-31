@@ -17,10 +17,10 @@ class CreateArticulosTable extends Migration
             $table->bigIncrements('articulo_id');
             $table->unsignedBigInteger('producto_id');
             $table->unsignedBigInteger('sucursal_id');
-            $table->decimal('precio_compra_empaque',6,2);
-            $table->decimal('precio_venta_empaque',6,2);
-            $table->decimal('precio_compra_unidad',6,2);
-            $table->decimal('precio_venta_unidad',6,2);
+            $table->double('precio_compra_empaque',15,2);
+            $table->double('precio_venta_empaque',15,2);
+            $table->double('precio_compra_unidad',15,2);
+            $table->double('precio_venta_unidad',15,2);
             $table->integer('stock_minimo');
             $table->integer('stock_maximo');
             $table->integer('inventario_inicial_empaque');

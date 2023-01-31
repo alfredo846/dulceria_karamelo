@@ -122,7 +122,7 @@
                         <input type="text" name="precio_compra_empaque" maxlength="8" id="precio_compra_empaque"
                             onkeyup="myFunction();" value="{{ old('precio_compra_empaque') }}"
                             placeholder="Ejemplo: 99.99" autocomplete="off" class="form-control"
-                            onkeypress="return filterFloat(event,this);">
+                            onkeypress="return filterFloat(event,this);" required pattern="^[0-9,.]*$">
                         @if ($errors->first('precio_compra_empaque'))
                             <i class="text-danger">{{ $errors->first('precio_compra_empaque') }}</i>
                         @endif
@@ -145,7 +145,7 @@
                         <input type="text" name="precio_venta_empaque" maxlength="8" id="precio_venta_empaque"
                             onkeyup="PasarValor();" value="{{ old('precio_venta_empaque') }}"
                             placeholder="Ejemplo: 99.99" autocomplete="off" class="form-control"
-                            onkeypress="return filterFloat(event,this);">
+                            onkeypress="return filterFloat(event,this);" required pattern="^[0-9,.]*$">
                         @if ($errors->first('precio_venta_empaque'))
                             <i class="text-danger">{{ $errors->first('precio_venta_empaque') }}</i>
                         @endif
@@ -161,7 +161,7 @@
                     <div class="input-group mar-btm">
                         <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                         <input type="text" name="precio_compra_unidad" maxlength="8" id="precio_compra_unidad"
-                            readonly autocomplete="off" class="form-control"
+                            readonly autocomplete="off" class="form-control" pattern="^[0-9,.]*$"
                             onkeypress="return filterFloat(event,this);">
                     </div>
                 </div>
@@ -175,9 +175,10 @@
 
                         <div class="input-group mar-btm">
                             <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                            <input type="text" name="precio_venta_unidad" maxlength="8"
-                                value="{{ old('precio_venta_unidad') }}" placeholder="Ejemplo: 99.99"
-                                autocomplete="off" class="form-control" onkeypress="return filterFloat(event,this);">
+                            <input type="text" name="precio_venta_unidad" maxlength="8" required
+                                pattern="^[0-9,.]*$" value="{{ old('precio_venta_unidad') }}"
+                                placeholder="Ejemplo: 99.99" autocomplete="off" class="form-control"
+                                onkeypress="return filterFloat(event,this);">
                             @if ($errors->first('precio_venta_unidad'))
                                 <i class="text-danger">{{ $errors->first('precio_venta_unidad') }}</i>
                             @endif
@@ -214,7 +215,8 @@
 
                     <div class="input-group mar-btm">
                         <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
-                        <input type="text" name="stock_minimo" value="{{ old('stock_minimo') }}"
+                        <input type="text" name="stock_minimo" value="{{ old('stock_minimo') }}" required
+                            pattern="^[0-9]*$"
                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                             placeholder="Stock minimo" autocomplete="off" maxlength="3" class="form-control">
                         @if ($errors->first('stock_minimo'))
@@ -229,7 +231,8 @@
 
                     <div class="input-group mar-btm">
                         <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
-                        <input type="text" name="stock_maximo" value="{{ old('stock_maximo') }}"
+                        <input type="text" name="stock_maximo" value="{{ old('stock_maximo') }}" required
+                            pattern="^[0-9]*$"
                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                             placeholder="Stock máximo" autocomplete="off" maxlength="5" class="form-control">
                         @if ($errors->first('stock_maximo'))
@@ -255,7 +258,7 @@
                             value="{{ old('inventario_inicial_empaque') }}"
                             onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                             placeholder="Inventario inicial" autocomplete="off" maxlength="6" class="form-control"
-                            id="inventario_inicial_empaque">
+                            id="inventario_inicial_empaque" required pattern="^[0-9]*$">
                         @if ($errors->first('inventario_inicial_empaque'))
                             <i class="text-danger">{{ $errors->first('inventario_inicial_empaque') }}</i>
                         @endif
@@ -272,10 +275,10 @@
                         <div class="input-group mar-btm">
                             <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
                             <input type="text" name="inventario_inicial_unidad"
-                                value="{{ old('stock_eunidad') }}"
+                                value="{{ old('stock_eunidad') }}" required
                                 onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"
                                 placeholder="Inventario inicial" autocomplete="off" maxlength="6"
-                                class="form-control">
+                                pattern="^[0-9]*$" class="form-control">
                             @if ($errors->first('inventario_inicial_unidad'))
                                 <i class="text-danger">{{ $errors->first('inventario_inicial_unidad') }}</i>
                             @endif
@@ -303,11 +306,14 @@
         </div>
     @endif
 @endforeach
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <button class="buttonp" type="submit">Guardar</button>
-        </div>
-</div><br>&nbsp;<br>&nbsp;
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <button class="buttonp" type="submit">Guardar</button>
+    </div>
+</div><br>&nbsp;
+<a href="{{ route('articulos.index') }}" class="text-right fs-6 text-secundario add-tooltip" data-toggle="tooltip"
+    data-container="body" data-placement="top" data-original-title="Regresar"><img
+        src="{{ asset('assets/img/regresar.jpg') }}" width="34" height="34"></a>
 
 <script type="text/javascript">
     function filterFloat(evt, input) {

@@ -11,7 +11,9 @@ use App\Models\User;
 use App\Models\Sucursal;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Requests\Articulos\CreateArticuloRequest;
 use Auth;
+use Illuminate\Support\Facades\DB; 
 
 class ArticuloController extends Controller
 {
@@ -61,9 +63,18 @@ class ArticuloController extends Controller
         $usuariologeado = User::find(Auth::id());
         $sucursales     = Sucursal::all();
         $sucursalesd    = Sucursal::onlyTrashed()->get();
-        $productos       = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $productos      = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $articulos      = Articulo::orderBy('articulo_id','DESC')->where('deleted_at', '=', NULL)
+        ->where ('sucursal_id', '=', Auth::user()->sucursal_id)->get();
+        $sucursal_id    = Auth::user()->sucursal_id;
 
-        return view('articulos.create',compact('usuariologeado','sucursales','sucursalesd','productos'));
+        $productosinexistentes = DB::select("SELECT * FROM productos t1
+                                WHERE NOT EXISTS (SELECT NULL
+                                FROM articulos t2
+                                WHERE t2.producto_id = t1.producto_id && t2.sucursal_id = '$sucursal_id')");
+        // dd($productosinexistentes);
+        
+        return view('articulos.create',compact('usuariologeado','sucursales','sucursalesd','productos','articulos','productosinexistentes'));
     }
 
     public function datos1(Request $request){
@@ -91,9 +102,13 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArticuloRequest $request)
     {
-        //
+        // dd($request);
+         Articulo::create($request->all());
+
+         return redirect()->route('articulos.index')
+        ->with('message', 'Producto creado exitosamente');
     }
 
     /**

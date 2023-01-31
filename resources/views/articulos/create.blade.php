@@ -53,14 +53,15 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="control-label is-required">Seleccione un
-                                                            producto</label>
+                                                        <label class="control-label is-required">
+                                                            Seleccione un producto
+                                                        </label>
                                                         <select class="selectpicker" data-live-search="true"
                                                             data-width="100%" name="producto_id" id="productos">
                                                             <option value="">Búsqueda de producto por nombre ó por
                                                                 código de
                                                                 barras</option>
-                                                            @foreach ($productos as $producto)
+                                                            @foreach ($productosinexistentes as $producto)
                                                                 @if (old('producto_id') == $producto->producto_id)
                                                                     <option value="{{ $producto->producto_id }}" selected>
                                                                         {{ $producto->codigo_barras }} -
@@ -69,6 +70,7 @@
                                                                     <option value="{{ $producto->producto_id }}">
                                                                         {{ $producto->codigo_barras }} -
                                                                         {{ $producto->nombre }}
+                                                                        {{-- {{ $existencia }} --}}
                                                                     </option>
                                                                 @endif
                                                             @endforeach
@@ -81,8 +83,13 @@
                                                 <div id="resultado1">
                                                     <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
                                                     <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
-                                                    <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
-                                                    <br>&nbsp;
+                                                    <br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                                                    <a href="{{ route('articulos.index') }}"
+                                                        class="text-right fs-6 text-secundario add-tooltip"
+                                                        data-toggle="tooltip" data-container="body" data-placement="top"
+                                                        data-original-title="Regresar"><img
+                                                            src="{{ asset('assets/img/regresar.jpg') }}" width="34"
+                                                            height="34"></a>
                                                 </div>
                                             </div>
                                     </form>
