@@ -51,6 +51,12 @@
                                 autocomplete="off" class="form-control" readonly>
                         @endif
                     @endforeach
+                    @foreach ($categoriasd as $categoria)
+                        @if ($producto->categoria_id == $categoria->categoria_id)
+                            <input type="text" placeholder="Categoría" value="{{ $categoria->nombre }}"
+                                autocomplete="off" class="form-control" readonly>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -60,6 +66,12 @@
                 <div class="form-group">
                     <label class="control-label">Marca:</label>
                     @foreach ($marcas as $marca)
+                        @if ($producto->marca_id == $marca->marca_id)
+                            <input type="text" placeholder="Marca" value="{{ $marca->nombre }}" autocomplete="off"
+                                class="form-control" readonly>
+                        @endif
+                    @endforeach
+                    @foreach ($marcasd as $marca)
                         @if ($producto->marca_id == $marca->marca_id)
                             <input type="text" placeholder="Marca" value="{{ $marca->nombre }}" autocomplete="off"
                                 class="form-control" readonly>
@@ -76,12 +88,24 @@
                                 autocomplete="off" class="form-control" readonly>
                         @endif
                     @endforeach
+                    @foreach ($temporadasd as $temporada)
+                        @if ($producto->temporada_id == $temporada->temporada_id)
+                            <input type="text" placeholder="Temperada" value="{{ $temporada->nombre }}"
+                                autocomplete="off" class="form-control" readonly>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
                     <label class="control-label">Empaque:</label>
                     @foreach ($empaques as $empaque)
+                        @if ($producto->empaque_id == $empaque->empaque_id)
+                            <input type="text" placeholder="Empaque" value="{{ $empaque->nombre }}"
+                                autocomplete="off" class="form-control" readonly>
+                        @endif
+                    @endforeach
+                    @foreach ($empaquesd as $empaque)
                         @if ($producto->empaque_id == $empaque->empaque_id)
                             <input type="text" placeholder="Empaque" value="{{ $empaque->nombre }}"
                                 autocomplete="off" class="form-control" readonly>

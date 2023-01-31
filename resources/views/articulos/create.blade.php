@@ -62,16 +62,19 @@
                                                                 código de
                                                                 barras</option>
                                                             @foreach ($productosinexistentes as $producto)
-                                                                @if (old('producto_id') == $producto->producto_id)
-                                                                    <option value="{{ $producto->producto_id }}" selected>
-                                                                        {{ $producto->codigo_barras }} -
-                                                                        {{ $producto->nombre }}
-                                                                    @else
-                                                                    <option value="{{ $producto->producto_id }}">
-                                                                        {{ $producto->codigo_barras }} -
-                                                                        {{ $producto->nombre }}
-                                                                        {{-- {{ $existencia }} --}}
-                                                                    </option>
+                                                                @if ($producto->deleted_at == '')
+                                                                    @if (old('producto_id') == $producto->producto_id)
+                                                                        <option value="{{ $producto->producto_id }}"
+                                                                            selected>
+                                                                            {{ $producto->codigo_barras }} -
+                                                                            {{ $producto->nombre }}
+                                                                        @else
+                                                                        <option value="{{ $producto->producto_id }}">
+                                                                            {{ $producto->codigo_barras }} -
+                                                                            {{ $producto->nombre }}
+                                                                            {{-- {{ $existencia }} --}}
+                                                                        </option>
+                                                                    @endif
                                                                 @endif
                                                             @endforeach
                                                         </select>

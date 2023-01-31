@@ -80,18 +80,26 @@ class ArticuloController extends Controller
     public function datos1(Request $request){
         $productos       = Producto::all();
         $categorias      = Categoria::all();
+        $categoriasd     = Categoria::onlyTrashed()->get();
         $marcas          = Marca::all();
+        $marcasd         = Marca::onlyTrashed()->get();
         $temporadas      = Temporada::all();
+        $temporadasd     = Temporada::onlyTrashed()->get();
         $empaques        = Empaque::all();
+        $empaquesd       = Empaque::onlyTrashed()->get();
         $id              = $request->get('id');
         $usuariologeado  = User::find(Auth::id());
 
         return view("articulos/datos01")
         ->with(['productos'       => $productos])
         ->with(['categorias'      => $categorias])
+        ->with(['categoriasd'     => $categoriasd])
         ->with(['marcas'          => $marcas])
+        ->with(['marcasd'         => $marcasd])
         ->with(['temporadas'      => $temporadas])
+        ->with(['temporadasd'     => $temporadasd])
         ->with(['empaques'        => $empaques])
+        ->with(['empaquesd'       => $empaquesd])
         ->with(['usuariologeado'  => $usuariologeado])
         ->with(['id'              => $id]);
     }

@@ -185,11 +185,11 @@ class ProductoController extends Controller
 
 
         if($cuantos>=1) {
-           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Inventario');
         }
 
         if($cuantosd>=1) {
-           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Articulos');
+           return redirect()->route('productos.papelera')->with('error', 'El registro no se puede eliminar ya que tiene registros en Inventario');
         }
 
         if (Storage::disk('producto-imagenes')->exists("$producto->imagen")) {
