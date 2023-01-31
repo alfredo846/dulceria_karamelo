@@ -118,9 +118,14 @@
                     <label class="control-label">Piezas por
                         @foreach ($empaques as $empaque)
                             @if ($producto->empaque_id == $empaque->empaque_id)
-                                {{ $empaque->nombre }}
+                                {{ $empaque->nombre }}:
                             @endif
-                        @endforeach:
+                        @endforeach
+                        @foreach ($empaquesd as $empaque)
+                            @if ($producto->empaque_id == $empaque->empaque_id)
+                                {{ $empaque->nombre }}:
+                            @endif
+                        @endforeach
                     </label>
                     <input type="text" id="piezas_por_empaque" name="piezas_por_empaque"
                         value="{{ $producto->piezas_por_empaque }}" autocomplete="off" onkeyup="myFunction();"
@@ -135,6 +140,11 @@
                 <div class="form-group">
                     <label class="control-label is-required">Precio de compra por
                         @foreach ($empaques as $empaque)
+                            @if ($producto->empaque_id == $empaque->empaque_id)
+                                {{ $empaque->nombre }}:
+                            @endif
+                        @endforeach
+                        @foreach ($empaquesd as $empaque)
                             @if ($producto->empaque_id == $empaque->empaque_id)
                                 {{ $empaque->nombre }}:
                             @endif
@@ -158,6 +168,11 @@
                 <div class="form-group">
                     <label class="control-label is-required">Precio de venta por
                         @foreach ($empaques as $empaque)
+                            @if ($producto->empaque_id == $empaque->empaque_id)
+                                {{ $empaque->nombre }}:
+                            @endif
+                        @endforeach
+                        @foreach ($empaquesd as $empaque)
                             @if ($producto->empaque_id == $empaque->empaque_id)
                                 {{ $empaque->nombre }}:
                             @endif
