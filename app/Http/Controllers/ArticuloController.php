@@ -12,6 +12,7 @@ use App\Models\Sucursal;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\Articulos\CreateArticuloRequest;
+use App\Http\Requests\Articulos\EditArticuloRequest;
 use Auth;
 use Illuminate\Support\Facades\DB; 
 
@@ -183,9 +184,10 @@ class ArticuloController extends Controller
      * @param  \App\Models\Articulo  $articulo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Articulo $articulo)
+    public function update(EditArticuloRequest $request, Articulo $articulo)
     {
-        //
+          $articulo->update($request->all());
+          return redirect()->route('articulos.index')->with('message', 'Producto actualizada exitosamente en el inventario');
     }
 
     /**
