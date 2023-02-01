@@ -78,7 +78,7 @@
                     <table id="ventas" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Usuario</th>
+                                <th>Vendedor</th>
                                 <th>Fecha</th>
                                 <th>Total</th>
                                 <th>Estado</th>
@@ -88,7 +88,11 @@
                         <tbody>
                             @foreach ($ventas as $venta)
                                 <tr>
-                                    <td>{{ $venta->user_id }}</td>
+                                    @foreach($usuarios as $usuario)
+                                    @if($venta->user_id == $usuario->id)
+                                    <td>{{ $usuario->username }}</td>
+                                    @endif
+                                    @endforeach
                                     <td>{{ $venta->fecha_venta }}</td>
                                     <td>$ {{ $venta->total }}</td>
                                     <td><span class="label label-mint">Activo</span></td>
