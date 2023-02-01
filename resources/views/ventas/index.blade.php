@@ -18,14 +18,27 @@
     <div id="content-container">
         <br>
         <div class="col-md-12">
-            <div class="panel panel-primary panel-colorful media middle pad-all">
+            <div class="panel panel-primary panel-colorful media middle pad-all text-center">
                 <div class="media-body">
-                    <p class="text-2x mar-no text-semibold">Ventas | Listado</p>
-                    <p></p>
+                    <p class="text-2x mar-no text-semibold">Ventas</p>
+                    <p class="text-2x mar-no text-semibold text-left">
+                        @if ($usuariologeado->id != '1')
+                            @foreach ($sucursales as $sucursale)
+                                @if ($sucursale->sucursal_id == $usuariologeado->sucursal_id)
+                                    {{ $sucursale->nombre }}
+                                @endif
+                            @endforeach
+                            @foreach ($sucursalesd as $sucursale)
+                                @if ($sucursale->sucursal_id == $usuariologeado->sucursal_id)
+                                    {{ $sucursale->nombre }}
+                                @endif
+                            @endforeach
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>
-        <br><br><br>
+        <br><br><br><br>
 
         <!--Page content-->
         <div id="page-content">
@@ -78,31 +91,33 @@
                                     <td>{{ $venta->user_id }}</td>
                                     <td>{{ $venta->fecha_venta }}</td>
                                     <td>$ {{ $venta->total }}</td>
-                            <td><span class="label label-mint">Activo</span></td>
-                            <td width="140">
-                                <a href="{{ route('ventas.show', $venta) }}">
-                                    <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
-                                        data-toggle="tooltip" data-container="body" data-placement="top"
-                                        data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
-                                    </button>
-                                </a>
+                                    <td><span class="label label-mint">Activo</span></td>
+                                    <td width="140">
+                                        <a href="{{ route('ventas.show', $venta) }}">
+                                            <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
+                                                data-toggle="tooltip" data-container="body" data-placement="top"
+                                                data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
+                                            </button>
+                                        </a>
 
-                                <a href="{{ route('ventas.edit', $venta) }}">
-                                    <button class="btn btn-sm btn-primary btn-icon add-tooltip" data-toggle="tooltip"
-                                        data-container="body" data-placement="top" data-original-title="Actalizar"><i
-                                            class="demo-psi-pen-5 icon-sm"></i></button>
-                                </a>
+                                        <a href="{{ route('ventas.edit', $venta) }}">
+                                            <button class="btn btn-sm btn-primary btn-icon add-tooltip"
+                                                data-toggle="tooltip" data-container="body" data-placement="top"
+                                                data-original-title="Actalizar"><i
+                                                    class="demo-psi-pen-5 icon-sm"></i></button>
+                                        </a>
 
-                                <form action="{{ route('ventas.destroy', $venta) }}" method="POST"
-                                    style="display: inline-block" class="formulario-eliminar">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
-                                        data-toggle="tooltip" data-container="body" data-placement="top"
-                                        data-original-title="Eliminar"><i class="demo-psi-recycling icon-sm"></i></button>
-                                </form>
-                            </td>
-                            </tr>
+                                        <form action="{{ route('ventas.destroy', $venta) }}" method="POST"
+                                            style="display: inline-block" class="formulario-eliminar">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
+                                                data-toggle="tooltip" data-container="body" data-placement="top"
+                                                data-original-title="Eliminar"><i
+                                                    class="demo-psi-recycling icon-sm"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
 
 

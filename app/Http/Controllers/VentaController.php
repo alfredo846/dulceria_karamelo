@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Venta;
+use App\Models\Producto;
+use App\Models\Sucursal;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class VentaController extends Controller
 {
@@ -14,8 +18,18 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::all();
-        return view('ventas.index',compact('ventas'));
+        $ventas          = Venta::orderBy('venta_id','DESC')->where('deleted_at', '=', NULL)
+                         ->where ('sucursal_id', '=', Auth::user()->sucursal_id)->get();
+        
+        $productos       = Producto::orderBy('producto_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $productosd      = Producto::onlyTrashed()->get();
+
+        $sucursales      = Sucursal::orderBy('sucursal_id','DESC')->where('deleted_at', '=', NULL)->get();
+        $sucursalesd     = Sucursal::onlyTrashed()->get();
+
+        $usuariologeado  = User::find(Auth::id());
+        return view('ventas.index',compact('ventas','productos','productosd','sucursales','sucursalesd',
+        'usuariologeado'));
     }
 
     /**
