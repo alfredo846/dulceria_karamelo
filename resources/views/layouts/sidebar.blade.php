@@ -98,6 +98,20 @@
 						                </ul>
 						            </li>
 									<li class="list-divider"></li>
+
+									 <li>
+						                <a href="#">
+										   <i class="fa fa-shopping-bag fa-2x"></i>
+						                    <span class="menu-title text-bold">Ventas</span>
+											<i class="arrow"></i>
+						                </a>
+						
+						                <!--Submenu-->
+						                <ul class="collapse text-semibold">
+						                    <li><a href="{{ route('ventas.index') }}">Ventas</a></li>	
+						                </ul>
+						            </li>
+									<li class="list-divider"></li>
                                 </ul>
 						          
                             </div>

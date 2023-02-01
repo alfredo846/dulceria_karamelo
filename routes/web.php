@@ -10,6 +10,7 @@ use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\VentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,12 @@ Route::delete('articulo_borrar/{articulo_id}',[ArticuloController::class, 'borra
 Route::delete('articulo_activar/{articulo_id}',[ArticuloController::class, 'activar'])->name('articulos.activar');
 Route::get('articulo_export',[ArticuloController::class, 'export'])->name('articulos.export');
 Route::get('/datos1', [ArticuloController::class, 'datos1'])->name('datos1');
+
+Route::resource('ventas', VentaController::class);
+Route::get('venta_papelera',[VentaController::class, 'papelera'])->name('ventas.papelera');
+Route::delete('venta_borrar/{venta_id}',[VentaController::class, 'borrar'])->name('ventas.borrar');
+Route::delete('venta_activar/{venta_id}',[VentaController::class, 'activar'])->name('ventas.activar');
+Route::get('venta_export',[VentaController::class, 'export'])->name('ventas.export');
 
 Auth::routes();
 
