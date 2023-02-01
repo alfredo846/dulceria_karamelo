@@ -56,7 +56,7 @@ class UsuariosSeeder extends Seeder
         'sucursal_id'        => '2',
     ]);
 
-    $avendedor=User::create([
+    $vendedor=User::create([
         'nombre'             => 'Sara Andrea',
         'apellido_paterno'   => 'Heraz',
         'apellido_materno'   => 'Pérez',

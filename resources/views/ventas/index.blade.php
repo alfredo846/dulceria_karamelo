@@ -65,10 +65,9 @@
                     <table id="ventas" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Código de barras</th>
-                                <th>Imagen</th>
-                                <th>Nombre</th>
-                                <th>Marca</th>
+                                <th>Usuario</th>
+                                <th>Fecha</th>
+                                <th>Total</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
@@ -76,48 +75,34 @@
                         <tbody>
                             @foreach ($ventas as $venta)
                                 <tr>
-                                    <td>{{ $venta->codigo_barras }}</td>
-                                    <td><img class='profile-image'
-                                            src="{{ asset('imagenes/ventas/' . $venta->imagen) }}" alt="foto">
-                                    </td>
-                                    <td width="180">{{ $venta->nombre }}</td>
-                                    @foreach ($marcas as $marca)
-                                        @if ($marca->marca_id == $venta->marca_id)
-                                            <td>{{ $marca->nombre }}</td>
-                                        @endif
-                                    @endforeach
-                                    @foreach ($marcasd as $marca)
-                                        @if ($marca->marca_id == $venta->marca_id)
-                                            <td>{{ $marca->nombre }}</td>
-                                        @endif
-                                    @endforeach
-                                    <td><span class="label label-mint">Activo</span></td>
-                                    <td width="140">
-                                        <a href="{{ route('ventas.show', $venta) }}">
-                                            <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
-                                                data-toggle="tooltip" data-container="body" data-placement="top"
-                                                data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
-                                            </button>
-                                        </a>
+                                    <td>{{ $venta->user_id }}</td>
+                                    <td>{{ $venta->fecha_venta }}</td>
+                                    <td>$ {{ $venta->total }}</td>
+                            <td><span class="label label-mint">Activo</span></td>
+                            <td width="140">
+                                <a href="{{ route('ventas.show', $venta) }}">
+                                    <button type="button" class="btn btn-sm btn-success btn-icon add-tooltip"
+                                        data-toggle="tooltip" data-container="body" data-placement="top"
+                                        data-original-title="Consultar"><i class="ion-eye icon-lg"></i>
+                                    </button>
+                                </a>
 
-                                        <a href="{{ route('ventas.edit', $venta) }}">
-                                            <button class="btn btn-sm btn-primary btn-icon add-tooltip"
-                                                data-toggle="tooltip" data-container="body" data-placement="top"
-                                                data-original-title="Actalizar"><i
-                                                    class="demo-psi-pen-5 icon-sm"></i></button>
-                                        </a>
+                                <a href="{{ route('ventas.edit', $venta) }}">
+                                    <button class="btn btn-sm btn-primary btn-icon add-tooltip" data-toggle="tooltip"
+                                        data-container="body" data-placement="top" data-original-title="Actalizar"><i
+                                            class="demo-psi-pen-5 icon-sm"></i></button>
+                                </a>
 
-                                        <form action="{{ route('ventas.destroy', $venta) }}" method="POST"
-                                            style="display: inline-block" class="formulario-eliminar">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="btn btn-sm btn-danger btn-icon add-tooltip" data-toggle="tooltip"
-                                                data-container="body" data-placement="top" data-original-title="Eliminar"><i
-                                                    class="demo-psi-recycling icon-sm"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <form action="{{ route('ventas.destroy', $venta) }}" method="POST"
+                                    style="display: inline-block" class="formulario-eliminar">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger btn-icon add-tooltip"
+                                        data-toggle="tooltip" data-container="body" data-placement="top"
+                                        data-original-title="Eliminar"><i class="demo-psi-recycling icon-sm"></i></button>
+                                </form>
+                            </td>
+                            </tr>
                             @endforeach
 
 

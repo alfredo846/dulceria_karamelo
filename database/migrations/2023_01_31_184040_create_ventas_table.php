@@ -17,11 +17,13 @@ class CreateVentasTable extends Migration
             $table->bigIncrements('venta_id');
             $table->date('fecha_venta');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('sucursal_id');
             $table->double('subtotal',15,2);
             $table->double('total',15,2);
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('sucursal_id')->references('sucursal_id')->on('sucursals');
         });
     }
 
